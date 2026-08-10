@@ -207,7 +207,7 @@ svg text { font-family: var(--font-main); }
    ============================================================ */
 .section { padding-block: var(--sp-8); }
 
-.stream-grid { display: grid; gap: var(--sp-6); }
+.stream-grid { display: grid; gap: var(--sp-6); align-items: start; } /* اللوح الجانبي بحجم محتواه، لا يتمدد */
 @media (min-width: 1024px) { .stream-grid { grid-template-columns: 1.25fr .75fr; gap: var(--sp-7); } }
 
 /* .stream { border-block-start: 2px solid var(--iwad-ink); } */
@@ -244,6 +244,28 @@ svg text { font-family: var(--font-main); }
 .st-feature h3 a:hover { color: var(--primary); }
 .st-feature p { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.7; margin-block-end: var(--sp-3); }
 .st-feature .m { font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+
+/* الأكثر قراءة — يملأ اللوح بمحتوى حقيقي */
+.mostread {
+  border-block-start: 1px solid var(--rule);
+  margin-block-start: var(--sp-4);
+  padding-block-start: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+.mostread .mr-k { font-size: var(--fs-xs); font-weight: 700; color: var(--accent-text); margin-block-end: var(--sp-1); }
+.mostread a {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.55;
+  align-items: baseline;
+}
+.mostread a b { font-size: var(--fs-xs); font-weight: 700; color: var(--accent-text); font-variant-numeric: tabular-nums; }
+.mostread a:hover { color: var(--primary); }
 
 /* ============================================================
    03 · إصدارات مميزة — تحرير كبير بلوحات
