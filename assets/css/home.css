@@ -322,14 +322,31 @@ svg text { font-family: var(--font-main); }
   padding: var(--sp-1) var(--sp-3);
 }
 .legend i { display: inline-block; width: 9px; height: 9px; margin-inline-end: 4px; }
-.legend .l1 i { background: #5C4632; }
+.legend .l1 i { background: #221B15; border: 1px solid rgb(168 130 74 / 55%); }
 .legend .l2 i { background: var(--iwad-gold); }
 
-.px-land { fill: #5C4632; opacity: .55; }
+/* كارتوجرافيا داكنة: البحر أغمق بدرجة، الساحل الذهبي هو الراسم */
+.px-land {
+  fill: #221B15;
+  stroke: rgb(168 130 74 / 55%);
+  stroke-width: 1.2;
+}
 .zone { cursor: pointer; }
 .zone .halo { fill: transparent; stroke: transparent; }
+.zone .leader {
+  fill: none;
+  stroke: rgb(168 130 74 / 45%);
+  stroke-width: 1;
+}
 .zone .pin { fill: var(--iwad-gold); transition: transform var(--dur-fast) var(--ease-out); transform-box: fill-box; transform-origin: center; }
-.zone text { font-size: 12px; font-weight: 600; fill: rgb(243 238 234 / 85%); }
+.zone text {
+  font-size: 15px;
+  font-weight: 600;
+  fill: rgb(243 238 234 / 92%);
+  paint-order: stroke;
+  stroke: rgb(21 18 16 / 85%); /* هالة تفصل الاسم عن الخلفية */
+  stroke-width: 3.5;
+}
 .zone:hover .pin, .zone.active .pin { transform: scale(1.35); }
 .zone.active .halo { stroke: var(--iwad-gold); stroke-width: 1; stroke-dasharray: 4 3; }
 
@@ -377,7 +394,7 @@ svg text { font-family: var(--font-main); }
 .pf-chip:hover { border-color: var(--sec, var(--iwad-ink)); color: var(--sec, var(--iwad-ink)); }
 .pf-chip.on { background: var(--sec, var(--iwad-ink)); border-color: var(--sec, var(--iwad-ink)); color: var(--iwad-cream); }
 
-.pubs { border-block-start: 2px solid var(--iwad-ink); }
+/* الإطار من القوس + برواز خفيف — لا بارات حبر متصادمة */
 .pub {
   display: grid;
   grid-template-columns: 96px 1fr auto;
@@ -475,9 +492,12 @@ svg text { font-family: var(--font-main); }
     linear-gradient(var(--sec-heritage), var(--sec-heritage));
 }
 
-/* الكتل النصية المؤطرة حديثاً — حشوة عشان الأقواس ما تركبش على النص */
-.stream.aperture, .pubs.aperture { padding: var(--sp-4) var(--sp-5); }
-.topics.aperture, .lex-side.aperture { padding: var(--sp-5); }
+/* الكتل النصية المؤطرة — برواز خفيف موحد مع الأقواس + حشوة */
+.stream.aperture, .pubs.aperture {
+  padding: var(--sp-4) var(--sp-5);
+  border: 1px solid var(--rule);
+}
+.topics.aperture, .lex-side.aperture { padding: var(--sp-5); border: 1px solid var(--rule); }
 .f-charter.aperture { padding-inline: var(--sp-4); }
 .battle-fig figcaption {
   display: flex;
