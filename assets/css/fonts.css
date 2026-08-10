@@ -1,0 +1,38 @@
+/* ============================================================
+   IWAD — خط الهوية: PF DIN Text Arabic (self-hosted)
+   المصدر: assets/fonts/web/*.woff2 (محوّل من TTF الأصلية)
+   ملاحظة: ملفات الـ TTF كلها معلنة usWeightClass=400 —
+   الوزن الفعلي بيتحدد هنا في font-weight لكل ملف.
+   ============================================================ */
+
+@font-face {
+  font-family: 'PF DIN Text Arabic';
+  src: url('../fonts/web/pfdin-300.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PF DIN Text Arabic';
+  src: url('../fonts/web/pfdin-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PF DIN Text Arabic';
+  src: url('../fonts/web/pfdin-500.woff2') format('woff2');
+  font-weight: 500 600; /* الميديم بيخدم 500 و600 */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PF DIN Text Arabic';
+  src: url('../fonts/web/pfdin-700.woff2') format('woff2');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}

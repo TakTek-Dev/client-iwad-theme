@@ -1,0 +1,107 @@
+/* ============================================================
+   IWAD — Design Tokens
+   المصدر: design-system/iwad/MASTER.md  ·  الهوية: BRAND.md
+   ============================================================ */
+
+:root {
+  /* ---------- Brand (ثابتة — من البراند بوك) ---------- */
+  --iwad-maroon: #3D1720;
+  --iwad-gold:   #A8824A;
+  --iwad-cream:  #F3EEEA;
+  --iwad-paper:  #F0EDE6;
+  --iwad-beige:  #E8E1D7;
+  --iwad-ink:    #1A1A1A;
+
+  /* ---------- Semantic — Light ----------
+     الأساس أبيض مؤسسي — الورقي والبيج أسطح تحريرية محددة، ليست خلفية الموقع */
+  --bg:          #FCFBF9;
+  --surface:     #FFFFFF;
+  --surface-2:   var(--iwad-paper);
+  --text:        var(--iwad-ink);
+  --text-muted:  #5A4B4F;
+  --primary:     var(--iwad-maroon);
+  --on-primary:  var(--iwad-cream);
+  --accent:      var(--iwad-gold);   /* ديكور/بوردر/عناوين كبيرة فقط */
+  --accent-text: #7E5F31;            /* الذهبي المقروء — نص ولينكات */
+  --border:      #D8D0C4;
+  --rule:        #DDD5C9;   /* مسطرة داخلية خفيفة */
+  --rule-2:      #C7BEB0;   /* مسطرة إطارات أثقل */
+  --focus-ring:  #33526B;
+
+  /* وظيفية */
+  --success: #2F6B4E;
+  --warning: #7E5F31;
+  --error:   #9B3438;
+  --info:    #33526B;
+
+  /* ---------- ألوان الأقسام ---------- */
+  --sec-global:    #33526B;
+  --sec-regional:  #2F5D53;
+  --sec-doctrine:  #3D1720;
+  --sec-education: #7E5F31;
+  --sec-heritage:  #5C4632;
+
+  /* ---------- Typography ----------
+     خط الهوية الأصلي — DIN العربي (PF DIN Text Arabic) self-hosted */
+  --font-main: 'PF DIN Text Arabic', 'Segoe UI', Tahoma, -apple-system, sans-serif;
+
+  --fs-xs:   0.7647rem;  /* 13px */
+  --fs-sm:   0.8235rem;  /* 14px */
+  --fs-base: 1rem;       /* 17px */
+  --fs-md:   1.1176rem;  /* 19px */
+  --fs-lg:   1.2941rem;  /* 22px */
+  --fs-xl:   1.5294rem;  /* 26px */
+  --fs-2xl:  1.8824rem;  /* 32px */
+  --fs-3xl:  2.3529rem;  /* 40px */
+  --fs-4xl:  2.8235rem;  /* 48px */
+  --fs-display: clamp(2.1176rem, 4.8vw, 3.7647rem);  /* 36 → 64px */
+
+  /* ---------- Spacing (قاعدة 4px) ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+
+  /* ---------- Layout ---------- */
+  --container: 1240px;
+  --gutter: 20px;
+
+  /* ---------- Radius (جريد مربع — max 10px) ---------- */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* ---------- Shadows (Flat — شبه معدومة) ---------- */
+  --shadow-none:  none;
+  --shadow-raise: 0 1px 3px rgb(26 26 26 / 8%);
+  --shadow-modal: 0 8px 32px rgb(26 26 26 / 16%);
+
+  /* ---------- Motion ---------- */
+  --dur-fast:   150ms;
+  --dur-base:   250ms;
+  --dur-reveal: 350ms;
+  --ease-out: cubic-bezier(0.25, 0.75, 0.4, 1);
+}
+
+@media (min-width: 768px) {
+  :root { --gutter: 40px; }
+}
+
+/* ---------- Semantic — Dark (جاهزة، بدون مفتاح UI حالياً) ---------- */
+[data-theme="dark"] {
+  --bg:          var(--iwad-maroon);
+  --surface:     #4A1E28;
+  --surface-2:   #2F1219;
+  --text:        var(--iwad-cream);
+  --text-muted:  #C4B3B0;
+  --primary:     var(--iwad-gold);
+  --on-primary:  var(--iwad-ink);
+  --accent:      var(--iwad-gold);
+  --accent-text: #C9A468;
+  --border:      #5C2A34;
+}

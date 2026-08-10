@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>إيواد — معهد دراسات الحرب والدفاع</title>
+  <meta name="description" content="إيواد منصة رقمية متخصصة في البحث والتعليم في النظريات والعقائد والفكر والإرث العسكري إقليمياً وعالمياً — بمحتوى واضح يتمتع بالمصداقية الأكاديمية.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="إيواد — معهد دراسات الحرب والدفاع">
+  <meta property="og:description" content="منصة بحثية أكاديمية مستقلة في النظريات والعقائد والفكر والإرث العسكري.">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html" aria-current="page">الرئيسية</a></li>
+        <li data-sec="global"><a href="#">عالمي</a></li>
+        <li data-sec="regional"><a href="#">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="#">عقائد</a></li>
+        <li data-sec="education"><a href="#">تعليمي</a></li>
+        <li data-sec="heritage"><a href="#">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="#">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html" aria-current="page">الرئيسية</a></li>
+      <li data-sec="global"><a href="#">عالمي</a></li>
+      <li data-sec="regional"><a href="#">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="#">عقائد</a></li>
+      <li data-sec="education"><a href="#">تعليمي</a></li>
+      <li data-sec="heritage"><a href="#">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="#">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="#" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="#">تقديرات الموقف</a>
+      <a href="#">معجم المصطلحات</a>
+      <a href="#">ملف سوريا وإسرائيل</a>
+      <a href="#">الحقبة المملوكية</a>
+      <a href="#">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============ 01 · Hero — مسرح الدراسة ============ -->
+  <section class="hero spy" aria-labelledby="hero-title">
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <div class="container hero-grid">
+
+      <div class="hero-copy">
+        <div class="badges" data-hero="1">
+          <span class="rl">الإصدار الأبرز</span>
+          <span class="badge-sec" style="--sec: var(--sec-global);">عالمي</span>
+          <span class="layer">بحث معمّق</span>
+        </div>
+        <h1 id="hero-title" data-hero="2">
+          <a href="#"><span class="hl">توازن الردع</span> في المحيط الهادئ: التحول البحري الأمريكي-الصيني</a>
+        </h1>
+        <p class="thesis" data-hero="3">
+          التفوق البحري لم يعد يقاس بعدد القطع بل ببنية الانتشار — قراءة موسعة في
+          إعادة تعريف السيطرة على البحار، ومنطق «الدفاع متعدد الطبقات» مقابل «الانتشار الأمامي».
+        </p>
+        <div class="meta tnum" data-hero="4">
+          <span class="author">د. سامر الحسن</span>
+          <span class="sq" aria-hidden="true"></span>
+          <time datetime="2026-08-06">6 أغسطس 2026</time>
+          <span class="sq" aria-hidden="true"></span>
+          <span>18 دقيقة</span>
+          <span class="sq" aria-hidden="true"></span>
+          <span>IWAD-2026-034</span>
+        </div>
+        <div class="acts" data-hero="5">
+          <a class="btn btn-primary" href="#">اقرأ الدراسة</a>
+          <a class="btn btn-pdf" href="#"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> نسخة PDF</a>
+        </div>
+      </div>
+
+      <figure class="hero-map" data-hero="6">
+        <svg class="svg-ltr" viewBox="0 0 560 420" role="img" aria-label="خريطة تحليلية لمسرح المحيط الهادئ الغربي — مبنية من مربعات شبكة إيواد">
+          <!-- اليابسة: بكسل-أطلس -->
+          <g id="hm-land" fill="#F3EEEA" opacity="0.85">
+            <!-- البر الآسيوي -->
+            <rect x="20" y="40" width="18" height="18"/><rect x="40" y="40" width="18" height="18"/><rect x="60" y="40" width="18" height="18"/><rect x="80" y="40" width="18" height="18"/>
+            <rect x="20" y="60" width="18" height="18"/><rect x="40" y="60" width="18" height="18"/><rect x="60" y="60" width="18" height="18"/><rect x="80" y="60" width="18" height="18"/><rect x="100" y="60" width="18" height="18"/>
+            <rect x="20" y="80" width="18" height="18"/><rect x="40" y="80" width="18" height="18"/><rect x="60" y="80" width="18" height="18"/><rect x="80" y="80" width="18" height="18"/><rect x="100" y="80" width="18" height="18"/><rect x="120" y="80" width="18" height="18"/>
+            <rect x="20" y="100" width="18" height="18"/><rect x="40" y="100" width="18" height="18"/><rect x="60" y="100" width="18" height="18"/><rect x="80" y="100" width="18" height="18"/><rect x="100" y="100" width="18" height="18"/><rect x="120" y="100" width="18" height="18"/><rect x="140" y="100" width="18" height="18"/>
+            <rect x="20" y="120" width="18" height="18"/><rect x="40" y="120" width="18" height="18"/><rect x="60" y="120" width="18" height="18"/><rect x="80" y="120" width="18" height="18"/><rect x="100" y="120" width="18" height="18"/><rect x="120" y="120" width="18" height="18"/>
+            <rect x="20" y="140" width="18" height="18"/><rect x="40" y="140" width="18" height="18"/><rect x="60" y="140" width="18" height="18"/><rect x="80" y="140" width="18" height="18"/><rect x="100" y="140" width="18" height="18"/><rect x="120" y="140" width="18" height="18"/>
+            <rect x="20" y="160" width="18" height="18"/><rect x="40" y="160" width="18" height="18"/><rect x="60" y="160" width="18" height="18"/><rect x="80" y="160" width="18" height="18"/><rect x="100" y="160" width="18" height="18"/>
+            <rect x="20" y="180" width="18" height="18"/><rect x="40" y="180" width="18" height="18"/><rect x="60" y="180" width="18" height="18"/><rect x="80" y="180" width="18" height="18"/><rect x="100" y="180" width="18" height="18"/>
+            <rect x="20" y="200" width="18" height="18"/><rect x="40" y="200" width="18" height="18"/><rect x="60" y="200" width="18" height="18"/><rect x="80" y="200" width="18" height="18"/>
+            <rect x="20" y="220" width="18" height="18"/><rect x="40" y="220" width="18" height="18"/><rect x="60" y="220" width="18" height="18"/><rect x="80" y="220" width="18" height="18"/>
+            <rect x="20" y="240" width="18" height="18"/><rect x="40" y="240" width="18" height="18"/><rect x="60" y="240" width="18" height="18"/>
+            <rect x="20" y="260" width="18" height="18"/><rect x="40" y="260" width="18" height="18"/><rect x="60" y="260" width="18" height="18"/>
+            <rect x="20" y="280" width="18" height="18"/><rect x="40" y="280" width="18" height="18"/>
+            <!-- شبه الجزيرة الكورية -->
+            <rect x="140" y="60" width="18" height="18"/><rect x="140" y="80" width="18" height="18"/><rect x="160" y="80" width="18" height="18"/>
+            <!-- الأرخبيل الياباني -->
+            <rect x="220" y="40" width="18" height="18"/><rect x="240" y="50" width="18" height="18"/><rect x="255" y="70" width="18" height="18"/><rect x="270" y="90" width="18" height="18"/><rect x="280" y="110" width="18" height="18"/>
+            <!-- الجزيرة محور الدراسة -->
+            <rect x="185" y="205" width="18" height="18"/>
+            <!-- أرخبيل جنوبي -->
+            <rect x="210" y="270" width="18" height="18"/><rect x="220" y="292" width="18" height="18"/><rect x="205" y="314" width="18" height="18"/><rect x="230" y="330" width="18" height="18"/>
+            <rect x="300" y="340" width="18" height="18"/><rect x="330" y="355" width="18" height="18"/><rect x="360" y="345" width="18" height="18"/>
+            <!-- جزر المحيط -->
+            <rect x="380" y="180" width="12" height="12"/><rect x="420" y="220" width="12" height="12"/><rect x="460" y="150" width="12" height="12"/><rect x="470" y="270" width="12" height="12"/>
+          </g>
+
+          <!-- ممرات بحرية — كوع قائم -->
+          <path class="sea-route" d="M300 60 V180 H230" fill="none" stroke="#A8824A" stroke-width="1.5" stroke-dasharray="6 5" opacity=".9"/>
+          <path class="sea-route" d="M340 380 H250 V250" fill="none" stroke="#A8824A" stroke-width="1.5" stroke-dasharray="6 5" opacity=".9"/>
+          <path class="sea-route" d="M480 100 V214 H230" fill="none" stroke="rgb(243 238 234 / 40%)" stroke-width="1.2" stroke-dasharray="2 6"/>
+
+          <!-- خطا الرصد -->
+          <line class="hm-cross-h" x1="0" y1="214" x2="560" y2="214" stroke="#A8824A" stroke-width="1" opacity=".65"/>
+          <line class="hm-cross-v" x1="196" y1="0" x2="196" y2="420" stroke="#A8824A" stroke-width="1" opacity=".65"/>
+
+          <!-- نقطة الرصد على المضيق -->
+          <path class="hm-watch" d="M182 200 h20 v-8 h8 v28 h-28 z" fill="#A8824A"/>
+
+          <!-- تسميات -->
+          <g font-size="11" font-weight="600" fill="rgb(243 238 234 / 75%)">
+            <text x="308" y="52">خطوط الإمداد الشمالية</text>
+            <text x="360" y="396">الممر الجنوبي</text>
+            <text x="330" y="240">المحيط الهادئ الغربي</text>
+            <text x="60" y="320" fill="rgb(243 238 234 / 50%)">البر الآسيوي</text>
+          </g>
+          <g font-size="10" fill="rgb(243 238 234 / 45%)" class="tnum">
+            <text x="8" y="212">N24</text>
+            <text x="200" y="414">E120</text>
+          </g>
+        </svg>
+        <figcaption class="cap">
+          <span>لوحة المسرح — إعداد وحدة الرصد، إيواد · تجريد بحثي لا يمثل حدوداً</span>
+          <span>IWAD-PL-2026-11</span>
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <div class="hero-sub">
+      <div class="container row">
+        <a href="#"><span class="k">من الدراسة</span><h3>لماذا فشل نموذج «الأسطول الأكبر» في التنبؤ بموازين 2020s؟</h3></a>
+        <a href="#"><span class="k">مواد مرتبطة</span><h3>الردع المتدرج في الوثائق الأطلسية — قراءة تأسيسية</h3></a>
+        <a href="#"><span class="k">من المعجم</span><h3>الانتشار الأمامي Forward Presence — المفهوم وحدوده</h3></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ السلك ============ -->
+  <div class="wire" role="region" aria-label="آخر تقديرات الموقف">
+    <div class="wire-label"><span class="hsq" aria-hidden="true"></span> تقديرات الموقف</div>
+    <div class="wire-track">
+      <ul class="wire-run" role="list">
+        <li><a href="#">قراءة أولية في تمديد معاهدة نيو ستارت: ماذا تغيّر في حسابات الردع؟</a><time class="tnum" datetime="2026-08-09">9 أغسطس</time><span class="hsq" aria-hidden="true"></span></li>
+        <li><a href="#">مؤشرات الأسبوع على الجبهة اللبنانية: قواعد اشتباك تُختبر من جديد</a><time class="tnum" datetime="2026-08-08">8 أغسطس</time><span class="hsq" aria-hidden="true"></span></li>
+        <li><a href="#">مفهوم الردع المتدرج في الوثائق الأطلسية الجديدة: قراءة أولى</a><time class="tnum" datetime="2026-08-07">7 أغسطس</time><span class="hsq" aria-hidden="true"></span></li>
+        <li><a href="#">المناورات المشتركة شرق المتوسط: الرسائل والتوقيت والجمهور المقصود</a><time class="tnum" datetime="2026-08-05">5 أغسطس</time><span class="hsq" aria-hidden="true"></span></li>
+        <li><a href="#">أفغانستان بعد عامين: خريطة تموضع القوى الإقليمية المتغيرة</a><time class="tnum" datetime="2026-08-03">3 أغسطس</time><span class="hsq" aria-hidden="true"></span></li>
+      </ul>
+      <ul class="wire-run" role="list" aria-hidden="true">
+        <li><a href="#" tabindex="-1">قراءة أولية في تمديد معاهدة نيو ستارت: ماذا تغيّر في حسابات الردع؟</a><time class="tnum">9 أغسطس</time><span class="hsq"></span></li>
+        <li><a href="#" tabindex="-1">مؤشرات الأسبوع على الجبهة اللبنانية: قواعد اشتباك تُختبر من جديد</a><time class="tnum">8 أغسطس</time><span class="hsq"></span></li>
+        <li><a href="#" tabindex="-1">مفهوم الردع المتدرج في الوثائق الأطلسية الجديدة: قراءة أولى</a><time class="tnum">7 أغسطس</time><span class="hsq"></span></li>
+        <li><a href="#" tabindex="-1">المناورات المشتركة شرق المتوسط: الرسائل والتوقيت والجمهور المقصود</a><time class="tnum">5 أغسطس</time><span class="hsq"></span></li>
+        <li><a href="#" tabindex="-1">أفغانستان بعد عامين: خريطة تموضع القوى الإقليمية المتغيرة</a><time class="tnum">3 أغسطس</time><span class="hsq"></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 02 · مجرى التقديرات ============ -->
+  <section class="section spy" aria-labelledby="stream-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="stream-title">آخر التقديرات</h2>
+        <span class="rl">الطبقة السريعة</span>
+        <a class="aux" href="#">أرشيف التقديرات ←</a>
+      </div>
+
+      <div class="stream-grid">
+        <div class="stream rise">
+          <div class="st-row" data-sec="global"><time class="tnum" datetime="2026-08-09">9 أغسطس</time><div class="b"><span class="secline">عالمي</span><h3><a href="#">تمديد نيو ستارت: ماذا تغيّر في حسابات الردع بين واشنطن وموسكو؟</a></h3></div></div>
+          <div class="st-row" data-sec="regional"><time class="tnum" datetime="2026-08-08">8 أغسطس</time><div class="b"><span class="secline">إقليمي</span><h3><a href="#">مؤشرات الأسبوع على الجبهة اللبنانية: قواعد اشتباك تُختبر من جديد</a></h3></div></div>
+          <div class="st-row" data-sec="doctrine"><time class="tnum" datetime="2026-08-07">7 أغسطس</time><div class="b"><span class="secline">عقائد</span><h3><a href="#">الردع المتدرج في الوثائق الأطلسية الجديدة: قراءة أولى في التحول</a></h3></div></div>
+          <div class="st-row" data-sec="global"><time class="tnum" datetime="2026-08-05">5 أغسطس</time><div class="b"><span class="secline">عالمي</span><h3><a href="#">المناورات المشتركة شرق المتوسط: الرسائل والتوقيت والجمهور المقصود</a></h3></div></div>
+          <div class="st-row" data-sec="regional"><time class="tnum" datetime="2026-08-03">3 أغسطس</time><div class="b"><span class="secline">إقليمي</span><h3><a href="#">أفغانستان بعد عامين: خريطة تموضع القوى الإقليمية المتغيرة</a></h3></div></div>
+          <div class="st-row" data-sec="education"><time class="tnum" datetime="2026-08-01">1 أغسطس</time><div class="b"><span class="secline">تعليمي</span><h3><a href="#">كيف نقرأ بيانات وزارات الدفاع؟ ثلاث قواعد من عدة الباحث</a></h3></div></div>
+          <div class="st-row" data-sec="doctrine"><time class="tnum" datetime="2026-07-29">29 يوليو</time><div class="b"><span class="secline">عقائد</span><h3><a href="#">عودة الحديث عن «الحرب الوقائية»: المفهوم في ميزان النظرية</a></h3></div></div>
+        </div>
+
+        <aside class="st-feature rise" aria-label="أحدث تقدير">
+          <span class="rl">أحدث تقدير</span>
+          <h3><a href="#">تمديد نيو ستارت: ماذا تغيّر في حسابات الردع؟</a></h3>
+          <p>التمديد ليس عودة لضبط التسلح بقدر ما هو تجميد لانهياره — ثلاث دلالات مباشرة على بنية الردع الثنائي، ومسار محتمل واحد للتصعيد المضبوط.</p>
+          <div class="m"><span>د. هالة عثمان</span><time datetime="2026-08-09">9 أغسطس 2026</time><span>5 دقائق</span></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 · إصدارات مميزة ============ -->
+  <section class="section spy" aria-labelledby="feats-title" style="padding-block-start: 0;">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="feats-title">إصدارات مميزة</h2>
+        <span class="rl">اختيار المحررين</span>
+        <a class="aux" href="#">كل الدراسات ←</a>
+      </div>
+
+      <div class="feats">
+
+        <article class="feat feat-main" data-sec="regional">
+          <div class="plate-frame unveil">
+            <span class="tag">إقليمي</span>
+            <svg class="svg-ltr" viewBox="0 0 560 320" role="img" aria-label="لوحة: بنية ملف سوريا وإسرائيل">
+              <rect width="560" height="320" fill="#F0EDE6"/>
+              <g stroke="rgb(47 93 83 / 14%)" stroke-width="1">
+                <path d="M0 80 H560 M0 160 H560 M0 240 H560 M80 0 V320 M160 0 V320 M240 0 V320 M320 0 V320 M400 0 V320 M480 0 V320"/>
+              </g>
+              <g fill="#2F5D53">
+                <rect x="96" y="96" width="24" height="24"/><rect x="128" y="96" width="24" height="24"/><rect x="96" y="128" width="24" height="24"/><rect x="128" y="128" width="24" height="24" opacity=".55"/>
+                <rect x="352" y="176" width="24" height="24"/><rect x="384" y="176" width="24" height="24" opacity=".55"/><rect x="352" y="208" width="24" height="24" opacity=".3"/>
+              </g>
+              <path d="M152 120 H280 V196 H344" fill="none" stroke="#A8824A" stroke-width="1.5" stroke-dasharray="6 5"/>
+              <path d="M276 100 h18 v-7 h7 v25 h-25 z" fill="#A8824A"/>
+              <text x="96" y="76" font-size="12" font-weight="600" fill="#2F5D53">نقاط التماس الجنوبية</text>
+              <text x="352" y="256" font-size="12" font-weight="600" fill="#2F5D53">عمق المراقبة</text>
+              <text x="16" y="304" font-size="10" fill="rgb(26 26 26 / 45%)">IWAD-PL-2026-08 · تجريد تحليلي</text>
+            </svg>
+          </div>
+          <h3><a href="#">ملف سوريا وإسرائيل: حدود الاشتباك وقواعده المتحولة بعد 2024</a></h3>
+          <p class="exc">تتبُّع تحليلي لتطور قواعد الاشتباك على الجبهة الجنوبية: العوامل الحاكمة لسقف التصعيد، وهامش المناورة المتاح لكل طرف، وأثر المتغيرات الدولية على معادلة الردع المحلية.</p>
+          <div class="m"><span class="author">د. ليلى مراد</span><time class="tnum" datetime="2026-08-04">4 أغسطس 2026</time><span>دراسة متوسطة · 12 دقيقة</span></div>
+        </article>
+
+        <article class="feat" data-sec="doctrine">
+          <div class="plate-frame unveil">
+            <span class="tag">عقائد</span>
+            <svg class="svg-ltr" viewBox="0 0 560 200" role="img" aria-label="لوحة: تطور مفهوم الحرب الخاطفة">
+              <rect width="560" height="200" fill="#F0EDE6"/>
+              <g stroke="rgb(61 23 32 / 12%)" stroke-width="1"><path d="M0 50 H560 M0 100 H560 M0 150 H560 M112 0 V200 M224 0 V200 M336 0 V200 M448 0 V200"/></g>
+              <g fill="#3D1720">
+                <rect x="72" y="120" width="20" height="20"/><rect x="180" y="95" width="20" height="20"/><rect x="292" y="70" width="20" height="20"/><rect x="404" y="45" width="20" height="20"/>
+              </g>
+              <path d="M92 130 H180 V105 H292 V80 H404" fill="none" stroke="#A8824A" stroke-width="1.5"/>
+              <text x="66" y="168" font-size="11" font-weight="600" fill="#3D1720">1918</text>
+              <text x="400" y="36" font-size="11" font-weight="600" fill="#3D1720">اليوم</text>
+            </svg>
+          </div>
+          <h3><a href="#">الحرب الخاطفة: من غوديريان إلى العقيدة المدرّعة الحديثة</a></h3>
+          <div class="m"><span class="author">د. طارق عبد الرحمن</span><time class="tnum" datetime="2026-08-02">2 أغسطس 2026</time></div>
+        </article>
+
+        <article class="feat" data-sec="education">
+          <div class="plate-frame unveil">
+            <span class="tag">تعليمي</span>
+            <svg class="svg-ltr" viewBox="0 0 560 200" role="img" aria-label="لوحة: خمس خطوات لقراءة الوثيقة العقائدية">
+              <rect width="560" height="200" fill="#F0EDE6"/>
+              <g stroke="rgb(126 95 49 / 14%)" stroke-width="1"><path d="M0 50 H560 M0 100 H560 M0 150 H560 M112 0 V200 M224 0 V200 M336 0 V200 M448 0 V200"/></g>
+              <g fill="none" stroke="#7E5F31" stroke-width="2">
+                <rect x="60" y="130" width="22" height="22"/><rect x="160" y="105" width="22" height="22"/><rect x="260" y="80" width="22" height="22"/><rect x="360" y="55" width="22" height="22"/>
+              </g>
+              <rect x="460" y="30" width="22" height="22" fill="#A8824A"/>
+              <text x="52" y="176" font-size="11" font-weight="600" fill="#7E5F31">السياق</text>
+              <text x="444" y="80" font-size="11" font-weight="600" fill="#7E5F31">الفجوة</text>
+            </svg>
+          </div>
+          <h3><a href="#">كيف تقرأ وثيقة عقيدة عسكرية؟ دليل الباحث المبتدئ</a></h3>
+          <div class="m"><span class="author">د. نور خليل</span><time class="tnum" datetime="2026-07-30">30 يوليو 2026</time></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 · الأطلس الإقليمي ============ -->
+  <section class="section atlas-section spy" aria-labelledby="atlas-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="atlas-title">الأطلس الإقليمي</h2>
+        <span class="rl">ملفات دائمة</span>
+        <a class="aux" href="#">كل الملفات ←</a>
+      </div>
+
+      <div class="atlas-wrap">
+        <div>
+          <div class="atlas-frame unveil">
+            <svg class="svg-ltr" viewBox="0 0 720 440" role="img" aria-label="بكسل-أطلس الملفات الإقليمية — ستة ملفات نشطة على خريطة تجريدية">
+              <rect width="720" height="440" fill="#1A1A1A"/>
+              <g stroke="rgb(243 238 234 / 5%)" stroke-width="1">
+                <path d="M0 55 H720 M0 110 H720 M0 165 H720 M0 220 H720 M0 275 H720 M0 330 H720 M0 385 H720 M55 0 V440 M110 0 V440 M165 0 V440 M220 0 V440 M275 0 V440 M330 0 V440 M385 0 V440 M440 0 V440 M495 0 V440 M550 0 V440 M605 0 V440 M660 0 V440"/>
+              </g>
+
+              <!-- اليابسة (تجريد) -->
+              <g class="px-land">
+                <!-- الأناضول -->
+                <rect x="200" y="40" width="20" height="20"/><rect x="222" y="40" width="20" height="20"/><rect x="244" y="40" width="20" height="20"/><rect x="266" y="40" width="20" height="20"/><rect x="288" y="40" width="20" height="20"/><rect x="310" y="40" width="20" height="20"/>
+                <rect x="200" y="62" width="20" height="20"/><rect x="222" y="62" width="20" height="20"/><rect x="244" y="62" width="20" height="20"/><rect x="266" y="62" width="20" height="20"/><rect x="288" y="62" width="20" height="20"/><rect x="310" y="62" width="20" height="20"/><rect x="332" y="62" width="20" height="20"/>
+                <rect x="222" y="84" width="20" height="20"/><rect x="244" y="84" width="20" height="20"/><rect x="266" y="84" width="20" height="20"/><rect x="288" y="84" width="20" height="20"/><rect x="310" y="84" width="20" height="20"/>
+                <!-- الساحل الشرقي للمتوسط -->
+                <rect x="288" y="110" width="20" height="20"/><rect x="310" y="110" width="20" height="20"/><rect x="332" y="110" width="20" height="20"/>
+                <rect x="288" y="132" width="20" height="20"/><rect x="310" y="132" width="20" height="20"/><rect x="332" y="132" width="20" height="20"/>
+                <rect x="288" y="154" width="20" height="20"/><rect x="310" y="154" width="20" height="20"/>
+                <rect x="288" y="176" width="20" height="20"/><rect x="310" y="176" width="20" height="20"/>
+                <!-- بلاد الرافدين وإيران -->
+                <rect x="354" y="110" width="20" height="20"/><rect x="376" y="110" width="20" height="20"/><rect x="398" y="110" width="20" height="20"/><rect x="420" y="110" width="20" height="20"/><rect x="442" y="88" width="20" height="20"/><rect x="464" y="88" width="20" height="20"/><rect x="486" y="88" width="20" height="20"/>
+                <rect x="354" y="132" width="20" height="20"/><rect x="376" y="132" width="20" height="20"/><rect x="398" y="132" width="20" height="20"/><rect x="420" y="132" width="20" height="20"/><rect x="442" y="132" width="20" height="20"/><rect x="464" y="132" width="20" height="20"/><rect x="486" y="110" width="20" height="20"/>
+                <rect x="420" y="154" width="20" height="20"/><rect x="442" y="154" width="20" height="20"/><rect x="464" y="154" width="20" height="20"/><rect x="486" y="154" width="20" height="20"/><rect x="508" y="132" width="20" height="20"/><rect x="508" y="154" width="20" height="20"/>
+                <!-- الجزيرة العربية -->
+                <rect x="332" y="198" width="20" height="20"/><rect x="354" y="198" width="20" height="20"/><rect x="376" y="198" width="20" height="20"/><rect x="398" y="198" width="20" height="20"/><rect x="420" y="198" width="20" height="20"/>
+                <rect x="332" y="220" width="20" height="20"/><rect x="354" y="220" width="20" height="20"/><rect x="376" y="220" width="20" height="20"/><rect x="398" y="220" width="20" height="20"/><rect x="420" y="220" width="20" height="20"/><rect x="442" y="220" width="20" height="20"/>
+                <rect x="354" y="242" width="20" height="20"/><rect x="376" y="242" width="20" height="20"/><rect x="398" y="242" width="20" height="20"/><rect x="420" y="242" width="20" height="20"/>
+                <rect x="376" y="264" width="20" height="20"/><rect x="398" y="264" width="20" height="20"/>
+                <!-- وادي النيل وشمال إفريقيا -->
+                <rect x="200" y="176" width="20" height="20"/><rect x="222" y="176" width="20" height="20"/><rect x="244" y="176" width="20" height="20"/><rect x="266" y="176" width="20" height="20"/>
+                <rect x="178" y="198" width="20" height="20"/><rect x="200" y="198" width="20" height="20"/><rect x="222" y="198" width="20" height="20"/><rect x="244" y="198" width="20" height="20"/><rect x="266" y="198" width="20" height="20"/>
+                <rect x="156" y="220" width="20" height="20"/><rect x="178" y="220" width="20" height="20"/><rect x="200" y="220" width="20" height="20"/><rect x="222" y="220" width="20" height="20"/><rect x="244" y="220" width="20" height="20"/>
+                <rect x="178" y="242" width="20" height="20"/><rect x="200" y="242" width="20" height="20"/><rect x="222" y="242" width="20" height="20"/>
+                <rect x="200" y="264" width="20" height="20"/><rect x="222" y="264" width="20" height="20"/><rect x="200" y="286" width="20" height="20"/><rect x="222" y="286" width="20" height="20"/>
+                <rect x="200" y="308" width="20" height="20"/><rect x="222" y="308" width="20" height="20"/><rect x="244" y="308" width="20" height="20"/>
+                <!-- خراسان -->
+                <rect x="552" y="110" width="20" height="20"/><rect x="574" y="110" width="20" height="20"/><rect x="596" y="110" width="20" height="20"/>
+                <rect x="552" y="132" width="20" height="20"/><rect x="574" y="132" width="20" height="20"/><rect x="596" y="132" width="20" height="20"/><rect x="618" y="132" width="20" height="20"/>
+                <rect x="574" y="154" width="20" height="20"/><rect x="596" y="154" width="20" height="20"/>
+              </g>
+
+              <!-- الملفات -->
+              <g class="zone" data-file="تركيا وإسرائيل" data-count="9" data-updated="29 يوليو 2026" data-desc="التنافس على مجالات النفوذ شرق المتوسط، والتوازن بين التنسيق والاحتكاك.">
+                <rect class="halo" x="216" y="34" width="130" height="76"/>
+                <path class="pin" d="M262 56 h14 v-6 h6 v20 h-20 z"/>
+                <text x="230" y="30">تركيا وإسرائيل</text>
+              </g>
+              <g class="zone" data-file="لبنان وإسرائيل" data-count="8" data-updated="8 أغسطس 2026" data-desc="قواعد الاشتباك على الجبهة الشمالية: هندسة التصعيد المحسوب وحدوده.">
+                <rect class="halo" x="282" y="104" width="76" height="54"/>
+                <path class="pin" d="M296 118 h14 v-6 h6 v20 h-20 z"/>
+                <text x="238" y="122" text-anchor="end">لبنان وإسرائيل</text>
+              </g>
+              <g class="zone" data-file="سوريا وإسرائيل" data-count="14" data-updated="4 أغسطس 2026" data-desc="الملف الأكثف: حدود الاشتباك وقواعده المتحولة، وأثر المتغيرات الدولية.">
+                <rect class="halo" x="282" y="158" width="76" height="60"/>
+                <path class="pin" d="M300 178 h14 v-6 h6 v20 h-20 z"/>
+                <text x="238" y="186" text-anchor="end">سوريا وإسرائيل</text>
+              </g>
+              <g class="zone" data-file="سوريا وإيران" data-count="11" data-updated="1 أغسطس 2026" data-desc="بنية الحضور الإيراني وتحولاته بعد 2024، وحدود الشراكة والافتراق.">
+                <rect class="halo" x="360" y="104" width="170" height="76"/>
+                <path class="pin" d="M436 122 h14 v-6 h6 v20 h-20 z"/>
+                <text x="464" y="100">سوريا وإيران</text>
+              </g>
+              <g class="zone" data-file="مصر وإفريقيا" data-count="7" data-updated="21 يوليو 2026" data-desc="عقيدة الأمن المائي والممرات: النيل والبحر الأحمر وأدوات الحضور.">
+                <rect class="halo" x="150" y="196" width="130" height="140"/>
+                <path class="pin" d="M204 240 h14 v-6 h6 v20 h-20 z"/>
+                <text x="150" y="360">مصر وإفريقيا</text>
+              </g>
+              <g class="zone" data-file="أفغانستان" data-count="6" data-updated="3 أغسطس 2026" data-desc="إعادة تشكل التوازنات بعد الانسحاب: تموضع القوى الإقليمية.">
+                <rect class="halo" x="546" y="104" width="100" height="76"/>
+                <path class="pin" d="M584 128 h14 v-6 h6 v20 h-20 z"/>
+                <text x="546" y="200">أفغانستان</text>
+              </g>
+            </svg>
+            <div class="legend"><span class="l1"><i></i>يابسة تجريدية</span><span class="l2"><i></i>ملف نشط</span></div>
+          </div>
+          <p class="disclaim" style="font-size: var(--fs-xs); color: var(--text-muted); padding-block-start: var(--sp-2);">مخطط بنية الملفات البحثية — ليس خريطة سياسية ولا يمثل حدوداً.</p>
+
+          <div class="files-index">
+            <a class="fi" href="#"><span class="nm">سوريا وإسرائيل</span><span class="c tnum">14 مادة</span></a>
+            <a class="fi" href="#"><span class="nm">سوريا وإيران</span><span class="c tnum">11 مادة</span></a>
+            <a class="fi" href="#"><span class="nm">تركيا وإسرائيل</span><span class="c tnum">9 مواد</span></a>
+            <a class="fi" href="#"><span class="nm">لبنان وإسرائيل</span><span class="c tnum">8 مواد</span></a>
+            <a class="fi" href="#"><span class="nm">مصر وإفريقيا</span><span class="c tnum">7 مواد</span></a>
+            <a class="fi" href="#"><span class="nm">أفغانستان</span><span class="c tnum">6 مواد</span></a>
+          </div>
+        </div>
+
+        <aside class="atlas-panel rise" id="atlas-panel" aria-live="polite">
+          <span class="rl">الملف المرصود</span>
+          <h3 id="ap-name">سوريا وإسرائيل</h3>
+          <p class="meta tnum"><span id="ap-count">14</span> مادة · آخر تحديث: <span id="ap-updated">4 أغسطس 2026</span></p>
+          <p id="ap-desc">الملف الأكثف: حدود الاشتباك وقواعده المتحولة، وأثر المتغيرات الدولية.</p>
+          <a href="#" id="ap-link">افتح الملف ←</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 · فهرس الإصدارات ============ -->
+  <section class="section spy" aria-labelledby="pubs-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="pubs-title">فهرس الإصدارات</h2>
+        <span class="rl">السجل الكامل</span>
+        <a class="aux" href="#">الأرشيف والبحث المتقدم ←</a>
+      </div>
+
+      <div class="pubs-filter" role="group" aria-label="ترشيح حسب القسم">
+        <button class="pf-chip on" data-filter="all">الكل</button>
+        <button class="pf-chip" data-filter="global" style="--sec: var(--sec-global);">عالمي</button>
+        <button class="pf-chip" data-filter="regional" style="--sec: var(--sec-regional);">إقليمي</button>
+        <button class="pf-chip" data-filter="doctrine" style="--sec: var(--sec-doctrine);">عقائد</button>
+        <button class="pf-chip" data-filter="education" style="--sec: var(--sec-education);">تعليمي</button>
+        <button class="pf-chip" data-filter="heritage" style="--sec: var(--sec-heritage);">إرث عسكري</button>
+      </div>
+
+      <div class="pubs rise" id="pubs">
+        <div class="pub" data-sec="global"><span class="ref">IWAD-2026-033</span><div class="b"><span class="secline">عالمي</span><h3><a href="#">الناتو بعد التوسعة: بنية القيادة وتوزيع الأعباء داخل الحلف</a></h3><span class="who">د. هالة عثمان</span></div><div class="end"><time class="tnum" datetime="2026-07-24">24 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="regional"><span class="ref">IWAD-2026-032</span><div class="b"><span class="secline">إقليمي</span><h3><a href="#">مصر وإفريقيا: عقيدة الأمن المائي وأدوات الحضور الاستراتيجي</a></h3><span class="who">د. سامر الحسن</span></div><div class="end"><time class="tnum" datetime="2026-07-21">21 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="doctrine"><span class="ref">IWAD-2026-031</span><div class="b"><span class="secline">عقائد</span><h3><a href="#">الردع المتدرج: جذور المفهوم وتحولاته في الفكر الأطلسي</a></h3><span class="who">د. طارق عبد الرحمن</span></div><div class="end"><time class="tnum" datetime="2026-07-26">26 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="heritage"><span class="ref">IWAD-2026-030</span><div class="b"><span class="secline">إرث عسكري</span><h3><a href="#">حطين: هندسة المعركة من منظور السيطرة على الموارد</a></h3><span class="who">أ. يوسف قاسم</span></div><div class="end"><time class="tnum" datetime="2026-07-12">12 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="global"><span class="ref">IWAD-2026-029</span><div class="b"><span class="secline">عالمي</span><h3><a href="#">سباق القدرات السيبرانية بين واشنطن وبكين: ساحة الظل</a></h3><span class="who">د. سامر الحسن</span></div><div class="end"><time class="tnum" datetime="2026-07-18">18 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="education"><span class="ref">IWAD-2026-028</span><div class="b"><span class="secline">تعليمي</span><h3><a href="#">قائمة قراءة: خمسة مداخل لفهم الاستراتيجية الكبرى</a></h3><span class="who">د. نور خليل</span></div><div class="end"><time class="tnum" datetime="2026-07-16">16 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="regional"><span class="ref">IWAD-2026-027</span><div class="b"><span class="secline">إقليمي</span><h3><a href="#">لبنان وإسرائيل: هندسة الاشتباك المحسوب على الجبهة الشمالية</a></h3><span class="who">د. ليلى مراد</span></div><div class="end"><time class="tnum" datetime="2026-07-14">14 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="heritage"><span class="ref">IWAD-2026-026</span><div class="b"><span class="secline">إرث عسكري</span><h3><a href="#">الحملات الصليبية: قراءة في الخطوط الداخلية والإمداد</a></h3><span class="who">أ. يوسف قاسم</span></div><div class="end"><time class="tnum" datetime="2026-07-05">5 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="doctrine"><span class="ref">IWAD-2026-025</span><div class="b"><span class="secline">عقائد</span><h3><a href="#">عقيدة المقاتل: كيف تُبنى الإرادة القتالية مفهومياً؟</a></h3><span class="who">د. طارق عبد الرحمن</span></div><div class="end"><time class="tnum" datetime="2026-07-08">8 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 · المفاهيم ============ -->
+  <section class="section spy" aria-labelledby="lex-title" style="background: var(--surface); border-block: 1px solid var(--rule-2);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="lex-title">معجم المفاهيم</h2>
+        <span class="rl">المرجعية البحثية</span>
+        <a class="aux" href="#">تصفح المعجم ←</a>
+      </div>
+
+      <div class="lex-grid">
+        <div class="lex-frame rise">
+          <svg class="svg-ltr" viewBox="0 0 480 280" role="img" aria-label="مخطط علاقات مصطلح الردع الممتد">
+            <path class="tlink" data-t="t1" d="M144 76 V120 H192"/>
+            <path class="tlink" data-t="t2" d="M336 76 V120 H288"/>
+            <path class="tlink" data-t="t3" d="M144 204 V160 H192"/>
+            <path class="tlink" data-t="t4" d="M336 204 V160 H288"/>
+            <g class="tnode" data-t="t1" data-term="الردع المتدرج" data-en="Flexible Response" data-def="عقيدة أطلسية تقوم على سلّم ردود متدرّج بدل الرد الشامل الفوري — ظهرت رداً على مأزق «الانتقام الشامل».">
+              <rect x="72" y="48" width="144" height="28"/><text x="102" y="67">الردع المتدرج</text>
+            </g>
+            <g class="tnode" data-t="t2" data-term="المظلة النووية" data-en="Nuclear Umbrella" data-def="التزام قوة نووية بحماية حلفاء غير نوويين — الوجه العملي للردع الممتد في التحالفات.">
+              <rect x="264" y="48" width="144" height="28"/><text x="294" y="67">المظلة النووية</text>
+            </g>
+            <g class="tnode center" data-t="t0" data-term="الردع الممتد" data-en="Extended Deterrence" data-def="التزام دولة بردع الهجمات عن حلفائها لا عن أراضيها فحسب — حجر الأساس في بنية التحالفات النووية منذ الحرب الباردة.">
+              <rect x="192" y="126" width="96" height="28"/><text x="213" y="145">الردع الممتد</text>
+            </g>
+            <g class="tnode" data-t="t3" data-term="الردع بالإنكار" data-en="Deterrence by Denial" data-def="منع الخصم من تحقيق أهدافه أصلاً بدل تهديده بالعقاب — ردع عبر إفشال العملية لا عبر الثمن.">
+              <rect x="72" y="204" width="144" height="28"/><text x="100" y="223">الردع بالإنكار</text>
+            </g>
+            <g class="tnode" data-t="t4" data-term="مصداقية الالتزام" data-en="Commitment Credibility" data-def="درجة تصديق الخصم أن التهديد سيُنفَّذ فعلاً — المتغيّر الذي تنهض عليه فاعلية أي ردع.">
+              <rect x="264" y="204" width="144" height="28"/><text x="284" y="223">مصداقية الالتزام</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="lex-side">
+          <div class="lex-def rise" id="lex-def" aria-live="polite">
+            <h3 id="ld-term">الردع الممتد</h3>
+            <p class="en" id="ld-en">Extended Deterrence</p>
+            <p id="ld-def">التزام دولة بردع الهجمات عن حلفائها لا عن أراضيها فحسب — حجر الأساس في بنية التحالفات النووية منذ الحرب الباردة.</p>
+            <a href="#">صفحة المصطلح والمواد المرتبطة ←</a>
+          </div>
+          <div class="hot-terms rise">
+            <span class="k">مصطلحات رائجة هذا الشهر</span>
+            <a href="#">المنطقة الرمادية</a>
+            <a href="#">الحرب الهجينة</a>
+            <a href="#">معضلة الأمن</a>
+            <a href="#">العمق الاستراتيجي</a>
+            <a href="#">الاستنزاف</a>
+            <a href="#">الخطوط الداخلية</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 · الإرث — أرشيف بصري ============ -->
+  <section class="era-band spy" aria-labelledby="era-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="era-title">إرث عسكري — أرشيف المعارك</h2>
+        <span class="rl">الذاكرة التحليلية</span>
+        <a class="aux" href="#">الخط الزمني الكامل ←</a>
+      </div>
+
+      <div class="era-grid">
+
+        <figure class="battle-fig">
+          <div class="battle-frame unveil">
+            <svg class="svg-ltr" viewBox="0 0 560 330" role="img" aria-label="لوحة تحليلية لمعركة عين جالوت: التموضع والتضاريس">
+              <rect width="560" height="330" fill="none"/>
+              <g stroke="rgb(92 70 50 / 12%)" stroke-width="1">
+                <path d="M0 55 H560 M0 110 H560 M0 165 H560 M0 220 H560 M0 275 H560 M80 0 V330 M160 0 V330 M240 0 V330 M320 0 V330 M400 0 V330 M480 0 V330"/>
+              </g>
+              <!-- تضاريس: تلال كخطوط كنتور قائمة الزوايا -->
+              <g fill="none" stroke="#5C4632" stroke-width="1.2" opacity=".6">
+                <path d="M96 96 H240 V208 H96 Z"/>
+                <path d="M120 120 H216 V184 H120 Z"/>
+                <path d="M144 144 H192 V160 H144 Z"/>
+                <path d="M360 200 H480 V280 H360 Z" opacity=".5"/>
+                <path d="M384 224 H456 V256 H384 Z" opacity=".5"/>
+              </g>
+              <text x="132" y="88" font-size="11" font-weight="600" fill="#5C4632">مرتفعات الجلبوع</text>
+
+              <!-- النبع -->
+              <rect x="272" y="152" width="16" height="16" fill="#A8824A"/>
+              <text x="296" y="164" font-size="11" font-weight="600" fill="#5C4632">عين جالوت</text>
+
+              <!-- التشكيلان -->
+              <g fill="#5C4632">
+                <rect x="120" y="240" width="16" height="16"/><rect x="144" y="240" width="16" height="16"/><rect x="168" y="240" width="16" height="16"/>
+                <rect x="132" y="264" width="16" height="16"/><rect x="156" y="264" width="16" height="16"/>
+              </g>
+              <text x="112" y="304" font-size="11" font-weight="600" fill="#5C4632">القوة الرئيسية — مماليك</text>
+
+              <g fill="none" stroke="#5C4632" stroke-width="2">
+                <rect x="408" y="96" width="16" height="16"/><rect x="432" y="96" width="16" height="16"/><rect x="456" y="96" width="16" height="16"/>
+                <rect x="420" y="120" width="16" height="16"/><rect x="444" y="120" width="16" height="16"/>
+              </g>
+              <text x="408" y="88" font-size="11" font-weight="600" fill="#5C4632">طليعة المغول</text>
+
+              <!-- حركتا المناورة -->
+              <path class="bt-move" d="M176 248 H280 V176" fill="none" stroke="#A8824A" stroke-width="1.5" stroke-dasharray="6 5"/>
+              <path class="bt-move" d="M416 112 H320 V160" fill="none" stroke="#5C4632" stroke-width="1.5" stroke-dasharray="2 5"/>
+              <text x="300" y="120" font-size="10" fill="#5C4632">استدراج نحو الوادي</text>
+
+              <!-- مفتاح اللوحة -->
+              <g font-size="9" fill="#5C4632" opacity=".8">
+                <rect x="16" y="16" width="9" height="9" fill="#5C4632"/>
+                <text x="30" y="24">قوة متمركزة</text>
+                <rect x="16" y="32" width="9" height="9" fill="none" stroke="#5C4632" stroke-width="1.5"/>
+                <text x="30" y="40">قوة متقدمة</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>
+            <span>لوحة معركة ٤ — عين جالوت 658هـ/1260م · سردية تحليلية من ملف المعركة</span>
+            <span>IWAD-BT-2026-04</span>
+          </figcaption>
+        </figure>
+
+        <div class="era-about">
+          <p>
+            قالب «ملف المعركة»: سياق تاريخي، القوى، سير المعركة سرديةً تحليلية، القيادات، الأثر والدلالة —
+            تصنيف محايد بالحقب التاريخية، وطابع موسوعي محكّم.
+          </p>
+          <div class="era-stats tnum" aria-label="إحصاء الأرشيف">
+            <div><b>31</b><span>ملف معركة</span></div>
+            <div><b>6</b><span>حقب تاريخية</span></div>
+            <div><b>14</b><span>قرناً مغطى</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="era-strip" tabindex="0" aria-label="حقب الخط الزمني — مرّر أفقياً">
+        <div class="era"><span class="span tnum">632 — 750</span><h3>الفتوحات المبكرة</h3><span class="cnt tnum">6 ملفات</span><p class="feat-l"><a href="#">اليرموك: قرار المعركة وهندسة الأرض</a></p></div>
+        <div class="era"><span class="span tnum">750 — 1258</span><h3>الأموي والعباسي</h3><span class="cnt tnum">5 ملفات</span><p class="feat-l"><a href="#">عمورية: الحملة كأداة ردع</a></p></div>
+        <div class="era"><span class="span tnum">1096 — 1291</span><h3>الحروب الصليبية</h3><span class="cnt tnum">7 ملفات</span><p class="feat-l"><a href="#">حطين: الموارد سلاحاً حاسماً</a></p></div>
+        <div class="era"><span class="span tnum">1250 — 1517</span><h3>المملوكي</h3><span class="cnt tnum">4 ملفات</span><p class="feat-l"><a href="#">عين جالوت: القيادة أمام التفوق</a></p></div>
+        <div class="era"><span class="span tnum">1517 — 1918</span><h3>العثماني</h3><span class="cnt tnum">5 ملفات</span><p class="feat-l"><a href="#">غاليبولي: الدفاع الساحلي الطبقي</a></p></div>
+        <div class="era"><span class="span tnum">1914 — اليوم</span><h3>الحديث</h3><span class="cnt tnum">4 ملفات</span><p class="feat-l"><a href="#">ستالينغراد: حرب المدن والإرادة</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 08 · الباحثون ============ -->
+  <section class="section spy" aria-labelledby="people-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="people-title">الباحثون والخبراء</h2>
+        <span class="rl">هيئة البحث</span>
+        <a class="aux" href="#">كل الباحثين ←</a>
+      </div>
+
+      <div class="people-grid">
+        <div class="person-feat rise">
+          <span class="idplate" aria-hidden="true">س</span>
+          <div>
+            <h3><a href="#">د. سامر الحسن</a></h3>
+            <p class="role">زميل أول — برنامج الدراسات البحرية والاستراتيجية</p>
+            <p>باحث في نظريات القوة البحرية وتوازنات المحيطات، يقود ملف «التوازن البحري» منذ تأسيس المعهد. دكتوراه في الدراسات الاستراتيجية.</p>
+            <p class="latest"><span class="k">أحدث إنتاجه</span><a href="#">توازن الردع في المحيط الهادئ ←</a></p>
+            <p class="idref">بطاقة باحث · IWAD-R-01</p>
+          </div>
+        </div>
+
+        <div class="people-list rise">
+          <div class="p-cell"><span class="mini" aria-hidden="true">ل</span><div><a class="nm" href="#">د. ليلى مراد</a><span class="sp">الملفات الإقليمية — المشرق</span></div><span class="c tnum">23</span></div>
+          <div class="p-cell"><span class="mini" aria-hidden="true">ط</span><div><a class="nm" href="#">د. طارق عبد الرحمن</a><span class="sp">العقائد والفكر العسكري</span></div><span class="c tnum">19</span></div>
+          <div class="p-cell"><span class="mini" aria-hidden="true">هـ</span><div><a class="nm" href="#">د. هالة عثمان</a><span class="sp">نظريات الردع والتحالفات</span></div><span class="c tnum">17</span></div>
+          <div class="p-cell"><span class="mini" aria-hidden="true">ي</span><div><a class="nm" href="#">أ. يوسف قاسم</a><span class="sp">التاريخ العسكري — الحقب الوسيطة</span></div><span class="c tnum">14</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 09 · فعاليات ============ -->
+  <section class="section spy" aria-labelledby="ev-title" style="padding-block-start: 0;">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="ev-title">فعاليات وندوات</h2>
+        <span class="rl">التقويم</span>
+        <a class="aux" href="#">التقويم الكامل ←</a>
+      </div>
+
+      <div class="events-grid rise">
+        <div class="ev">
+          <div class="ev-date"><b>17</b><span>أغسطس</span></div>
+          <div><span class="type">ندوة عامة</span><h3><a href="#">مستقبل الردع النووي في نظام متعدد الأقطاب</a></h3><p class="m">19:00 دمشق · بث + حضور</p></div>
+        </div>
+        <div class="ev">
+          <div class="ev-date"><b>24</b><span>أغسطس</span></div>
+          <div><span class="type">حوار مع باحث</span><h3><a href="#">قراءة الوثائق العقائدية — مع د. طارق عبد الرحمن</a></h3><p class="m">20:00 دمشق · بث مباشر</p></div>
+        </div>
+        <div class="ev">
+          <div class="ev-date"><b>02</b><span>سبتمبر</span></div>
+          <div><span class="type">ورشة بحثية</span><h3><a href="#">منهجيات دراسة المعارك التاريخية</a></h3><p class="m">17:00 دمشق · التسجيل مطلوب</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 · موضوعات بحثية ============ -->
+  <section class="section spy" aria-labelledby="topics-title" style="background: var(--surface); border-block: 1px solid var(--rule-2); padding-block: var(--sp-7);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="topics-title">مداخل بحثية</h2>
+        <span class="rl">تصفح بالموضوع</span>
+      </div>
+      <div class="topics rise">
+        <a class="topic" href="#">الردع النووي <span class="c tnum">12</span></a>
+        <a class="topic" href="#">حرب المدن <span class="c tnum">7</span></a>
+        <a class="topic" href="#">الحرب السيبرانية <span class="c tnum">9</span></a>
+        <a class="topic" href="#">التحالفات الدفاعية <span class="c tnum">11</span></a>
+        <a class="topic" href="#">سباقات التسلح <span class="c tnum">8</span></a>
+        <a class="topic" href="#">العقيدة البحرية <span class="c tnum">6</span></a>
+        <a class="topic" href="#">الاستراتيجية الكبرى <span class="c tnum">10</span></a>
+        <a class="topic" href="#">اقتصاديات الدفاع <span class="c tnum">5</span></a>
+        <a class="topic" href="#">القيادة والسيطرة <span class="c tnum">7</span></a>
+        <a class="topic" href="#">الإمداد والخطوط الداخلية <span class="c tnum">6</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · عن المعهد ============ -->
+  <section class="inst spy" aria-labelledby="about-title">
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="container inner">
+      <div>
+        <span class="rl" id="about-title">عن المعهد</span>
+        <p class="mission rise">
+          إيواد منصة رقمية متخصصة في <b>البحث والتعليم</b> في النظريات والعقائد والفكر
+          والإرث العسكري — بمحتوى واضح لغير المتخصص ومصداقية أكاديمية تقنع الباحث.
+          <b>مؤسسة خاصة، غير ربحية، مستقلة.</b>
+        </p>
+        <div class="pillars-line rise" aria-label="ركائز المحتوى">
+          <span>بحث</span><span class="sq" aria-hidden="true"></span>
+          <span>استراتيجية</span><span class="sq" aria-hidden="true"></span>
+          <span>تحليل</span><span class="sq" aria-hidden="true"></span>
+          <span>معرفة</span><span class="sq" aria-hidden="true"></span>
+          <span>عقيدة</span><span class="sq" aria-hidden="true"></span>
+          <span>تاريخ</span>
+        </div>
+        <a class="btn btn-secondary rise" href="#">تعرّف على المعهد</a>
+      </div>
+
+      <div class="figures rise" aria-label="أرقام المنصة">
+        <div class="fig"><b class="tnum">2026</b><span>سنة التأسيس</span></div>
+        <div class="fig"><b><span class="num tnum" data-count="157">157</span></b><span>مادة منشورة</span></div>
+        <div class="fig"><b><span class="num tnum" data-count="24">24</span></b><span>باحثاً ومتخصصاً</span></div>
+        <div class="fig"><b><span class="num tnum" data-count="9">9</span></b><span>ملفات إقليمية</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · النشرة ============ -->
+  <section class="section spy" aria-labelledby="slip-title">
+    <div class="container slip-wrap">
+      <div class="slip rise">
+        <h2 id="slip-title">نسخة من السجل — أسبوعياً</h2>
+        <p class="sub">خلاصة بأحدث الدراسات وتقديرات الموقف، مباشرة إلى بريدك.</p>
+        <form action="#">
+          <label class="sr-only" for="slip-email">البريد الإلكتروني</label>
+          <input type="email" id="slip-email" name="email" placeholder="بريدك الإلكتروني" autocomplete="email" required>
+          <button class="btn btn-primary" type="submit">اشترك</button>
+        </form>
+        <p class="note">نحترم خصوصيتك — يمكنك إلغاء الاشتراك في أي وقت.</p>
+        <div class="social-row">
+          <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+          <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <nav aria-label="المنصة">
+        <h3>المنصة</h3>
+        <ul class="footer-links" role="list">
+          <li><a href="#">عن المعهد</a></li>
+          <li><a href="#">الباحثون والخبراء</a></li>
+          <li><a href="#">فعاليات وندوات</a></li>
+          <li><a href="#">الأرشيف والبحث المتقدم</a></li>
+          <li><a href="#">اتصل بنا</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="الأقسام">
+        <h3>الأقسام</h3>
+        <ul class="footer-links" role="list">
+          <li data-sec="global"><a href="#"><span class="dot" aria-hidden="true"></span>عالمي</a></li>
+          <li data-sec="regional"><a href="#"><span class="dot" aria-hidden="true"></span>إقليمي</a></li>
+          <li data-sec="doctrine"><a href="#"><span class="dot" aria-hidden="true"></span>عقائد</a></li>
+          <li data-sec="education"><a href="#"><span class="dot" aria-hidden="true"></span>تعليمي</a></li>
+          <li data-sec="heritage"><a href="#"><span class="dot" aria-hidden="true"></span>إرث عسكري</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="المحتوى">
+        <h3>المحتوى</h3>
+        <ul class="footer-links" role="list">
+          <li><a href="#">تقديرات الموقف</a></li>
+          <li><a href="#">معجم المصطلحات</a></li>
+          <li><a href="#">الخط الزمني العسكري</a></li>
+          <li><a href="#">حوار مع باحث</a></li>
+          <li><a href="#">النشرة البريدية</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>النشرة البريدية</h3>
+        <form class="footer-form" action="#">
+          <label class="sr-only" for="footer-email">البريد الإلكتروني</label>
+          <input type="email" id="footer-email" name="email" placeholder="بريدك الإلكتروني" autocomplete="email" required>
+          <button class="btn" type="submit">اشترك</button>
+        </form>
+        <p style="font-size: var(--fs-xs); color: rgb(243 238 234 / 55%);">خلاصة أسبوعية — بلا إزعاج.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
