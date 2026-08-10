@@ -293,16 +293,18 @@
         } });
   });
 
-  /* -- شريط الحقب -- */
-  gsap.utils.toArray('.era').forEach(function (era, i) {
-    gsap.from(era, {
-      opacity: 0,
-      x: -18,
-      duration: 0.45,
-      delay: i * 0.06,
-      ease: 'power1.out',
-      scrollTrigger: { trigger: '.era-strip', start: 'top 85%' }
+  /* -- الخط الزمني: السيقان تُرسم من المحور والدبابيس تثبت -- */
+  gsap.utils.toArray('.tlm').forEach(function (m, i) {
+    var stem = m.querySelector('.tl-stem');
+    var sq = m.querySelector('.sq-m');
+    var texts = m.querySelectorAll('text');
+    var mtl = gsap.timeline({
+      scrollTrigger: { trigger: '.tl-plate', start: 'top 80%' },
+      delay: i * 0.1
     });
+    if (stem) mtl.from(stem, { scaleY: 0, transformOrigin: 'bottom', duration: 0.35, ease: 'power2.out', svgOrigin: stem.getAttribute('x1') + ' 200' });
+    if (sq) mtl.from(sq, { opacity: 0, scale: 0.3, transformOrigin: 'center', duration: 0.25, ease: 'back.out(2)' }, '-=0.1');
+    if (texts.length) mtl.from(texts, { opacity: 0, duration: 0.2 }, '-=0.1');
   });
 
   /* -- الفهرس: الصفوف تتوالى -- */

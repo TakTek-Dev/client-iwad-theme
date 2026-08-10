@@ -135,6 +135,46 @@ p { text-wrap: pretty; }
 .regmark::before { inset-block-start: -6px; inset-inline-start: -6px; }
 .regmark::after  { inset-block-end: -6px;  inset-inline-end: -6px; }
 
+/* ============================================================
+   فتحة الرصد — أقواس الزوايا (مشتقة من قطع اللوجو)
+   القاعدة: قوس واحد لكل قسم، على القطعة الأساسية المرصودة فقط.
+   .aperture  = الأقواس · .ap-hover = تنغلق قليلاً عند الفحص
+   بدون DOM إضافي — طبقة ::after بثمانية تدرجات
+   ============================================================ */
+.aperture { position: relative; --cbo: 0px; }
+.aperture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background-image:
+    linear-gradient(var(--iwad-gold), var(--iwad-gold)),
+    linear-gradient(var(--iwad-gold), var(--iwad-gold)),
+    linear-gradient(var(--iwad-gold), var(--iwad-gold)),
+    linear-gradient(var(--iwad-gold), var(--iwad-gold)),
+    linear-gradient(var(--iwad-gold), var(--iwad-gold)),
+    linear-gradient(var(--iwad-gold), var(--iwad-gold)),
+    linear-gradient(var(--iwad-gold), var(--iwad-gold)),
+    linear-gradient(var(--iwad-gold), var(--iwad-gold));
+  background-repeat: no-repeat;
+  background-size:
+    18px 2px, 2px 18px,   /* أعلى-بداية */
+    18px 2px, 2px 18px,   /* أعلى-نهاية */
+    18px 2px, 2px 18px,   /* أسفل-بداية */
+    18px 2px, 2px 18px;   /* أسفل-نهاية */
+  background-position:
+    top var(--cbo) right var(--cbo), top var(--cbo) right var(--cbo),
+    top var(--cbo) left var(--cbo),  top var(--cbo) left var(--cbo),
+    bottom var(--cbo) right var(--cbo), bottom var(--cbo) right var(--cbo),
+    bottom var(--cbo) left var(--cbo),  bottom var(--cbo) left var(--cbo);
+  transition: background-position var(--dur-base) var(--ease-out);
+}
+.ap-hover:hover { --cbo: 6px; } /* الفتحة تلتقط الهدف */
+@media (prefers-reduced-motion: reduce) {
+  .aperture::after { transition: none; }
+}
+
 /* مربع فاصل صغير */
 .sq {
   display: inline-block;
