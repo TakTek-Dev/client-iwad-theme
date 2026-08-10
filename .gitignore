@@ -1,0 +1,16 @@
+# OS junk
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Logs / temp
+*.log
+*.tmp
+
+# Node (لو دخلت أدوات بناء لاحقاً)
+node_modules/
+dist/
