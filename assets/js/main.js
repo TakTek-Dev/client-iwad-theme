@@ -1,7 +1,8 @@
 /* ============================================================
-   IWAD — Main JS v4.0
-   تشغيلية: درج/بحث/هيدر · رصدية: أطلس/معجم/ترشيح/spy
-   حركية: كوريغرافيا (الخريطة تُبنى → الخطوط تُخط → يُسجَّل)
+   IWAD — Main JS v4.1
+   تشغيلية: درج/بحث/هيدر · رصدية: أطلس/معجم/ترشيح/سباي
+   حركية: نظام موحّد — كل قسم يدخل بجملة واحدة:
+   «المسطرة تُرسم ← الوحدات تُسجَّل ← العلامة تُرصَد»
    ============================================================ */
 (function () {
   'use strict';
@@ -93,10 +94,10 @@
   }
 
   /* ============================================================
-     الطبقة الرصدية — تعمل مع أو بدون حركة
+     الطبقة الرصدية
      ============================================================ */
 
-  /* -- عين القسم: مربع التسمية يمتلئ عندما يكون القسم مرئياً -- */
+  /* عين القسم: علامة الكيكر تكتمل عندما يكون القسم مرئياً */
   var spySections = document.querySelectorAll('.spy');
   if (spySections.length && 'IntersectionObserver' in window) {
     var spyIO = new IntersectionObserver(function (entries) {
@@ -107,37 +108,37 @@
     spySections.forEach(function (s) { spyIO.observe(s); });
   }
 
-  /* -- الأطلس: الفحص يحدّث لوحة الملف -- */
+  /* الأطلس: الفحص يحدّث لوحة الملف */
   var zones = document.querySelectorAll('.zone');
   var apName = document.getElementById('ap-name');
   if (zones.length && apName) {
     var apCount = document.getElementById('ap-count');
     var apUpdated = document.getElementById('ap-updated');
     var apDesc = document.getElementById('ap-desc');
-    function selectZone(z) {
+    var selectZone = function (z) {
       zones.forEach(function (o) { o.classList.remove('active'); });
       z.classList.add('active');
       apName.textContent = z.dataset.file;
       apCount.textContent = z.dataset.count;
       apUpdated.textContent = z.dataset.updated;
       apDesc.textContent = z.dataset.desc;
-    }
+    };
     zones.forEach(function (z) {
       z.addEventListener('mouseenter', function () { selectZone(z); });
       z.addEventListener('click', function () { selectZone(z); });
     });
-    var def = document.querySelector('.zone[data-file="سوريا وإسرائيل"]');
-    if (def) def.classList.add('active');
+    var defZone = document.querySelector('.zone[data-file="سوريا وإسرائيل"]');
+    if (defZone) defZone.classList.add('active');
   }
 
-  /* -- المعجم: فحص عقدة يحدّث التعريف ويضيء وصلتها -- */
+  /* المعجم: فحص عقدة يحدّث التعريف ويضيء وصلتها */
   var tnodes = document.querySelectorAll('.tnode');
   var ldTerm = document.getElementById('ld-term');
   if (tnodes.length && ldTerm) {
     var ldEn = document.getElementById('ld-en');
     var ldDef = document.getElementById('ld-def');
     var tlinks = document.querySelectorAll('.tlink');
-    function selectTerm(n) {
+    var selectTerm = function (n) {
       tnodes.forEach(function (o) { o.classList.remove('active'); });
       tlinks.forEach(function (l) { l.classList.remove('lit'); });
       n.classList.add('active');
@@ -146,32 +147,44 @@
       ldTerm.textContent = n.dataset.term;
       ldEn.textContent = n.dataset.en;
       ldDef.textContent = n.dataset.def;
-    }
+    };
     tnodes.forEach(function (n) {
       n.addEventListener('mouseenter', function () { selectTerm(n); });
       n.addEventListener('click', function () { selectTerm(n); });
     });
   }
 
-  /* -- فهرس الإصدارات: ترشيح بالقسم -- */
+  /* فهرس الإصدارات: ترشيح بالقسم — بتبديل ناعم */
   var chips = document.querySelectorAll('.pf-chip');
   var pubs = document.querySelectorAll('.pub');
   if (chips.length && pubs.length) {
+    var applyFilter = function (f) {
+      pubs.forEach(function (p) {
+        p.classList.toggle('hide', f !== 'all' && p.dataset.sec !== f);
+      });
+    };
     chips.forEach(function (chip) {
       chip.addEventListener('click', function () {
         chips.forEach(function (c) { c.classList.remove('on'); });
         chip.classList.add('on');
         var f = chip.dataset.filter;
-        pubs.forEach(function (p) {
-          p.classList.toggle('hide', f !== 'all' && p.dataset.sec !== f);
+        if (!hasGSAP || reducedMotion) { applyFilter(f); return; }
+        var visible = Array.prototype.filter.call(pubs, function (p) { return !p.classList.contains('hide'); });
+        gsap.to(visible, {
+          opacity: 0, duration: 0.12, ease: 'power1.in',
+          onComplete: function () {
+            applyFilter(f);
+            var next = Array.prototype.filter.call(pubs, function (p) { return !p.classList.contains('hide'); });
+            gsap.set(pubs, { clearProps: 'opacity' });
+            gsap.from(next, { opacity: 0, y: 6, duration: 0.3, stagger: 0.035, ease: 'power1.out' });
+          }
         });
       });
     });
   }
 
   /* ============================================================
-     الطبقة الحركية
-     بدونها: كل شيء ظاهر بقيمه النهائية
+     الطبقة الحركية — الكوريغرافيا الموحّدة
      ============================================================ */
   var riseEls = document.querySelectorAll('.rise');
   var unveilEls = document.querySelectorAll('.unveil');
@@ -179,6 +192,7 @@
   function settleAll() {
     riseEls.forEach(function (el) { el.classList.add('in'); });
     unveilEls.forEach(function (el) { el.classList.add('in'); });
+    document.querySelectorAll('section, .nl-plate').forEach(function (el) { el.classList.add('armed'); });
     document.querySelectorAll('.num[data-count]').forEach(function (el) {
       el.textContent = el.dataset.count || el.textContent;
     });
@@ -188,147 +202,191 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  /* كشف rise/unveil عبر IO — الحركة نفسها CSS */
+  /* ثوابت الجملة الحركية — كل الأقسام تتكلم بنفس الإيقاع */
+  var M = {
+    unit: 0.45,      /* دخول وحدة */
+    stag: 0.06,      /* المسافة بين الوحدات */
+    draw: 0.7,       /* رسم خط */
+    pop:  0.32,      /* رصد علامة */
+    easeUnit: 'power1.out',
+    easeDraw: 'power2.out',
+    easePop: 'back.out(2)'
+  };
+
+  /* كشف rise/unveil العام */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (en) {
-      if (en.isIntersecting) {
-        en.target.classList.add('in');
-        io.unobserve(en.target);
-      }
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
     });
   }, { rootMargin: '0px 0px -8% 0px' });
   riseEls.forEach(function (el) { io.observe(el); });
   unveilEls.forEach(function (el) { io.observe(el); });
 
-  /* ============================================
-     مشهد الافتتاح: الخريطة تُبنى ثم يُرصد
-     ============================================ */
-  var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  /* مساعد: جملة قسم — يسلّح المسطرة (CSS) ويبني التتابع (GSAP) */
+  function sect(rootSel, build, startAt) {
+    var root = document.querySelector(rootSel);
+    if (!root) return;
+    var tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: root,
+        start: startAt || 'top 78%',
+        once: true,
+        /* التسليح على الدخول لا على أول تيك — يعمل حتى والتبويب بالخلفية */
+        onEnter: function () { root.classList.add('armed'); }
+      },
+      defaults: { ease: M.easeUnit }
+    });
+    build(tl, root);
+  }
 
-  tl.from('[data-hero]', {
-    opacity: 0,
-    y: 22,
-    duration: 0.6,
-    stagger: 0.08
-  });
+  function drawPath(tl, el, dur, pos) {
+    var len = el.getTotalLength();
+    tl.fromTo(el,
+      { strokeDasharray: len + ' ' + len, strokeDashoffset: len },
+      { strokeDashoffset: 0, duration: dur || M.draw, ease: M.easeDraw,
+        onComplete: function () { el.style.strokeDasharray = ''; el.style.strokeDashoffset = ''; } },
+      pos);
+  }
 
-  /* اليابسة تُبنى مربعاً مربعاً (موجة من المركز) */
+  /* ============ الافتتاحية: الهيرو ============ */
+  var heroTl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  heroTl.from('[data-hero]', { opacity: 0, y: 22, duration: 0.6, stagger: 0.08 });
+
   var land = gsap.utils.toArray('#hm-land rect');
   if (land.length) {
-    tl.from(land, {
-      opacity: 0,
-      duration: 0.3,
-      stagger: { each: 0.012, from: 'center' },
-      ease: 'power1.out'
+    heroTl.from(land, {
+      opacity: 0, duration: 0.3,
+      stagger: { each: 0.012, from: 'center' }, ease: 'power1.out'
     }, '-=0.45');
   }
-
-  /* الممرات تُخط */
   gsap.utils.toArray('.sea-route').forEach(function (p, i) {
     var len = p.getTotalLength();
-    tl.fromTo(p,
+    heroTl.fromTo(p,
       { strokeDasharray: len + ' ' + len, strokeDashoffset: len },
       { strokeDashoffset: 0, duration: 0.8, ease: 'power2.inOut',
-        onComplete: function () {
-          p.style.strokeDasharray = '';
-          p.style.strokeDashoffset = '';
-        } },
+        onComplete: function () { p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; } },
       i === 0 ? '-=0.2' : '<0.15');
   });
-
-  /* خطا الرصد يتقاطعان ثم نقطة الرصد تثبت */
-  tl.from('.hm-cross-h', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.5, ease: 'power2.out' }, '-=0.3')
-    .from('.hm-cross-v', { scaleY: 0, transformOrigin: '50% 0%', duration: 0.45, ease: 'power2.out' }, '<0.08')
-    .from('.hm-watch', { opacity: 0, scale: 0.4, transformOrigin: 'center', duration: 0.35, ease: 'back.out(2)' }, '-=0.15')
+  heroTl.from('.hm-cross-h', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.5, ease: M.easeDraw }, '-=0.3')
+    .from('.hm-cross-v', { scaleY: 0, transformOrigin: '50% 0%', duration: 0.45, ease: M.easeDraw }, '<0.08')
+    .from('.hm-watch', { opacity: 0, scale: 0.4, transformOrigin: 'center', duration: M.pop, ease: M.easePop }, '-=0.15')
     .from('.hero-sub a', { opacity: 0, y: 10, duration: 0.4, stagger: 0.07 }, '-=0.2');
 
-  /* -- مجرى التقديرات: الصفوف تتوالى -- */
-  var stRows = gsap.utils.toArray('.st-row');
-  if (stRows.length) {
-    gsap.from(stRows, {
-      opacity: 0,
-      y: 10,
-      duration: 0.35,
-      stagger: 0.05,
-      ease: 'power1.out',
-      scrollTrigger: { trigger: '.stream', start: 'top 85%' }
-    });
-  }
+  /* ============ بوابة الأقسام: الخلايا تُسجَّل والعلامات تُرصَد ============ */
+  sect('.gateway', function (tl) {
+    var cells = gsap.utils.toArray('.gw-cell');
+    tl.from(cells, { opacity: 0, y: 14, duration: M.unit, stagger: M.stag })
+      .from('.gw-cell .mark', {
+        scale: 0.3, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: M.stag
+      }, '-=0.35');
+  });
 
-  /* -- الأطلس: المناطق تُسجَّل والدبابيس تثبت -- */
-  gsap.utils.toArray('.zone').forEach(function (z, i) {
-    gsap.from(z, {
-      opacity: 0,
-      duration: 0.4,
-      delay: i * 0.08,
-      ease: 'power1.out',
-      scrollTrigger: { trigger: '.atlas-frame', start: 'top 80%' }
+  /* ============ المجرى: القيود تتوالى ============ */
+  sect('.stream-grid', function (tl) {
+    tl.from(gsap.utils.toArray('.st-row'), { opacity: 0, y: 10, duration: 0.35, stagger: 0.05 });
+  }, 'top 82%');
+
+  /* ============ الإصدارات المميزة: اللوحة تنكشف ثم النص يُسجَّل ============ */
+  sect('.feats', function (tl) {
+    gsap.utils.toArray('.feat').forEach(function (feat, i) {
+      var bits = feat.querySelectorAll('h3, .exc, .m');
+      tl.from(bits, { opacity: 0, y: 12, duration: M.unit, stagger: 0.07 }, i * 0.12);
     });
   });
 
-  /* -- المعجم: الوصلات تُخط -- */
-  gsap.utils.toArray('.tlink').forEach(function (l) {
-    var len = l.getTotalLength();
-    gsap.fromTo(l,
-      { strokeDasharray: len, strokeDashoffset: len },
-      {
-        strokeDashoffset: 0,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: '.lex-frame', start: 'top 82%' },
-        onComplete: function () { l.style.strokeDasharray = 'none'; }
-      });
-  });
+  /* ============ الأطلس: الساحل يُرسم ثم اليابسة تمتلئ ثم الملفات تُرصَد ============ */
+  sect('.atlas-section', function (tl) {
+    var lands = gsap.utils.toArray('.px-land');
+    lands.forEach(function (p, i) {
+      var len = p.getTotalLength();
+      tl.fromTo(p,
+        { strokeDasharray: len + ' ' + len, strokeDashoffset: len, fillOpacity: 0 },
+        { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut',
+          onComplete: function () { p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; } },
+        i === 0 ? 0 : '<0.03');
+    });
+    tl.to(lands, { fillOpacity: 1, duration: 0.5, ease: 'power1.out' }, '-=0.5')
+      .from(gsap.utils.toArray('.zone .pin'), {
+        scale: 0, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: 0.08
+      }, '-=0.25')
+      .from(gsap.utils.toArray('.zone text, .zone .leader'), { opacity: 0, duration: 0.35, stagger: 0.05 }, '-=0.2');
+  }, 'top 72%');
 
-  /* -- لوحة المعركة: حركتا المناورة تُخطان -- */
-  gsap.utils.toArray('.bt-move').forEach(function (p, i) {
-    var len = p.getTotalLength();
-    gsap.fromTo(p,
-      { strokeDasharray: len + ' ' + len, strokeDashoffset: len },
-      { strokeDashoffset: 0, duration: 0.9, delay: i * 0.2, ease: 'power2.inOut',
-        scrollTrigger: { trigger: '.battle-frame', start: 'top 78%' },
-        onComplete: function () {
-          p.style.strokeDasharray = '';
-          p.style.strokeDashoffset = '';
-        } });
-  });
+  /* ============ الفهرس: الصفوف تتوالى ============ */
+  sect('.pubs', function (tl) {
+    tl.from(gsap.utils.toArray('.pub'), { opacity: 0, y: 8, duration: 0.3, stagger: 0.04 });
+  }, 'top 85%');
 
-  /* -- الخط الزمني: السيقان تُرسم من المحور والدبابيس تثبت -- */
+  /* ============ المعجم: الوصلات تُخط ثم العقد تُرصَد (المركز أولاً) ============ */
+  sect('.lex-frame', function (tl) {
+    tl.from('.tnode.center', { opacity: 0, scale: 0.6, transformOrigin: 'center', duration: M.pop, ease: M.easePop });
+    gsap.utils.toArray('.tlink').forEach(function (l, i) { drawPath(tl, l, 0.5, i === 0 ? '-=0.05' : '<0.08'); });
+    tl.from(gsap.utils.toArray('.tnode:not(.center)'), {
+      opacity: 0, scale: 0.6, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: 0.07
+    }, '-=0.25');
+  }, 'top 80%');
+
+  /* ============ الإرث: الكنتور يُرسم ثم التشكيلات ثم المناورة ============ */
+  sect('.era-band', function (tl) {
+    var contours = gsap.utils.toArray('.battle-frame path[stroke]:not(.bt-move)');
+    contours.forEach(function (p, i) { drawPath(tl, p, 0.5, i === 0 ? 0 : '<0.06'); });
+    tl.from(gsap.utils.toArray('.battle-frame g[fill], .battle-frame g[stroke-width="2"]'), {
+      opacity: 0, duration: 0.4, stagger: 0.1
+    }, '-=0.2');
+    gsap.utils.toArray('.bt-move').forEach(function (p, i) { drawPath(tl, p, 0.8, i === 0 ? '-=0.1' : '<0.2'); });
+    tl.from(gsap.utils.toArray('.battle-frame text'), { opacity: 0, duration: 0.3, stagger: 0.04 }, '-=0.5');
+  }, 'top 70%');
+
+  /* دبابيس الخط الزمني — سيقان تُرسم وعلامات تُرصَد */
   gsap.utils.toArray('.tlm').forEach(function (m, i) {
     var stem = m.querySelector('.tl-stem');
     var sq = m.querySelector('.sq-m');
     var texts = m.querySelectorAll('text');
     var mtl = gsap.timeline({
-      scrollTrigger: { trigger: '.tl-plate', start: 'top 80%' },
+      scrollTrigger: { trigger: '.tl-plate', start: 'top 80%', once: true },
       delay: i * 0.1
     });
-    if (stem) mtl.from(stem, { scaleY: 0, transformOrigin: 'bottom', duration: 0.35, ease: 'power2.out', svgOrigin: stem.getAttribute('x1') + ' 200' });
-    if (sq) mtl.from(sq, { opacity: 0, scale: 0.3, transformOrigin: 'center', duration: 0.25, ease: 'back.out(2)' }, '-=0.1');
+    if (stem) mtl.from(stem, { scaleY: 0, duration: 0.35, ease: M.easeDraw, svgOrigin: stem.getAttribute('x1') + ' 200' });
+    if (sq) mtl.from(sq, { opacity: 0, scale: 0.3, transformOrigin: 'center', duration: 0.25, ease: M.easePop }, '-=0.1');
     if (texts.length) mtl.from(texts, { opacity: 0, duration: 0.2 }, '-=0.1');
   });
 
-  /* -- الفهرس: الصفوف تتوالى -- */
-  var pubRows = gsap.utils.toArray('.pub');
-  if (pubRows.length) {
-    gsap.from(pubRows, {
-      opacity: 0,
-      y: 8,
-      duration: 0.3,
-      stagger: 0.04,
-      ease: 'power1.out',
-      scrollTrigger: { trigger: '.pubs', start: 'top 85%' }
-    });
-  }
+  /* ============ الباحثون: الخلايا تتوالى ============ */
+  sect('.people-grid', function (tl) {
+    tl.from(gsap.utils.toArray('.p-cell'), { opacity: 0, y: 12, duration: M.unit, stagger: 0.08 }, 0.1);
+  });
 
-  /* -- أرقام المعهد تُسجَّل -- */
-  gsap.utils.toArray('.figures .num').forEach(function (el) {
+  /* ============ الفعاليات: التواريخ تُرصَد ثم المتن ============ */
+  sect('.events-grid', function (tl) {
+    var evs = gsap.utils.toArray('.ev');
+    tl.from(evs, { opacity: 0, y: 14, duration: M.unit, stagger: 0.09 })
+      .from(gsap.utils.toArray('.ev-date'), {
+        scale: 0.7, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: 0.09
+      }, '-=0.4');
+  });
+
+  /* ============ المداخل: البنك يترصّ سريعاً ============ */
+  sect('.topics', function (tl) {
+    tl.from(gsap.utils.toArray('.topic'), { opacity: 0, y: 8, duration: 0.28, stagger: 0.03 });
+  }, 'top 85%');
+
+  /* ============ التغذية ============ */
+  sect('.feed-grid', function (tl) {
+    tl.from(gsap.utils.toArray('.fpost, .ffollow'), { opacity: 0, y: 12, duration: M.unit, stagger: 0.1 });
+  });
+
+  /* ============ النشرة: تسليح فقط — الأقواس CSS ============ */
+  sect('.nl-plate', function () {}, 'top 80%');
+
+  /* ============ العدادات — عامة: كل رقم يُسجَّل عند وصوله ============ */
+  gsap.utils.toArray('.num[data-count]').forEach(function (el) {
     var target = parseInt(el.dataset.count, 10) || 0;
     gsap.fromTo(el, { innerText: 0 }, {
       innerText: target,
-      duration: 1.4,
+      duration: 1.3,
       ease: 'power2.out',
       snap: { innerText: 1 },
-      scrollTrigger: { trigger: el, start: 'top 90%' }
+      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
     });
   });
 })();
