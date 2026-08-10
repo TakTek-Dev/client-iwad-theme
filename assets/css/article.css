@@ -40,8 +40,17 @@
 .crumbs .sep { color: var(--rule-2); }
 .crumbs .here { color: var(--text); font-weight: 600; }
 
-/* ---------- رأس الدراسة ---------- */
+/* ---------- رأس الدراسة: نص + لوحة المسرح — لا فراغ ميت ---------- */
 .art-hero { padding-block: var(--sp-7) var(--sp-6); border-block-end: 1px solid var(--rule); }
+
+.ah-grid { display: grid; gap: var(--sp-6); }
+@media (min-width: 1024px) {
+  .ah-grid { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: var(--sp-8); align-items: center; }
+}
+.ah-copy { min-width: 0; }
+.ah-plate { margin: 0; min-width: 0; }
+.ah-plate .plate-frame { border: 1px solid var(--rule-2); background: var(--surface); }
+.ah-plate svg { display: block; width: 100%; height: auto; cursor: crosshair; }
 
 .art-hero .badges { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin-block-end: var(--sp-4); }
 
@@ -301,7 +310,7 @@
 /* مواد مرتبطة */
 .related .kicker-line { margin-block-end: var(--sp-4); }
 
+/* موبايل: القارئ أولاً — الهامش كله بعد المتن، لا ثلاث بطاقات قبل النص */
 @media (max-width: 1023px) {
-  .art-aside { order: -1; }
-  .toc { order: 1; }
+  .art-aside { position: static; }
 }

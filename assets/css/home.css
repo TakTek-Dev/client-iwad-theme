@@ -129,6 +129,50 @@ svg text { font-family: var(--font-main); }
 .svg-ltr { direction: ltr; }
 
 /* ============================================================
+   الموبايل: اللوحات الغنية لا تُضغط — تحافظ على مقاسها المقروء
+   وتتلفّ أفقياً داخل إطارها (نمط الخط الزمني)
+   ============================================================ */
+@media (max-width: 767px) {
+  .hero-map .aperture,
+  .atlas-frame,
+  .battle-frame,
+  .lex-frame,
+  .ah-plate .plate-frame {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--iwad-gold) 55%, transparent) transparent;
+  }
+  .hero-map .aperture::-webkit-scrollbar,
+  .atlas-frame::-webkit-scrollbar,
+  .battle-frame::-webkit-scrollbar,
+  .lex-frame::-webkit-scrollbar,
+  .ah-plate .plate-frame::-webkit-scrollbar { height: 4px; }
+  .hero-map .aperture::-webkit-scrollbar-thumb,
+  .atlas-frame::-webkit-scrollbar-thumb,
+  .battle-frame::-webkit-scrollbar-thumb,
+  .lex-frame::-webkit-scrollbar-thumb,
+  .ah-plate .plate-frame::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--iwad-gold) 45%, transparent);
+  }
+
+  .hero-map .aperture svg { min-width: 560px; }
+  .atlas-frame svg { min-width: 720px; }
+  .battle-frame svg { min-width: 500px; }
+  .lex-frame svg { min-width: 440px; }
+  .ah-plate .plate-frame svg { min-width: 440px; }
+
+  /* الأقواس الخارجية تُقص مع السكرول الداخلي — نطفيها هنا */
+  .hero-map .aperture::after,
+  .atlas-frame.aperture::after,
+  .battle-frame.aperture::after,
+  .lex-frame.aperture::after,
+  .ah-plate .aperture::after { display: none; }
+
+  /* لوح النشرة: حشوة موبايل معقولة */
+  .nl-plate { padding: var(--sp-7) var(--sp-4); }
+}
+
+/* ============================================================
    01 · Hero — مسرح الدراسة (نبيتي عميق + بكسل-أطلس)
    ============================================================ */
 .hero {

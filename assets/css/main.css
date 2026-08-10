@@ -711,16 +711,21 @@ p { text-wrap: pretty; }
 }
 .f-charter .brand-side {
   display: flex;
+  flex-wrap: wrap; /* موبايل: اللوجو فوق والنص تحته */
   align-items: center;
-  gap: var(--sp-5);
+  gap: var(--sp-4) var(--sp-5);
 }
 .f-charter img { height: 84px; width: auto; }
 .f-charter .charter-text {
   font-size: var(--fs-sm);
   color: rgb(243 238 234 / 70%);
   max-width: 38ch;
-  border-inline-start: 1px solid rgb(243 238 234 / 25%);
-  padding-inline-start: var(--sp-5);
+}
+@media (min-width: 768px) {
+  .f-charter .charter-text {
+    border-inline-start: 1px solid rgb(243 238 234 / 25%);
+    padding-inline-start: var(--sp-5);
+  }
 }
 .f-charter .charter-text b { color: var(--iwad-gold); font-weight: 600; }
 
