@@ -170,6 +170,9 @@ svg text { font-family: var(--font-main); }
 
   /* لوح النشرة: حشوة موبايل معقولة */
   .nl-plate { padding: var(--sp-7) var(--sp-4); }
+
+  /* رقائق الترشيح: هدف لمس كامل */
+  .pf-chip { min-height: 44px; padding-inline: var(--sp-4); }
 }
 
 /* ============================================================
@@ -470,6 +473,7 @@ html.js .hm-watch {
 
 .atlas-wrap { display: grid; gap: var(--sp-5); }
 @media (min-width: 1200px) { .atlas-wrap { grid-template-columns: 1.35fr .65fr; align-items: start; } }
+.atlas-wrap > * { min-width: 0; } /* الخريطة تسكرول جوه عمودها، ما تنفخوش */
 
 .atlas-frame {
   position: relative;
