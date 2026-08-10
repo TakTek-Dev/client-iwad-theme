@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    IWAD — Homepage v4.0 · «المعهد الحي»
    أبيض مؤسسي · الصورة محتوى أول (بكسل-أطلس + لوحات تحليلية)
    كثافة تحريرية عالية · كل قسم تكوين مختلف
@@ -22,6 +22,16 @@
   background: var(--rule-2);
   order: 2;
 }
+/* جملة الدخول ١: مسطرة رأس القسم تُرسم من جهة القراءة */
+html.js section .kicker-line::after {
+  transform: scaleX(0);
+  transform-origin: 100% 50%; /* RTL: من اليمين */
+  transition: transform 650ms var(--ease-out) 120ms;
+}
+html.js section.armed .kicker-line::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  html.js section .kicker-line::after { transform: none; transition: none; }
+}
 .kicker-line h2 { font-size: var(--fs-2xl); order: 1; }
 .kicker-line .aux { order: 3; font-size: var(--fs-sm); font-weight: 700; color: var(--accent-text); white-space: nowrap; }
 .kicker-line .aux:hover { text-decoration: underline; }
@@ -34,14 +44,17 @@
   font-weight: 700;
   color: var(--accent-text);
 }
+/* علامة اللوجو المقصوصة — باهتة، وتكتمل عندما يكون القسم مرصوداً */
 .rl::before {
   content: "";
-  width: 10px; height: 10px;
-  border: 2px solid var(--iwad-gold);
-  transition: background var(--dur-base) var(--ease-out);
+  width: 11px; height: 11px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+  opacity: .5;
+  transition: opacity var(--dur-base) var(--ease-out);
   flex-shrink: 0;
 }
-.spy.live .rl::before { background: var(--iwad-gold); }
+.spy.live .rl::before { opacity: 1; }
 
 html.js .rise { opacity: 0; translate: 0 14px; }
 html.js .rise.in { opacity: 1; translate: 0 0; transition: opacity var(--dur-reveal) var(--ease-out), translate var(--dur-reveal) var(--ease-out); }
@@ -226,10 +239,12 @@ svg text { font-family: var(--font-main); }
 .gw-cell:hover { background: color-mix(in srgb, var(--sec) 5%, var(--bg)); }
 .gw-cell .mark {
   width: 20px; height: 20px;
-  border: 3px solid var(--sec);
-  transition: background var(--dur-fast) var(--ease-out);
+  background: var(--sec);
+  clip-path: var(--notch);
+  opacity: .45;
+  transition: opacity var(--dur-fast) var(--ease-out);
 }
-.gw-cell:hover .mark { background: var(--sec); }
+.gw-cell:hover .mark { opacity: 1; }
 .gw-cell h3 { font-size: var(--fs-lg); font-weight: 700; color: var(--sec); }
 .gw-cell p { font-size: var(--fs-xs); line-height: 1.7; color: var(--text-muted); flex: 1; }
 .gw-cell .count { font-size: var(--fs-xs); font-weight: 700; color: var(--sec); }
@@ -259,7 +274,7 @@ svg text { font-family: var(--font-main); }
 }
 .st-row .b { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .st-row .secline { display: flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-xs); font-weight: 700; color: var(--sec, var(--primary)); }
-.st-row .secline::before { content: ""; width: 8px; height: 8px; background: var(--sec, var(--primary)); flex-shrink: 0; }
+.st-row .secline::before { content: ""; width: 10px; height: 10px; background: var(--sec, var(--primary)); clip-path: var(--notch); flex-shrink: 0; }
 .st-row h3 { font-size: var(--fs-base); font-weight: 500; line-height: 1.6; }
 .st-row h3 a:hover { color: var(--sec, var(--primary)); }
 
@@ -355,7 +370,7 @@ svg text { font-family: var(--font-main); }
 }
 .legend i { display: inline-block; width: 9px; height: 9px; margin-inline-end: 4px; }
 .legend .l1 i { background: #221B15; border: 1px solid rgb(168 130 74 / 55%); }
-.legend .l2 i { background: var(--iwad-gold); }
+.legend .l2 i { background: var(--iwad-gold); clip-path: var(--notch); }
 
 /* كارتوجرافيا داكنة: البحر أغمق بدرجة، الساحل الذهبي هو الراسم */
 .px-land {
@@ -439,7 +454,7 @@ svg text { font-family: var(--font-main); }
 .pub .ref { font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .pub .b { min-width: 0; }
 .pub .secline { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-xs); font-weight: 700; color: var(--sec, var(--primary)); margin-inline-end: var(--sp-2); }
-.pub .secline::before { content: ""; width: 8px; height: 8px; border: 2px solid var(--sec, var(--primary)); }
+.pub .secline::before { content: ""; width: 10px; height: 10px; background: var(--sec, var(--primary)); clip-path: var(--notch); }
 /* بادج طبقة المحتوى */
 .pub .pl {
   font-size: var(--fs-xs);
@@ -504,7 +519,7 @@ svg text { font-family: var(--font-main); }
   padding-block: var(--sp-8);
 }
 .era-band .rl, .era-band .kicker-line .aux { color: var(--sec-heritage); }
-.era-band .rl::before { border-color: var(--sec-heritage); }
+.era-band .rl::before { background: var(--sec-heritage); }
 .era-band .kicker-line h2 { color: var(--sec-heritage); }
 
 .era-grid { display: grid; gap: var(--sp-6); }
@@ -532,13 +547,12 @@ svg text { font-family: var(--font-main); }
     linear-gradient(var(--sec-heritage), var(--sec-heritage));
 }
 
-/* الكتل النصية المؤطرة — برواز خفيف موحد مع الأقواس + حشوة */
-.stream.aperture, .pubs.aperture {
+/* الكتل النصية المؤطرة — برواز خفيف موحد + حشوة (بلا أقواس) */
+.stream, .pubs {
   padding: var(--sp-4) var(--sp-5);
   border: 1px solid var(--rule);
 }
-.topics.aperture, .lex-side.aperture { padding: var(--sp-5); border: 1px solid var(--rule); }
-.f-charter.aperture { padding-inline: var(--sp-4); }
+.topics, .lex-side { padding: var(--sp-5); border: 1px solid var(--rule); }
 .battle-fig figcaption {
   display: flex;
   justify-content: space-between;
@@ -571,7 +585,7 @@ svg text { font-family: var(--font-main); }
   font-weight: 700;
   color: var(--sec-heritage);
 }
-.today-h .th-k::before { content: ""; width: 9px; height: 9px; background: var(--sec-heritage); }
+.today-h .th-k::before { content: ""; width: 10px; height: 10px; background: var(--sec-heritage); clip-path: var(--notch); }
 .today-h .th-d { font-size: var(--fs-sm); font-weight: 700; color: var(--text); margin-block: var(--sp-1) 2px; }
 .today-h .th-t { font-size: var(--fs-sm); line-height: 1.65; margin-block-end: var(--sp-2); }
 .today-h .th-t a:hover { color: var(--sec-heritage); }
@@ -780,13 +794,25 @@ svg text { font-family: var(--font-main); }
 }
 @media (min-width: 768px) { .nl-plate { padding: var(--sp-9) var(--sp-8); } }
 
-/* أقواس الزوايا الذهبية */
+/* أقواس الزوايا الذهبية — تُرسم عند وصول اللوح */
 .cb {
   position: absolute;
   width: 20px; height: 20px;
   border-color: var(--iwad-gold);
   border-style: solid;
   border-width: 0;
+}
+html.js .nl-plate .cb {
+  opacity: 0;
+  transform: scale(.4);
+  transition: opacity .4s var(--ease-out), transform .4s var(--ease-out);
+}
+html.js .nl-plate.armed .cb { opacity: 1; transform: none; }
+html.js .nl-plate.armed .cb-tr { transition-delay: .08s; }
+html.js .nl-plate.armed .cb-bl { transition-delay: .16s; }
+html.js .nl-plate.armed .cb-br { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  html.js .nl-plate .cb { opacity: 1; transform: none; transition: none; }
 }
 .cb-tl { inset-block-start: -8px; inset-inline-start: -8px; border-block-start-width: 2px; border-inline-start-width: 2px; }
 .cb-tr { inset-block-start: -8px; inset-inline-end: -8px;   border-block-start-width: 2px; border-inline-end-width: 2px; }
