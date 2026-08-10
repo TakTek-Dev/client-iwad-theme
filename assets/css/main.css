@@ -145,7 +145,7 @@ p { text-wrap: pretty; }
 .aperture::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -8px; /* الأقواس خارج خط البرواز — زي لوح النشرة */
   pointer-events: none;
   z-index: 3;
   background-image:

@@ -277,7 +277,7 @@ svg text { font-family: var(--font-main); }
 }
 
 .feat { display: flex; flex-direction: column; gap: var(--sp-3); min-width: 0; }
-.feat .plate-frame { position: relative; border: 1px solid var(--rule-2); overflow: hidden; }
+.feat .plate-frame { position: relative; border: 1px solid var(--rule-2); } /* بلا overflow — الأقواس الخارجية تظهر */
 .feat .plate-frame svg { display: block; width: 100%; height: auto; }
 .feat .plate-frame .tag {
   position: absolute;
