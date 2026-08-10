@@ -17,13 +17,13 @@
 
   <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/fonts.css?v=421">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-  <link rel="stylesheet" href="assets/css/tokens.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/tokens.css?v=421">
+  <link rel="stylesheet" href="assets/css/main.css?v=421">
+  <link rel="stylesheet" href="assets/css/home.css?v=421">
 
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
@@ -187,19 +187,57 @@
 
           <!-- نقطة الرصد على المضيق -->
           <path class="hm-watch" d="M182 200 h20 v-8 h8 v28 h-28 z" fill="#A8824A"/>
+          <!-- جهاز الوثيقة: إطار داخلي + علامات إحداثيات -->
+          <g stroke="rgb(243 238 234 / 30%)" stroke-width="1" fill="none">
+            <rect x="8" y="8" width="544" height="404"/>
+            <line x1="120" y1="8" x2="120" y2="15"/><line x1="240" y1="8" x2="240" y2="15"/><line x1="360" y1="8" x2="360" y2="15"/><line x1="480" y1="8" x2="480" y2="15"/>
+            <line x1="120" y1="405" x2="120" y2="412"/><line x1="240" y1="405" x2="240" y2="412"/><line x1="360" y1="405" x2="360" y2="412"/><line x1="480" y1="405" x2="480" y2="412"/>
+            <line x1="8" y1="110" x2="15" y2="110"/><line x1="8" y1="214" x2="15" y2="214"/><line x1="8" y1="318" x2="15" y2="318"/>
+            <line x1="545" y1="110" x2="552" y2="110"/><line x1="545" y1="214" x2="552" y2="214"/><line x1="545" y1="318" x2="552" y2="318"/>
+          </g>
+          <g font-size="9" fill="rgb(243 238 234 / 50%)" class="tnum">
+            <text x="112" y="30">E110</text><text x="232" y="30">E120</text><text x="352" y="30">E130</text><text x="472" y="30">E140</text>
+            <text x="20" y="113">N35</text><text x="20" y="217">N24</text><text x="20" y="321">N12</text>
+          </g>
 
-          <!-- تسميات -->
-          <g font-size="11" font-weight="600" fill="rgb(243 238 234 / 75%)">
+          <!-- كارتوش الوثيقة -->
+          <g>
+            <rect x="386" y="332" width="158" height="68" fill="rgb(26 26 26 / 45%)" stroke="rgb(168 130 74 / 50%)" stroke-width="1"/>
+            <path d="M392 338 h9 v-3.5 h3.5 v12.5 h-12.5 z" fill="#A8824A"/>
+            <text x="412" y="349" font-size="10" font-weight="700" fill="#F3EEEA">لوحة المسرح ١</text>
+            <text x="392" y="366" font-size="8.5" fill="rgb(243 238 234 / 70%)">مسرح المحيط الهادئ الغربي</text>
+            <text x="392" y="379" font-size="8" fill="rgb(243 238 234 / 55%)">إسقاط تحليلي — غير ملاحي</text>
+            <text x="392" y="393" font-size="8" fill="rgb(168 130 74 / 90%)" class="tnum">IWAD-PL-2026-11 · v1.0</text>
+          </g>
+
+          <!-- مقياس تقديري -->
+          <g transform="translate(24 386)">
+            <line x1="0" y1="0" x2="120" y2="0" stroke="#F3EEEA" stroke-width="1.5" opacity=".7"/>
+            <line x1="0" y1="-4" x2="0" y2="4" stroke="#F3EEEA" stroke-width="1.5" opacity=".7"/>
+            <line x1="60" y1="-3" x2="60" y2="3" stroke="#F3EEEA" stroke-width="1" opacity=".5"/>
+            <line x1="120" y1="-4" x2="120" y2="4" stroke="#F3EEEA" stroke-width="1.5" opacity=".7"/>
+            <text x="0" y="16" font-size="8.5" fill="rgb(243 238 234 / 60%)" class="tnum">0</text>
+            <text x="104" y="16" font-size="8.5" fill="rgb(243 238 234 / 60%)" class="tnum">~800 كم</text>
+          </g>
+
+          <!-- تسميات المسرح -->
+          <g font-size="11" font-weight="600" fill="rgb(243 238 234 / 78%)">
             <text x="308" y="52">خطوط الإمداد الشمالية</text>
-            <text x="360" y="396">الممر الجنوبي</text>
+            <text x="352" y="330">الممر الجنوبي</text>
             <text x="330" y="240">المحيط الهادئ الغربي</text>
             <text x="60" y="320" fill="rgb(243 238 234 / 50%)">البر الآسيوي</text>
           </g>
-          <g font-size="10" fill="rgb(243 238 234 / 45%)" class="tnum">
-            <text x="8" y="212">N24</text>
-            <text x="200" y="414">E120</text>
+
+          <!-- تعليقان تحليليان بخط دليل -->
+          <g>
+            <path d="M206 214 H258 V186" fill="none" stroke="rgb(168 130 74 / 55%)" stroke-width="1"/>
+            <rect x="252" y="166" width="7" height="7" fill="none" stroke="#A8824A" stroke-width="1.5"/>
+            <text x="266" y="176" font-size="9.5" font-weight="600" fill="#A8824A">عقدة العبور الحرجة</text>
           </g>
-        </svg></div>
+          <g>
+            <path d="M400 96 H452 V130" fill="none" stroke="rgb(243 238 234 / 40%)" stroke-width="1" stroke-dasharray="3 3"/>
+            <text x="430" y="146" font-size="9.5" fill="rgb(243 238 234 / 70%)">نطاق الانتشار المتقدم</text>
+          </g>        </svg></div>
         <figcaption class="cap">
           <span>لوحة المسرح — إعداد وحدة الرصد، إيواد · تجريد بحثي لا يمثل حدوداً</span>
           <span>IWAD-PL-2026-11</span>
@@ -364,7 +402,7 @@
               </g>
               <path d="M92 130 H180 V105 H292 V80 H404" fill="none" stroke="#A8824A" stroke-width="1.5"/>
               <text x="66" y="168" font-size="11" font-weight="600" fill="#3D1720">1918</text>
-              <text x="400" y="36" font-size="11" font-weight="600" fill="#3D1720">اليوم</text>
+              <text x="400" y="36" font-size="11" font-weight="600" fill="#3D1720">اليوم</text><text x="16" y="188" font-size="9" fill="rgb(26 26 26 / 40%)" class="tnum">IWAD-PL-2026-09</text>
             </svg>
           </div>
           <h3><a href="#">الحرب الخاطفة: من غوديريان إلى العقيدة المدرّعة الحديثة</a></h3>
@@ -382,7 +420,7 @@
               </g>
               <rect x="460" y="30" width="22" height="22" fill="#A8824A"/>
               <text x="52" y="176" font-size="11" font-weight="600" fill="#7E5F31">السياق</text>
-              <text x="444" y="80" font-size="11" font-weight="600" fill="#7E5F31">الفجوة</text>
+              <text x="444" y="80" font-size="11" font-weight="600" fill="#7E5F31">الفجوة</text><text x="16" y="188" font-size="9" fill="rgb(26 26 26 / 40%)" class="tnum">IWAD-PL-2026-10</text>
             </svg>
           </div>
           <h3><a href="#">كيف تقرأ وثيقة عقيدة عسكرية؟ دليل الباحث المبتدئ</a></h3>
@@ -459,6 +497,10 @@
                 <rect class="halo" x="794.0" y="164.0" width="92" height="72"/>
                 <path class="pin" d="M828.0 197.0 h18 v-7 h7 v25 h-25 z"/>
                 <text x="840.0" y="244.0" text-anchor="middle">أفغانستان</text>
+              </g>
+                          <g id="ap-cross" class="ap-cross" transform="translate(-999 -999)" aria-hidden="true">
+                <line x1="-920" y1="0" x2="920" y2="0"/>
+                <line x1="0" y1="-460" x2="0" y2="460"/>
               </g>
             </svg>
             <div class="legend"><span class="l1"><i></i>اليابسة</span><span class="l2"><i></i>ملف نشط</span></div>
@@ -826,7 +868,7 @@
     <div class="container inner">
       <div>
         <span class="rl" id="about-title">عن المعهد</span>
-        <p class="mission rise">
+        <p class="mission">
           إيواد منصة رقمية متخصصة في <b>البحث والتعليم</b> في النظريات والعقائد والفكر
           والإرث العسكري — بمحتوى واضح لغير المتخصص ومصداقية أكاديمية تقنع الباحث.
           <b>مؤسسة خاصة، غير ربحية، مستقلة.</b>
@@ -981,7 +1023,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-<script src="assets/js/main.js"></script>
+
+<script src="assets/js/main.js?v=421"></script>
 </body>
 </html>

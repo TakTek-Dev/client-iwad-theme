@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    IWAD — Main JS v4.1
    تشغيلية: درج/بحث/هيدر · رصدية: أطلس/معجم/ترشيح/سباي
    حركية: نظام موحّد — كل قسم يدخل بجملة واحدة:
@@ -115,6 +115,7 @@
     var apCount = document.getElementById('ap-count');
     var apUpdated = document.getElementById('ap-updated');
     var apDesc = document.getElementById('ap-desc');
+    var apCross = document.getElementById('ap-cross');
     var selectZone = function (z) {
       zones.forEach(function (o) { o.classList.remove('active'); });
       z.classList.add('active');
@@ -122,13 +123,22 @@
       apCount.textContent = z.dataset.count;
       apUpdated.textContent = z.dataset.updated;
       apDesc.textContent = z.dataset.desc;
+      /* قفل الرصد على دبوس الملف */
+      if (apCross) {
+        var pin = z.querySelector('.pin');
+        if (pin) {
+          var bb = pin.getBBox();
+          apCross.setAttribute('transform',
+            'translate(' + (bb.x + bb.width / 2) + ' ' + (bb.y + bb.height / 2) + ')');
+        }
+      }
     };
     zones.forEach(function (z) {
       z.addEventListener('mouseenter', function () { selectZone(z); });
       z.addEventListener('click', function () { selectZone(z); });
     });
     var defZone = document.querySelector('.zone[data-file="سوريا وإسرائيل"]');
-    if (defZone) defZone.classList.add('active');
+    if (defZone) selectZone(defZone);
   }
 
   /* المعجم: فحص عقدة يحدّث التعريف ويضيء وصلتها */
@@ -200,8 +210,6 @@
 
   if (!hasGSAP || reducedMotion) { settleAll(); return; }
 
-  gsap.registerPlugin(ScrollTrigger);
-
   /* ثوابت الجملة الحركية — كل الأقسام تتكلم بنفس الإيقاع */
   var M = {
     unit: 0.45,      /* دخول وحدة */
@@ -213,30 +221,86 @@
     easePop: 'back.out(2)'
   };
 
-  /* كشف rise/unveil العام */
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (en) {
-      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-    });
-  }, { rootMargin: '0px 0px -8% 0px' });
-  riseEls.forEach(function (el) { io.observe(el); });
-  unveilEls.forEach(function (el) { io.observe(el); });
+  /* ============================================================
+     التشغيل بالتقاطع لا بالإحداثيات:
+     IntersectionObserver يعيد التقييم مع كل تغير لياوت —
+     لا مواضع محسوبة مسبقاً تفسد بعد تحميل الخط/الـSVG
+     ============================================================ */
+  var enterMap = new Map(); /* el -> fire() */
+  function makeIO(rootMargin) {
+    return new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var fire = enterMap.get(en.target);
+        if (fire) { enterMap.delete(en.target); fire(); }
+        obs.unobserve(en.target);
+      });
+    }, { rootMargin: rootMargin });
+  }
+  /* حزامان: قريب (القوائم) وبعيد (الذروات تبدأ أبكر) */
+  var ioNear = makeIO('0px 0px -18% 0px');
+  var ioFar  = makeIO('0px 0px -28% 0px');
 
-  /* مساعد: جملة قسم — يسلّح المسطرة (CSS) ويبني التتابع (GSAP) */
-  function sect(rootSel, build, startAt) {
+  function onEnter(el, fire, far) {
+    if (!el) return;
+    /* عنصر واحد قد يحمل أكثر من دور (rise + جذر قسم) —
+       التسجيلات تتركّب ولا يدوس أحدها على الآخر */
+    var prev = enterMap.get(el);
+    enterMap.set(el, prev ? function () { prev(); fire(); } : fire);
+    (far ? ioFar : ioNear).observe(el);
+  }
+
+  /* شبكة أمان: كنس بالمستطيلات — يلقط أي عنصر فاته الـ IO
+     (سكرول سريع جداً، تبويب خلفي، أو أي تفويت متصفح) */
+  function sweep() {
+    if (!enterMap.size) return;
+    var vh = window.innerHeight;
+    enterMap.forEach(function (fire, el) {
+      var r = el.getBoundingClientRect();
+      /* عدّى خط الإطلاق — سواء ظاهر الآن أو اتجاوزناه لفوق */
+      if (r.top < vh * 0.92) {
+        enterMap.delete(el);
+        ioNear.unobserve(el); ioFar.unobserve(el);
+        fire();
+      }
+    });
+  }
+  var sweepPending = false;
+  function queueSweep() {
+    if (sweepPending) return;
+    sweepPending = true;
+    setTimeout(function () { sweepPending = false; sweep(); }, 180);
+  }
+  window.addEventListener('scroll', queueSweep, { passive: true });
+  window.addEventListener('resize', queueSweep, { passive: true });
+  window.addEventListener('load', sweep);
+
+  /* الضمانة القصوى: لا عنصر يبقى مخفياً أكثر من ٤ ثوانٍ مهما حدث —
+     أي متبقٍ في قائمة الانتظار يُطلق كما هو (المحتوى أهم من الدخول المسرحي) */
+  setTimeout(function () {
+    enterMap.forEach(function (fire, el) {
+      enterMap.delete(el);
+      ioNear.unobserve(el); ioFar.unobserve(el);
+      fire();
+    });
+  }, 4000);
+
+  /* كشف rise/unveil العام */
+  riseEls.forEach(function (el) { onEnter(el, function () { el.classList.add('in'); }); });
+  unveilEls.forEach(function (el) { onEnter(el, function () { el.classList.add('in'); }); });
+
+  /* جملة قسم: تايم لاين موقوف يُطلق عند دخول الجذر */
+  function sect(rootSel, build, far) {
     var root = document.querySelector(rootSel);
     if (!root) return;
-    var tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: root,
-        start: startAt || 'top 78%',
-        once: true,
-        /* التسليح على الدخول لا على أول تيك — يعمل حتى والتبويب بالخلفية */
-        onEnter: function () { root.classList.add('armed'); }
-      },
-      defaults: { ease: M.easeUnit }
-    });
+    var tl = gsap.timeline({ paused: true, defaults: { ease: M.easeUnit } });
     build(tl, root);
+    onEnter(root, function () {
+      root.classList.add('armed');
+      var host = root.closest('section');           /* مسطرة الرأس تعيش على السكشن */
+      if (host) host.classList.add('armed');
+      tl.play();
+    }, far);
   }
 
   function drawPath(tl, el, dur, pos) {
@@ -284,7 +348,7 @@
   /* ============ المجرى: القيود تتوالى ============ */
   sect('.stream-grid', function (tl) {
     tl.from(gsap.utils.toArray('.st-row'), { opacity: 0, y: 10, duration: 0.35, stagger: 0.05 });
-  }, 'top 82%');
+  });
 
   /* ============ الإصدارات المميزة: اللوحة تنكشف ثم النص يُسجَّل ============ */
   sect('.feats', function (tl) {
@@ -310,12 +374,12 @@
         scale: 0, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: 0.08
       }, '-=0.25')
       .from(gsap.utils.toArray('.zone text, .zone .leader'), { opacity: 0, duration: 0.35, stagger: 0.05 }, '-=0.2');
-  }, 'top 72%');
+  }, true);
 
   /* ============ الفهرس: الصفوف تتوالى ============ */
   sect('.pubs', function (tl) {
     tl.from(gsap.utils.toArray('.pub'), { opacity: 0, y: 8, duration: 0.3, stagger: 0.04 });
-  }, 'top 85%');
+  });
 
   /* ============ المعجم: الوصلات تُخط ثم العقد تُرصَد (المركز أولاً) ============ */
   sect('.lex-frame', function (tl) {
@@ -324,7 +388,7 @@
     tl.from(gsap.utils.toArray('.tnode:not(.center)'), {
       opacity: 0, scale: 0.6, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: 0.07
     }, '-=0.25');
-  }, 'top 80%');
+  });
 
   /* ============ الإرث: الكنتور يُرسم ثم التشكيلات ثم المناورة ============ */
   sect('.era-band', function (tl) {
@@ -335,21 +399,25 @@
     }, '-=0.2');
     gsap.utils.toArray('.bt-move').forEach(function (p, i) { drawPath(tl, p, 0.8, i === 0 ? '-=0.1' : '<0.2'); });
     tl.from(gsap.utils.toArray('.battle-frame text'), { opacity: 0, duration: 0.3, stagger: 0.04 }, '-=0.5');
-  }, 'top 70%');
+  }, true);
 
-  /* دبابيس الخط الزمني — سيقان تُرسم وعلامات تُرصَد */
-  gsap.utils.toArray('.tlm').forEach(function (m, i) {
-    var stem = m.querySelector('.tl-stem');
-    var sq = m.querySelector('.sq-m');
-    var texts = m.querySelectorAll('text');
-    var mtl = gsap.timeline({
-      scrollTrigger: { trigger: '.tl-plate', start: 'top 80%', once: true },
-      delay: i * 0.1
+  /* دبابيس الخط الزمني — سيقان تُرسم وعلامات تُرصَد عند دخول اللوح */
+  var tlPlate = document.querySelector('.tl-plate');
+  if (tlPlate) {
+    var markerTls = gsap.utils.toArray('.tlm').map(function (m, i) {
+      var stem = m.querySelector('.tl-stem');
+      var sq = m.querySelector('.sq-m');
+      var texts = m.querySelectorAll('text');
+      var mtl = gsap.timeline({ paused: true, delay: i * 0.1 });
+      if (stem) mtl.from(stem, { scaleY: 0, duration: 0.35, ease: M.easeDraw, svgOrigin: stem.getAttribute('x1') + ' 200' });
+      if (sq) mtl.from(sq, { opacity: 0, scale: 0.3, transformOrigin: 'center', duration: 0.25, ease: M.easePop }, '-=0.1');
+      if (texts.length) mtl.from(texts, { opacity: 0, duration: 0.2 }, '-=0.1');
+      return mtl;
     });
-    if (stem) mtl.from(stem, { scaleY: 0, duration: 0.35, ease: M.easeDraw, svgOrigin: stem.getAttribute('x1') + ' 200' });
-    if (sq) mtl.from(sq, { opacity: 0, scale: 0.3, transformOrigin: 'center', duration: 0.25, ease: M.easePop }, '-=0.1');
-    if (texts.length) mtl.from(texts, { opacity: 0, duration: 0.2 }, '-=0.1');
-  });
+    onEnter(tlPlate, function () {
+      markerTls.forEach(function (t) { t.play(); });
+    });
+  }
 
   /* ============ الباحثون: الخلايا تتوالى ============ */
   sect('.people-grid', function (tl) {
@@ -368,25 +436,32 @@
   /* ============ المداخل: البنك يترصّ سريعاً ============ */
   sect('.topics', function (tl) {
     tl.from(gsap.utils.toArray('.topic'), { opacity: 0, y: 8, duration: 0.28, stagger: 0.03 });
-  }, 'top 85%');
+  });
 
   /* ============ التغذية ============ */
   sect('.feed-grid', function (tl) {
     tl.from(gsap.utils.toArray('.fpost, .ffollow'), { opacity: 0, y: 12, duration: M.unit, stagger: 0.1 });
   });
 
+  /* ============ قاعة المعهد: البيان يُكشف (CSS) والأرقام تتوالى ============ */
+  sect('.inst', function (tl) {
+    tl.from(gsap.utils.toArray('.figures .fig'), { opacity: 0, y: 10, duration: 0.4, stagger: 0.08 }, 0.25)
+      .from('.pillars-line', { opacity: 0, duration: 0.4 }, '-=0.2');
+  }, true);
+
   /* ============ النشرة: تسليح فقط — الأقواس CSS ============ */
-  sect('.nl-plate', function () {}, 'top 80%');
+  sect('.nl-plate', function () {});
 
   /* ============ العدادات — عامة: كل رقم يُسجَّل عند وصوله ============ */
   gsap.utils.toArray('.num[data-count]').forEach(function (el) {
-    var target = parseInt(el.dataset.count, 10) || 0;
-    gsap.fromTo(el, { innerText: 0 }, {
-      innerText: target,
-      duration: 1.3,
-      ease: 'power2.out',
-      snap: { innerText: 1 },
-      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+    onEnter(el, function () {
+      var target = parseInt(el.dataset.count, 10) || 0;
+      gsap.fromTo(el, { innerText: 0 }, {
+        innerText: target,
+        duration: 1.3,
+        ease: 'power2.out',
+        snap: { innerText: 1 }
+      });
     });
   });
 })();

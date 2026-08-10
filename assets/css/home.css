@@ -386,6 +386,10 @@ svg text { font-family: var(--font-main); }
   stroke-width: 1;
 }
 .zone .pin { fill: var(--iwad-gold); transition: transform var(--dur-fast) var(--ease-out); transform-box: fill-box; transform-origin: center; }
+/* قفل الرصد: صليب يتحرك إلى الملف النشط */
+.ap-cross line { stroke: rgb(168 130 74 / 28%); stroke-width: 1; }
+.ap-cross { transition: transform 380ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .ap-cross { transition: none; } }
 .zone text {
   font-size: 15px;
   font-weight: 600;
@@ -469,6 +473,12 @@ svg text { font-family: var(--font-main); }
 .pub .end { display: flex; align-items: center; gap: var(--sp-4); font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .pub .end .pdf { color: var(--accent-text); font-size: 14px; }
 .pub .end .pdf:hover { color: var(--primary); }
+/* فحص الصف يكشف بيانات الإحالة — «السجل يستجيب» */
+.pub { transition: background var(--dur-fast) var(--ease-out); }
+.pub:hover { background: var(--bg); }
+.pub .ref { transition: color var(--dur-fast) var(--ease-out); }
+.pub:hover .ref { color: var(--accent-text); font-weight: 700; }
+.pub:hover .end .pdf { color: var(--primary); }
 @media (max-width: 640px) {
   .pub { grid-template-columns: 1fr; gap: var(--sp-1); }
   .pub .ref { order: 3; }
@@ -548,11 +558,12 @@ svg text { font-family: var(--font-main); }
 }
 
 /* الكتل النصية المؤطرة — برواز خفيف موحد + حشوة (بلا أقواس) */
-.stream, .pubs {
+.pubs {
   padding: var(--sp-4) var(--sp-5);
   border: 1px solid var(--rule);
 }
-.topics, .lex-side { padding: var(--sp-5); border: 1px solid var(--rule); }
+.stream { padding: 0; border: none; } /* القيود تعيش على الصفحة مباشرة */
+/* المداخل والمعجم الجانبي بلا صناديق — المحتوى على الصفحة */
 .battle-fig figcaption {
   display: flex;
   justify-content: space-between;
@@ -627,13 +638,11 @@ svg text { font-family: var(--font-main); }
 .people-grid { display: grid; gap: var(--sp-6); }
 @media (min-width: 1024px) { .people-grid { grid-template-columns: 1.05fr .95fr; align-items: start; } }
 
+/* الباحث المميز — حر على الصفحة، البطاقة الوحيدة هي لوح الهوية */
 .person-feat {
   display: grid;
   grid-template-columns: 128px 1fr;
   gap: var(--sp-5);
-  border: 1px solid var(--rule-2);
-  padding: var(--sp-5);
-  background: var(--surface);
 }
 .idplate {
   width: 128px; height: 128px;
@@ -667,18 +676,17 @@ svg text { font-family: var(--font-main); }
 .person-feat .latest a:hover { color: var(--primary); }
 .person-feat .idref { font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; margin-block-start: var(--sp-2); }
 
-.people-list { display: grid; gap: 1px; background: var(--rule-2); border: 1px solid var(--rule-2); }
+/* فهرس الباحثين — صفوف مسطّرة، لا خلايا */
+.people-list { display: grid; gap: 0 var(--sp-6); border-block-start: 1px solid var(--rule-2); }
 @media (min-width: 640px) { .people-list { grid-template-columns: repeat(2, 1fr); } }
 .p-cell {
-  background: var(--surface);
-  padding: var(--sp-4);
+  padding-block: var(--sp-3);
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 48px 1fr auto;
   gap: var(--sp-3);
   align-items: center;
-  transition: background var(--dur-fast) var(--ease-out);
+  border-block-end: 1px solid var(--rule);
 }
-.p-cell:hover { background: var(--bg); }
 .p-cell .mini {
   width: 48px; height: 48px;
   display: grid; place-content: center;
@@ -695,18 +703,15 @@ svg text { font-family: var(--font-main); }
 /* ============================================================
    09 · الفعاليات
    ============================================================ */
-.events-grid { display: grid; gap: 1px; background: var(--rule-2); border: 1px solid var(--rule-2); }
+/* الفعاليات — دفتر مواعيد مفتوح: التاريخ هو الصندوق الوحيد */
+.events-grid { display: grid; gap: var(--sp-6); }
 @media (min-width: 1024px) { .events-grid { grid-template-columns: repeat(3, 1fr); } }
 .ev {
-  background: var(--surface);
-  padding: var(--sp-5);
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: var(--sp-4);
   align-items: start;
-  transition: background var(--dur-fast) var(--ease-out);
 }
-.ev:hover { background: var(--bg); }
 .ev-date { border: 1.5px solid var(--primary); text-align: center; padding: var(--sp-2) 0 var(--sp-1); }
 .ev-date b { display: block; font-size: var(--fs-xl); font-weight: 700; line-height: 1; color: var(--primary); font-variant-numeric: tabular-nums; }
 .ev-date span { font-size: var(--fs-xs); color: var(--text-muted); }
@@ -754,14 +759,24 @@ svg text { font-family: var(--font-main); }
 @media (min-width: 1024px) { .inst .inner { grid-template-columns: 1.25fr .75fr; align-items: center; } }
 
 .inst .rl { color: var(--iwad-gold); }
+/* البيان المؤسسي الكبير — ذروة الختام: يُكشف بمسحة واحدة */
 .inst .mission {
-  font-size: clamp(var(--fs-lg), 2.4vw, var(--fs-xl));
-  line-height: 1.7;
+  font-size: clamp(var(--fs-xl), 3vw, var(--fs-3xl));
+  line-height: 1.62;
+  font-weight: 400;
   color: var(--iwad-cream);
-  max-width: 32ch;
-  margin-block: var(--sp-3) var(--sp-4);
+  max-width: 26ch;
+  margin-block: var(--sp-4) var(--sp-5);
 }
 .inst .mission b { color: var(--iwad-gold); font-weight: 600; }
+html.js .inst .mission {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 950ms var(--ease-out) 120ms;
+}
+html.js .inst.armed .mission { clip-path: inset(0 0 -6% 0); }
+@media (prefers-reduced-motion: reduce) {
+  html.js .inst .mission { clip-path: none; transition: none; }
+}
 .inst .pillars-line { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); font-size: var(--fs-md); font-weight: 600; color: rgb(243 238 234 / 85%); margin-block-end: var(--sp-5); }
 .inst .pillars-line .sq { width: 7px; height: 7px; background: var(--iwad-gold); }
 .inst .btn-secondary { border-color: var(--iwad-cream); color: var(--iwad-cream); }
