@@ -108,6 +108,64 @@
     spySections.forEach(function (s) { spyIO.observe(s); });
   }
 
+  /* ---------- صفحة المادة: مؤشر القراءة + جدول محتويات حي + نسخ الرابط ---------- */
+  var progress = document.getElementById('read-progress');
+  if (progress) {
+    var onRead = function () {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', onRead, { passive: true });
+    onRead();
+  }
+
+  /* جدول المحتويات الحي — حساب مباشر بالمستطيلات (لا يعتمد على IO) */
+  var tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+  if (tocLinks.length) {
+    var tocPairs = [];
+    tocLinks.forEach(function (a) {
+      var t = document.querySelector(a.getAttribute('href'));
+      if (t) tocPairs.push({ t: t, a: a });
+    });
+    var tocTick = false;
+    var tocUpdate = function () {
+      tocTick = false;
+      var line = window.innerHeight * 0.32;
+      var current = null;
+      tocPairs.forEach(function (p) {
+        if (p.t.getBoundingClientRect().top <= line) current = p.a;
+      });
+      tocPairs.forEach(function (p) { p.a.classList.toggle('on', p.a === current); });
+    };
+    window.addEventListener('scroll', function () {
+      if (tocTick) return;
+      tocTick = true;
+      setTimeout(tocUpdate, 120);
+    }, { passive: true });
+    tocUpdate();
+  }
+
+  var copyBtn = document.getElementById('copy-link');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var url = location.href.split('#')[0];
+      (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject())
+        .then(function () { document.getElementById('share').classList.add('did'); })
+        .catch(function () { window.prompt('انسخ الرابط:', url); });
+    });
+  }
+
+  /* قراءة لوحة المسرح: فحص أي عنصر يحدّث سطر القراءة */
+  var heroRead = document.getElementById('hero-read');
+  if (heroRead) {
+    var heroReadDefault = heroRead.textContent;
+    document.querySelectorAll('.hero-map [data-read]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { heroRead.textContent = el.dataset.read; });
+    });
+    var heroSvg = document.querySelector('.hero-map svg');
+    if (heroSvg) heroSvg.addEventListener('mouseleave', function () { heroRead.textContent = heroReadDefault; });
+  }
+
   /* الأطلس: الفحص يحدّث لوحة الملف */
   var zones = document.querySelectorAll('.zone');
   var apName = document.getElementById('ap-name');
@@ -313,6 +371,7 @@
   }
 
   /* ============ الافتتاحية: الهيرو ============ */
+  if (document.querySelector('.hero-map')) {
   var heroTl = gsap.timeline({ defaults: { ease: 'expo.out' } });
   heroTl.from('[data-hero]', { opacity: 0, y: 22, duration: 0.6, stagger: 0.08 });
 
@@ -335,28 +394,16 @@
     .from('.hm-cross-v', { scaleY: 0, transformOrigin: '50% 0%', duration: 0.45, ease: M.easeDraw }, '<0.08')
     .from('.hm-watch', { opacity: 0, scale: 0.4, transformOrigin: 'center', duration: M.pop, ease: M.easePop }, '-=0.15')
     .from('.hero-sub a', { opacity: 0, y: 10, duration: 0.4, stagger: 0.07 }, '-=0.2');
+  }
 
   /* ============ بوابة الأقسام: الخلايا تُسجَّل والعلامات تُرصَد ============ */
-  sect('.gateway', function (tl) {
-    var cells = gsap.utils.toArray('.gw-cell');
-    tl.from(cells, { opacity: 0, y: 14, duration: M.unit, stagger: M.stag })
-      .from('.gw-cell .mark', {
-        scale: 0.3, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: M.stag
-      }, '-=0.35');
-  });
+  sect('.gateway', function () {}); /* الوحدات CSS-stagger */
 
   /* ============ المجرى: القيود تتوالى ============ */
-  sect('.stream-grid', function (tl) {
-    tl.from(gsap.utils.toArray('.st-row'), { opacity: 0, y: 10, duration: 0.35, stagger: 0.05 });
-  });
+  sect('.stream-grid', function () {});
 
   /* ============ الإصدارات المميزة: اللوحة تنكشف ثم النص يُسجَّل ============ */
-  sect('.feats', function (tl) {
-    gsap.utils.toArray('.feat').forEach(function (feat, i) {
-      var bits = feat.querySelectorAll('h3, .exc, .m');
-      tl.from(bits, { opacity: 0, y: 12, duration: M.unit, stagger: 0.07 }, i * 0.12);
-    });
-  });
+  sect('.feats', function () {});
 
   /* ============ الأطلس: الساحل يُرسم ثم اليابسة تمتلئ ثم الملفات تُرصَد ============ */
   sect('.atlas-section', function (tl) {
@@ -377,9 +424,7 @@
   }, true);
 
   /* ============ الفهرس: الصفوف تتوالى ============ */
-  sect('.pubs', function (tl) {
-    tl.from(gsap.utils.toArray('.pub'), { opacity: 0, y: 8, duration: 0.3, stagger: 0.04 });
-  });
+  sect('.pubs', function () {});
 
   /* ============ المعجم: الوصلات تُخط ثم العقد تُرصَد (المركز أولاً) ============ */
   sect('.lex-frame', function (tl) {
@@ -420,34 +465,19 @@
   }
 
   /* ============ الباحثون: الخلايا تتوالى ============ */
-  sect('.people-grid', function (tl) {
-    tl.from(gsap.utils.toArray('.p-cell'), { opacity: 0, y: 12, duration: M.unit, stagger: 0.08 }, 0.1);
-  });
+  sect('.people-grid', function () {});
 
   /* ============ الفعاليات: التواريخ تُرصَد ثم المتن ============ */
-  sect('.events-grid', function (tl) {
-    var evs = gsap.utils.toArray('.ev');
-    tl.from(evs, { opacity: 0, y: 14, duration: M.unit, stagger: 0.09 })
-      .from(gsap.utils.toArray('.ev-date'), {
-        scale: 0.7, transformOrigin: 'center', duration: M.pop, ease: M.easePop, stagger: 0.09
-      }, '-=0.4');
-  });
+  sect('.events-grid', function () {});
 
   /* ============ المداخل: البنك يترصّ سريعاً ============ */
-  sect('.topics', function (tl) {
-    tl.from(gsap.utils.toArray('.topic'), { opacity: 0, y: 8, duration: 0.28, stagger: 0.03 });
-  });
+  sect('.topics', function () {});
 
   /* ============ التغذية ============ */
-  sect('.feed-grid', function (tl) {
-    tl.from(gsap.utils.toArray('.fpost, .ffollow'), { opacity: 0, y: 12, duration: M.unit, stagger: 0.1 });
-  });
+  sect('.feed-grid', function () {});
 
   /* ============ قاعة المعهد: البيان يُكشف (CSS) والأرقام تتوالى ============ */
-  sect('.inst', function (tl) {
-    tl.from(gsap.utils.toArray('.figures .fig'), { opacity: 0, y: 10, duration: 0.4, stagger: 0.08 }, 0.25)
-      .from('.pillars-line', { opacity: 0, duration: 0.4 }, '-=0.2');
-  }, true);
+  sect('.inst', function () {}, true);
 
   /* ============ النشرة: تسليح فقط — الأقواس CSS ============ */
   sect('.nl-plate', function () {});

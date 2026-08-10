@@ -1,0 +1,307 @@
+/* ============================================================
+   IWAD — قالب المادة الموسعة (بحث معمّق)
+   متن مقروء + هامش عامل: جدول محتويات حي، بطاقة الدراسة،
+   شرح المصطلحات في مكانه، اقتباسات بارزة، سيرة الباحث
+   ============================================================ */
+
+/* ---------- مؤشر القراءة — الرصد يقيس تقدمك ---------- */
+.read-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  z-index: 300;
+  pointer-events: none;
+}
+.read-progress i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--iwad-gold);
+}
+
+/* ---------- فتات الخبز ---------- */
+.crumbs {
+  border-block-end: 1px solid var(--rule);
+  background: var(--surface);
+}
+.crumbs .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  min-height: 44px;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+.crumbs a:hover { color: var(--accent-text); }
+.crumbs .sep { color: var(--rule-2); }
+.crumbs .here { color: var(--text); font-weight: 600; }
+
+/* ---------- رأس الدراسة ---------- */
+.art-hero { padding-block: var(--sp-7) var(--sp-6); border-block-end: 1px solid var(--rule); }
+
+.art-hero .badges { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin-block-end: var(--sp-4); }
+
+.art-hero h1 {
+  font-size: clamp(var(--fs-2xl), 3.4vw, var(--fs-3xl));
+  line-height: 1.3;
+  color: var(--primary);
+  max-width: 26ch;
+  margin-block-end: var(--sp-4);
+}
+
+.art-hero .stand {
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 60ch;
+  margin-block-end: var(--sp-5);
+}
+
+.art-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3) var(--sp-5);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+.art-meta .who { display: inline-flex; align-items: center; gap: var(--sp-3); }
+.art-meta .who .avatar {
+  width: 44px; height: 44px;
+  display: grid; place-content: center;
+  background: var(--iwad-maroon);
+  color: var(--iwad-cream);
+  font-weight: 700;
+  position: relative;
+}
+.art-meta .who .avatar::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-end: 3px;
+  width: 7px; height: 7px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+}
+.art-meta .who b { display: block; color: var(--text); font-size: var(--fs-base); }
+.art-meta .who span { display: block; font-size: var(--fs-xs); }
+.art-meta .tnum { font-variant-numeric: tabular-nums; }
+
+.art-hero .acts { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-block-start: var(--sp-5); }
+
+/* ---------- الهيكل: متن + هامش ---------- */
+.art-layout {
+  display: grid;
+  gap: var(--sp-7);
+  padding-block: var(--sp-7);
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .art-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--sp-8); }
+}
+
+/* ---------- الهامش العامل ---------- */
+.art-aside { display: flex; flex-direction: column; gap: var(--sp-5); }
+@media (min-width: 1024px) {
+  .art-aside { position: sticky; inset-block-start: 96px; }
+}
+
+/* جدول المحتويات — يتتبع القراءة */
+.toc {
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  padding: var(--sp-5);
+}
+.toc .rl { margin-block-end: var(--sp-3); }
+.toc ol { display: flex; flex-direction: column; }
+.toc a {
+  position: relative;
+  display: block;
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+  padding: var(--sp-2) 0;
+  padding-inline-start: var(--sp-4);
+  border-inline-start: 2px solid var(--rule);
+  transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.toc a:hover { color: var(--text); }
+.toc a.on {
+  color: var(--primary);
+  font-weight: 700;
+  border-inline-start-color: var(--iwad-gold);
+}
+.toc a.on::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -6px;
+  inset-block-start: calc(50% - 5px);
+  width: 10px; height: 10px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+}
+
+/* بطاقة الدراسة */
+.doccard {
+  border: 1px solid var(--rule);
+  border-block-start: 3px solid var(--sec-global);
+  background: var(--bg);
+  padding: var(--sp-5);
+  font-size: var(--fs-sm);
+}
+.doccard .rl { margin-block-end: var(--sp-3); }
+.doccard dl { display: grid; grid-template-columns: auto 1fr; gap: var(--sp-2) var(--sp-4); }
+.doccard dt { color: var(--text-muted); font-size: var(--fs-xs); }
+.doccard dd { font-weight: 600; font-variant-numeric: tabular-nums; }
+.doccard .btn { width: 100%; margin-block-start: var(--sp-4); }
+
+/* مشاركة */
+.share {
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  padding: var(--sp-4) var(--sp-5);
+}
+.share .rl { margin-block-end: var(--sp-3); }
+.share .row { display: flex; gap: var(--sp-2); }
+.share .row a, .share .row button {
+  flex: 1;
+  display: inline-grid;
+  place-content: center;
+  min-height: 42px;
+  border: 1px solid var(--rule-2);
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.share .row a:hover, .share .row button:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+.share .copied { font-size: var(--fs-xs); color: var(--success); margin-block-start: var(--sp-2); display: none; }
+.share.did .copied { display: block; }
+
+/* ---------- المتن ---------- */
+.matn { min-width: 0; max-width: 70ch; }
+
+.matn > p {
+  font-size: 1.0588rem; /* 18px */
+  line-height: 1.95;
+  margin-block-end: var(--sp-5);
+}
+.matn > p.lead { font-size: var(--fs-md); color: var(--text); }
+
+.matn h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-xl);
+  color: var(--primary);
+  margin-block: var(--sp-7) var(--sp-4);
+  scroll-margin-block-start: 110px;
+}
+.matn h2::before {
+  content: "";
+  width: 12px; height: 12px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+  flex-shrink: 0;
+}
+.matn h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.matn ul, .matn ol { margin-block-end: var(--sp-5); padding-inline-start: var(--sp-5); }
+.matn li { font-size: 1.0588rem; line-height: 1.9; margin-block-end: var(--sp-2); }
+.matn li::marker { color: var(--accent-text); font-weight: 700; }
+
+/* اقتباس بارز */
+.matn .pull {
+  border-inline-start: 3px solid var(--iwad-gold);
+  padding-inline-start: var(--sp-5);
+  margin-block: var(--sp-6);
+}
+.matn .pull p {
+  font-size: var(--fs-lg);
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--primary);
+}
+.matn .pull p::before { content: "« "; color: var(--iwad-gold); }
+.matn .pull p::after { content: " »"; color: var(--iwad-gold); }
+
+/* لوحة داخل المتن */
+.matn figure { margin: 0; margin-block: var(--sp-6); }
+.matn .plate-frame { border: 1px solid var(--rule-2); background: var(--surface); }
+.matn .plate-frame svg { display: block; width: 100%; height: auto; }
+
+/* الشرح الحي — مصطلح بحاشية في مكانه */
+.ann {
+  border-block-end: 2px dotted var(--iwad-gold);
+  cursor: help;
+  position: relative;
+}
+.ann .tip {
+  position: absolute;
+  inset-block-start: calc(100% + 10px);
+  inset-inline-end: 0;
+  z-index: 20;
+  width: min(320px, 78vw);
+  background: var(--iwad-maroon);
+  color: var(--iwad-cream);
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+  font-weight: 400;
+  padding: var(--sp-4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.ann .tip b { color: var(--iwad-gold); display: block; margin-block-end: 2px; }
+.ann .tip .en { color: rgb(243 238 234 / 55%); font-size: var(--fs-xs); display: block; margin-block-end: var(--sp-2); }
+.ann .tip a { color: var(--iwad-gold); font-weight: 700; font-size: var(--fs-xs); }
+.ann:hover .tip, .ann:focus-within .tip { opacity: 1; visibility: visible; }
+
+/* ملاحظة منهجية */
+.method-note {
+  border: 1px dashed var(--rule-2);
+  padding: var(--sp-4) var(--sp-5);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin-block: var(--sp-6);
+}
+.method-note b { color: var(--accent-text); }
+
+/* ---------- ذيل الدراسة ---------- */
+.art-tail { border-block-start: 1px solid var(--rule-2); padding-block: var(--sp-7); }
+
+/* سيرة الباحث */
+.bio {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: var(--sp-5);
+  max-width: 760px;
+  margin-block-end: var(--sp-7);
+}
+.bio .idplate { width: 96px; height: 96px; font-size: var(--fs-2xl); }
+.bio h3 { font-size: var(--fs-lg); }
+.bio .role { font-size: var(--fs-sm); color: var(--accent-text); font-weight: 600; margin-block: 2px var(--sp-2); }
+.bio p { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.75; margin-block-end: var(--sp-2); }
+.bio a { font-weight: 700; font-size: var(--fs-sm); color: var(--accent-text); }
+.bio a:hover { text-decoration: underline; }
+
+/* مواد مرتبطة */
+.related .kicker-line { margin-block-end: var(--sp-4); }
+
+@media (max-width: 1023px) {
+  .art-aside { order: -1; }
+  .toc { order: 1; }
+}

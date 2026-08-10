@@ -5,6 +5,39 @@
    ============================================================ */
 
 /* ---------- أدوات مشتركة ---------- */
+
+/* كابشن اللوحات — لغة الأرشيف الموحدة (من قسم الإرث) */
+.fig-cap {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  padding-block-start: var(--sp-2);
+  font-variant-numeric: tabular-nums;
+}
+
+/* سطر تمهيد سردي تحت رأس القسم */
+.section-intro {
+  font-size: var(--fs-md);
+  color: var(--text-muted);
+  margin-block: calc(-1 * var(--sp-3)) var(--sp-5);
+  max-width: 52ch;
+}
+
+/* تدفق الخطوط المتقطعة عند فحص اللوحة — «الخريطة تتنفس» */
+@keyframes march { to { stroke-dashoffset: -22; } }
+/* التدفق على خطوط الحركة فقط — لا على خطوط الدليل والتأشير */
+.hero-map:hover .sea-route,
+.plate-frame:hover path[stroke-dasharray],
+.battle-frame:hover .bt-move {
+  animation: march 1.4s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-map:hover .sea-route,
+  .plate-frame:hover path[stroke-dasharray],
+  .battle-frame:hover .bt-move { animation: none; }
+}
 .kicker-line {
   display: flex;
   flex-wrap: wrap;
@@ -55,6 +88,33 @@ html.js section.armed .kicker-line::after { transform: scaleX(1); }
   flex-shrink: 0;
 }
 .spy.live .rl::before { opacity: 1; }
+
+/* ============================================================
+   تتابع الوحدات بالـ CSS — انقلاب كلاس، لا JS ticker يعلّق:
+   الحاوية عليها data-stagger، وعند .armed الأبناء يدخلون بتتابع
+   ============================================================ */
+html.js [data-stagger] > * {
+  opacity: 0;
+  translate: 0 10px;
+  transition: opacity .38s var(--ease-out), translate .38s var(--ease-out);
+}
+/* الكشف عند تسليح الحاوية نفسها أو أي سلف (السكشن يتسلح دائماً) */
+html.js [data-stagger].armed > *,
+html.js .armed [data-stagger] > * { opacity: 1; translate: 0 0; }
+[data-stagger] > *:nth-child(1)  { transition-delay: .00s; }
+[data-stagger] > *:nth-child(2)  { transition-delay: .05s; }
+[data-stagger] > *:nth-child(3)  { transition-delay: .10s; }
+[data-stagger] > *:nth-child(4)  { transition-delay: .15s; }
+[data-stagger] > *:nth-child(5)  { transition-delay: .20s; }
+[data-stagger] > *:nth-child(6)  { transition-delay: .25s; }
+[data-stagger] > *:nth-child(7)  { transition-delay: .30s; }
+[data-stagger] > *:nth-child(8)  { transition-delay: .35s; }
+[data-stagger] > *:nth-child(9)  { transition-delay: .40s; }
+[data-stagger] > *:nth-child(10) { transition-delay: .45s; }
+[data-stagger] > *:nth-child(n+11) { transition-delay: .5s; }
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-stagger] > * { opacity: 1; translate: none; transition: none; }
+}
 
 html.js .rise { opacity: 0; translate: 0 14px; }
 html.js .rise.in { opacity: 1; translate: 0 0; transition: opacity var(--dur-reveal) var(--ease-out), translate var(--dur-reveal) var(--ease-out); }
@@ -145,9 +205,25 @@ svg text { font-family: var(--font-main); }
 .hero-copy .btn-pdf { border-color: rgb(243 238 234 / 45%); color: var(--iwad-cream); }
 .hero-copy .btn-pdf:hover { background: var(--iwad-cream); color: var(--iwad-maroon); border-color: var(--iwad-cream); }
 
-/* خريطة المسرح */
+/* خريطة المسرح — تفاعلية بمؤشر تصويب وقراءة حية */
 .hero-map { position: relative; min-width: 0; }
-.hero-map svg { display: block; width: 100%; height: auto; }
+.hero-map svg { display: block; width: 100%; height: auto; cursor: crosshair; }
+.hero-map [data-read] { transition: opacity var(--dur-fast) var(--ease-out); }
+.hero-map [data-read]:hover { opacity: .85; }
+#hero-read { color: var(--iwad-gold); transition: color var(--dur-fast) var(--ease-out); }
+
+/* نبضتا اكتشاف على نقطة الرصد ثم سكون */
+@keyframes watch-ping {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: .55; }
+  100% { transform: scale(1); opacity: 1; }
+}
+html.js .hm-watch {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: watch-ping 1.6s var(--ease-out) 1.8s 2;
+}
+@media (prefers-reduced-motion: reduce) { html.js .hm-watch { animation: none; } }
 .hero-map .cap {
   display: flex;
   justify-content: space-between;
@@ -417,6 +493,7 @@ svg text { font-family: var(--font-main); }
 .files-index { display: grid; gap: 1px; background: var(--rule-2); border: 1px solid var(--rule-2); margin-block-start: var(--sp-5); }
 @media (min-width: 768px) { .files-index { grid-template-columns: repeat(3, 1fr); } }
 .fi {
+  position: relative;
   background: var(--surface);
   padding: var(--sp-3) var(--sp-4);
   display: flex;
@@ -425,6 +502,18 @@ svg text { font-family: var(--font-main); }
   gap: var(--sp-3);
   transition: background var(--dur-fast) var(--ease-out);
 }
+.fi::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block: 0;
+  width: 3px;
+  background: var(--sec-regional);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.fi:hover::before { transform: scaleY(1); }
 .fi:hover { background: color-mix(in srgb, var(--sec-regional) 6%, var(--surface)); }
 .fi .nm { font-size: var(--fs-sm); font-weight: 600; }
 .fi .c { font-size: var(--fs-xs); font-weight: 700; color: var(--sec-regional); font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -473,8 +562,33 @@ svg text { font-family: var(--font-main); }
 .pub .end { display: flex; align-items: center; gap: var(--sp-4); font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .pub .end .pdf { color: var(--accent-text); font-size: 14px; }
 .pub .end .pdf:hover { color: var(--primary); }
-/* فحص الصف يكشف بيانات الإحالة — «السجل يستجيب» */
-.pub { transition: background var(--dur-fast) var(--ease-out); }
+/* سطر الدفتر — رأس السجل التحريري */
+.pub-ledgerline {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--accent-text);
+  padding-block-end: var(--sp-3);
+  border-block-end: 2px solid var(--iwad-ink);
+  margin-block-end: var(--sp-2);
+}
+
+/* فحص القيد: شريط القسم يُرسم على حافته — «السجل يستجيب» */
+.pub { position: relative; transition: background var(--dur-fast) var(--ease-out); }
+.pub::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(-1 * var(--sp-5));
+  inset-block: 6px;
+  width: 3px;
+  background: var(--sec, var(--primary));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.pub:hover::before { transform: scaleY(1); }
 .pub:hover { background: var(--bg); }
 .pub .ref { transition: color var(--dur-fast) var(--ease-out); }
 .pub:hover .ref { color: var(--accent-text); font-weight: 700; }
@@ -492,6 +606,12 @@ svg text { font-family: var(--font-main); }
 
 .lex-frame { border: 1px solid var(--rule-2); background: var(--surface); }
 .lex-frame svg { display: block; width: 100%; height: auto; }
+/* الكابشن يتبع عمود المخطط في جريد العمودين */
+@media (min-width: 1024px) {
+  .lex-grid .lex-frame { grid-column: 1; grid-row: 1; }
+  .lex-grid .lex-cap   { grid-column: 1; grid-row: 2; }
+  .lex-grid .lex-side  { grid-column: 2; grid-row: 1 / span 2; }
+}
 .tnode { cursor: pointer; }
 .tnode rect { fill: var(--bg); stroke: var(--iwad-maroon); stroke-width: 1.5; transition: fill var(--dur-fast) var(--ease-out); }
 .tnode text { font-size: 13px; font-weight: 600; fill: var(--iwad-maroon); }
@@ -688,6 +808,7 @@ svg text { font-family: var(--font-main); }
   border-block-end: 1px solid var(--rule);
 }
 .p-cell .mini {
+  position: relative;
   width: 48px; height: 48px;
   display: grid; place-content: center;
   background: var(--iwad-maroon);
@@ -695,6 +816,20 @@ svg text { font-family: var(--font-main); }
   font-size: var(--fs-md);
   font-weight: 700;
 }
+/* فحص الباحث: قصّة اللوجو تظهر على لوحه */
+.p-cell .mini::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 4px;
+  inset-inline-end: 4px;
+  width: 8px; height: 8px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.p-cell:hover .mini::after { opacity: 1; }
+.p-cell:hover .nm { color: var(--primary); }
 .p-cell .nm { font-size: var(--fs-sm); font-weight: 700; }
 .p-cell .nm:hover { color: var(--primary); }
 .p-cell .sp { display: block; font-size: var(--fs-xs); color: var(--text-muted); }
