@@ -203,6 +203,38 @@ svg text { font-family: var(--font-main); }
 }
 
 /* ============================================================
+   01ب · بوابة الأقسام — خريطة المنصة في ثوانٍ
+   ============================================================ */
+.gateway { padding-block: var(--sp-7); }
+
+.gw { grid-template-columns: 1fr; }
+@media (min-width: 640px) and (max-width: 1023px) {
+  .gw { grid-template-columns: repeat(2, 1fr); }
+  .gw-cell:last-child { grid-column: 1 / -1; } /* الخامسة تمتد — لا خلية فاضية */
+}
+@media (min-width: 1024px) { .gw { grid-template-columns: repeat(5, 1fr); } }
+
+.gw-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-5) var(--sp-4);
+  background: var(--bg);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.gw-cell:hover { background: color-mix(in srgb, var(--sec) 5%, var(--bg)); }
+.gw-cell .mark {
+  width: 20px; height: 20px;
+  border: 3px solid var(--sec);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.gw-cell:hover .mark { background: var(--sec); }
+.gw-cell h3 { font-size: var(--fs-lg); font-weight: 700; color: var(--sec); }
+.gw-cell p { font-size: var(--fs-xs); line-height: 1.7; color: var(--text-muted); flex: 1; }
+.gw-cell .count { font-size: var(--fs-xs); font-weight: 700; color: var(--sec); }
+
+/* ============================================================
    02 · مجرى التقديرات — عمود زمني كثيف + الأحدث مميّز
    ============================================================ */
 .section { padding-block: var(--sp-8); }
@@ -406,8 +438,16 @@ svg text { font-family: var(--font-main); }
 .pub.hide { display: none; }
 .pub .ref { font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; }
 .pub .b { min-width: 0; }
-.pub .secline { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-xs); font-weight: 700; color: var(--sec, var(--primary)); margin-inline-end: var(--sp-3); }
+.pub .secline { display: inline-flex; align-items: center; gap: var(--sp-2); font-size: var(--fs-xs); font-weight: 700; color: var(--sec, var(--primary)); margin-inline-end: var(--sp-2); }
 .pub .secline::before { content: ""; width: 8px; height: 8px; border: 2px solid var(--sec, var(--primary)); }
+/* بادج طبقة المحتوى */
+.pub .pl {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  border-inline-start: 1px solid var(--rule-2);
+  padding-inline-start: var(--sp-2);
+  margin-inline-end: var(--sp-3);
+}
 .pub h3 { display: inline; font-size: var(--fs-base); font-weight: 500; line-height: 1.65; }
 .pub h3 a:hover { color: var(--sec, var(--primary)); }
 .pub .who { display: block; font-size: var(--fs-xs); color: var(--text-muted); margin-block-start: 2px; }
@@ -514,6 +554,29 @@ svg text { font-family: var(--font-main); }
 .era-stats { display: grid; grid-template-columns: repeat(3, auto); gap: var(--sp-5); justify-content: start; }
 .era-stats b { display: block; font-size: var(--fs-3xl); font-weight: 700; color: var(--sec-heritage); line-height: 1.1; }
 .era-stats span { font-size: var(--fs-xs); color: var(--text-muted); }
+
+/* في مثل هذا اليوم — بطاقة الإرث اليومية */
+.today-h {
+  border: 1px solid var(--sec-heritage);
+  background: color-mix(in srgb, var(--sec-heritage) 4%, var(--iwad-paper));
+  padding: var(--sp-4) var(--sp-5);
+  margin-block-start: var(--sp-5);
+  max-width: 46ch;
+}
+.today-h .th-k {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--sec-heritage);
+}
+.today-h .th-k::before { content: ""; width: 9px; height: 9px; background: var(--sec-heritage); }
+.today-h .th-d { font-size: var(--fs-sm); font-weight: 700; color: var(--text); margin-block: var(--sp-1) 2px; }
+.today-h .th-t { font-size: var(--fs-sm); line-height: 1.65; margin-block-end: var(--sp-2); }
+.today-h .th-t a:hover { color: var(--sec-heritage); }
+.today-h .th-more { font-size: var(--fs-xs); font-weight: 700; color: var(--sec-heritage); }
+.today-h .th-more:hover { text-decoration: underline; }
 
 /* الخط الزمني — لوح بحرارة القسم (سيبيا فاتح) لا أبيض نقي */
 .tl-plate {
@@ -777,3 +840,31 @@ svg text { font-family: var(--font-main); }
   .nl-form { flex-direction: column; }
   .nl-form input { width: auto; }
 }
+
+/* ============================================================
+   13 · من حساباتنا — تغذية التواصل
+   ============================================================ */
+.feed-grid { grid-template-columns: 1fr; }
+@media (min-width: 1024px) { .feed-grid { grid-template-columns: 1fr 1fr .6fr; } }
+
+.fpost {
+  background: var(--bg);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.fpost p { font-size: var(--fs-sm); line-height: 1.75; color: var(--text); }
+.fpost footer { font-size: var(--fs-xs); color: var(--text-muted); }
+.fpost .fp-net { font-weight: 700; color: var(--accent-text); }
+
+.ffollow {
+  background: var(--bg);
+  padding: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  justify-content: center;
+}
+.ffollow .social-row a { border-color: var(--rule-2); color: var(--text); }
+.ffollow .social-row a:hover { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
