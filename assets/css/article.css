@@ -310,6 +310,87 @@
 /* مواد مرتبطة */
 .related .kicker-line { margin-block-end: var(--sp-4); }
 
+/* ============================================================
+   مشتق ١ · الدراسة المتوسطة: غلاف عريض بدل لوحة جانبية، بلا TOC
+   ============================================================ */
+.cover-strip { margin: 0; margin-block-end: var(--sp-2); }
+.cover-strip .plate-frame { border: 1px solid var(--rule-2); background: var(--surface); }
+.cover-strip svg { display: block; width: 100%; height: auto; }
+
+/* ============================================================
+   مشتق ٢ · تقدير الموقف: سريع، مؤرَّخ، مشروط
+   ============================================================ */
+/* سطر الحدث — ما الذي استدعى التقدير */
+.event-line {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-3);
+  align-items: baseline;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-inline-start: 3px solid var(--iwad-gold);
+  padding: var(--sp-4) var(--sp-5);
+  margin-block-end: var(--sp-6);
+  font-size: var(--fs-sm);
+}
+.event-line .k { font-weight: 700; color: var(--accent-text); white-space: nowrap; }
+.event-line p { line-height: 1.75; }
+.event-line time { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* الدلالات المرقمة */
+.matn ol.sig-list { list-style: none; padding: 0; counter-reset: sig; }
+.matn ol.sig-list li {
+  counter-increment: sig;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--sp-3);
+  padding-block: var(--sp-3);
+  border-block-start: 1px solid var(--rule);
+}
+.matn ol.sig-list li::before {
+  content: counter(sig, decimal-leading-zero);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-text);
+  line-height: 1.4;
+}
+
+/* ما الذي نراقبه تالياً */
+.watchnext {
+  border: 1px solid var(--sec-global, var(--rule-2));
+  border-block-start: 3px solid var(--iwad-gold);
+  background: var(--surface);
+  padding: var(--sp-5);
+  margin-block: var(--sp-6);
+}
+.watchnext .rl { margin-block-end: var(--sp-3); }
+.watchnext ul { list-style: none; padding: 0; margin: 0; }
+.watchnext li {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: var(--sp-3);
+  align-items: baseline;
+  padding-block: var(--sp-2);
+  font-size: var(--fs-base);
+  line-height: 1.75;
+}
+.watchnext li::before {
+  content: "";
+  width: 10px; height: 10px;
+  border: 2px solid var(--iwad-gold);
+  align-self: center;
+}
+
+/* تنويه التقدير الأولي */
+.brief-note {
+  border: 1px dashed var(--rule-2);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  margin-block-start: var(--sp-5);
+}
+
 /* موبايل: القارئ أولاً — الهامش كله بعد المتن، لا ثلاث بطاقات قبل النص */
 @media (max-width: 1023px) {
   .art-aside { position: static; }

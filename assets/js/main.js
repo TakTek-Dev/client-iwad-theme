@@ -495,3 +495,24 @@
     });
   });
 })();
+
+/* ============================================================
+   المعجم — بحث حي في المصطلحات
+   ============================================================ */
+(function () {
+  var inp = document.getElementById('glossary-search');
+  if (!inp) return;
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.term-row'));
+  var shown = document.getElementById('glo-shown');
+  function apply() {
+    var q = inp.value.trim().toLowerCase();
+    var n = 0;
+    rows.forEach(function (r) {
+      var hit = !q || (r.getAttribute('data-k') || '').toLowerCase().indexOf(q) !== -1;
+      r.classList.toggle('hide', !hit);
+      if (hit) n++;
+    });
+    if (shown) shown.textContent = n;
+  }
+  inp.addEventListener('input', apply);
+})();

@@ -1,0 +1,231 @@
+/* ============================================================
+   IWAD — صفحات الأقسام (Hub) والملفات الدائمة
+   ============================================================ */
+
+/* ---------- رأس القسم/الملف ---------- */
+.sec-hero {
+  background: color-mix(in srgb, var(--sec, var(--primary)) 5%, var(--bg));
+  border-block-end: 1px solid var(--rule-2);
+  padding-block: var(--sp-7);
+}
+.sec-hero .badges { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin-block-end: var(--sp-4); }
+.sec-hero h1 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  font-size: clamp(var(--fs-2xl), 3.6vw, var(--fs-3xl));
+  color: var(--sec, var(--primary));
+  margin-block-end: var(--sp-3);
+}
+.sec-hero h1 .mark {
+  width: 26px; height: 26px;
+  background: var(--sec, var(--primary));
+  clip-path: var(--notch);
+  flex-shrink: 0;
+}
+.sec-hero .desc {
+  font-size: var(--fs-md);
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 62ch;
+  margin-block-end: var(--sp-5);
+}
+.sec-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.sec-stats b { color: var(--sec, var(--primary)); font-weight: 700; font-size: var(--fs-md); }
+
+/* ---------- صفوف الملفات الدائمة ---------- */
+.file-rows { border-block-start: 1px solid var(--rule-2); }
+.file-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-1) var(--sp-5);
+  align-items: center;
+  padding: var(--sp-4) var(--sp-2);
+  border-block-end: 1px solid var(--rule);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.file-row:hover { background: color-mix(in srgb, var(--sec-regional) 5%, transparent); }
+.file-row .nm {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--text);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.file-row:hover .nm { color: var(--sec-regional); }
+.file-row .nm::before {
+  content: "";
+  width: 14px; height: 14px;
+  background: var(--sec-regional);
+  clip-path: var(--notch);
+  opacity: .5;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  flex-shrink: 0;
+}
+.file-row:hover .nm::before { opacity: 1; }
+.file-row .ds {
+  grid-column: 1;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  padding-inline-start: calc(14px + var(--sp-3));
+  max-width: 60ch;
+}
+.file-row .meta {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  text-align: start;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.file-row .meta b { display: block; font-size: var(--fs-md); font-weight: 700; color: var(--sec-regional); }
+@media (max-width: 640px) {
+  .file-row { grid-template-columns: 1fr; }
+  .file-row .meta { grid-row: auto; grid-column: 1; padding-inline-start: calc(14px + var(--sp-3)); }
+  .file-row .meta b { display: inline; margin-inline-end: var(--sp-2); }
+}
+
+/* ---------- الخط الزمني الرأسي لأحداث الملف ---------- */
+.vtl {
+  position: relative;
+  padding-inline-start: var(--sp-6);
+  max-width: 70ch;
+}
+.vtl::before {
+  content: "";
+  position: absolute;
+  inset-block: 6px;
+  inset-inline-start: 7px;
+  width: 2px;
+  background: var(--rule-2);
+}
+.vtl-item { position: relative; padding-block-end: var(--sp-5); }
+.vtl-item:last-child { padding-block-end: 0; }
+.vtl-item::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: calc(-1 * var(--sp-6) + 1px);
+  inset-block-start: 4px;
+  width: 14px; height: 14px;
+  background: var(--sec-regional);
+  clip-path: var(--notch);
+}
+.vtl-item.key::before { background: var(--iwad-gold); }
+.vtl-item time {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--sec-regional);
+  font-variant-numeric: tabular-nums;
+  margin-block-end: 2px;
+}
+.vtl-item h3 { font-size: var(--fs-base); font-weight: 600; line-height: 1.6; }
+.vtl-item p { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.7; margin-block-start: 2px; }
+.vtl-item h3 a:hover { color: var(--sec-regional); }
+
+/* ---------- المعجم: بحث حي + صفوف المصطلحات ---------- */
+.glo-search {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  max-width: 560px;
+  background: var(--surface);
+  border: 1.5px solid var(--rule-2);
+  padding-inline: var(--sp-4);
+  margin-block-end: var(--sp-3);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.glo-search:focus-within { border-color: var(--sec-doctrine); }
+.glo-search i { color: var(--accent-text); }
+.glo-search input {
+  flex: 1; width: 0; min-width: 0;
+  border: none; background: none;
+  padding: var(--sp-3) 0;
+  font-size: var(--fs-base);
+}
+.glo-search input:focus { outline: none; }
+.glo-count { font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; margin-block-end: var(--sp-5); }
+
+.term-rows { border-block-start: 1px solid var(--rule-2); }
+.term-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-1) var(--sp-5);
+  padding: var(--sp-4) var(--sp-2);
+  border-block-end: 1px solid var(--rule);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.term-row:hover { background: color-mix(in srgb, var(--sec-doctrine) 4%, transparent); }
+.term-row.hide { display: none; }
+.term-row .t {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+.term-row .t a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--text);
+}
+.term-row .t a::before {
+  content: "";
+  width: 12px; height: 12px;
+  background: var(--sec-doctrine);
+  clip-path: var(--notch);
+  opacity: .5;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.term-row:hover .t a { color: var(--sec-doctrine); }
+.term-row:hover .t a::before { opacity: 1; }
+.term-row .en { font-size: var(--fs-xs); color: var(--text-muted); direction: ltr; }
+.term-row .df {
+  grid-column: 1;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 66ch;
+  padding-inline-start: calc(12px + var(--sp-2));
+}
+.term-row .c {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: center;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--accent-text);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .term-row { grid-template-columns: 1fr; }
+  .term-row .c { grid-row: auto; grid-column: 1; padding-inline-start: calc(12px + var(--sp-2)); }
+}
+
+/* مصطلحات مرتبطة — رقائق */
+.term-links { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.term-links a {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  border: 1px solid var(--rule-2);
+  padding: var(--sp-1) var(--sp-3);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.term-links a:hover { border-color: var(--sec-doctrine); color: var(--sec-doctrine); }
+
+/* ---------- شبكة باحثي القسم/الملف ---------- */
+.sec-people { display: grid; gap: 0 var(--sp-6); border-block-start: 1px solid var(--rule-2); max-width: 900px; }
+@media (min-width: 640px) { .sec-people { grid-template-columns: repeat(2, 1fr); } }

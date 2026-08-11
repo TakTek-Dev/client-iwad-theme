@@ -160,6 +160,9 @@ svg text { font-family: var(--font-main); }
   .battle-frame svg { min-width: 500px; }
   .lex-frame svg { min-width: 440px; }
   .ah-plate .plate-frame svg { min-width: 440px; }
+  .cover-strip .plate-frame { overflow-x: auto; scrollbar-width: thin; }
+  .cover-strip svg { min-width: 680px; }
+  .cover-strip .aperture::after { display: none; }
 
   /* الأقواس الخارجية تُقص مع السكرول الداخلي — نطفيها هنا */
   .hero-map .aperture::after,
