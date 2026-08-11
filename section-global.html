@@ -1,0 +1,317 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>القسم العالمي — إيواد</title>
+  <meta name="description" content="القسم العالمي في إيواد: رصد التموضع العسكري للقوى الكبرى عبر مصفوفة محاور القوى — بحري، جوي-صاروخي، نووي، سيبراني — مع ملفات دائمة وإصدارات القسم وباحثيه.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="القسم العالمي — التنافس الدولي والتوازنات الكبرى">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=441">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css?v=441">
+  <link rel="stylesheet" href="assets/css/main.css?v=441">
+  <link rel="stylesheet" href="assets/css/home.css?v=441">
+  <link rel="stylesheet" href="assets/css/article.css?v=441">
+  <link rel="stylesheet" href="assets/css/section.css?v=441">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li data-sec="global"><a href="section-global.html" aria-current="page">عالمي</a></li>
+        <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+        <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+        <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="about.html">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li data-sec="global"><a href="section-global.html" aria-current="page">عالمي</a></li>
+      <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+      <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+      <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="about.html">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="archive.html" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="article.html">الدرع الصاروخية الأوروبية</a>
+      <a href="study.html">الناتو بعد التوسعة</a>
+      <a href="archive.html">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="مسار الصفحة">
+  <div class="container">
+    <a href="index.html">الرئيسية</a>
+    <span class="sep">/</span>
+    <span class="here">عالمي</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ رأس القسم ============ -->
+  <header class="sec-hero" data-sec="global" style="--sec: var(--sec-global);">
+    <div class="container">
+      <div class="badges">
+        <span class="rl">قسم بحثي</span>
+        <span class="badge-sec">عالمي</span>
+      </div>
+      <h1><span class="mark" aria-hidden="true"></span> عالمي — التنافس الدولي</h1>
+      <p class="desc">
+        رصدٌ منهجي للتموضع العسكري للقوى الكبرى: أين تتركّز القدرات، وكيف تتحرك
+        خطوط التوازن بين المحاور — من الانتشار البحري في المحيطات إلى معمار الردع
+        النووي والمجال السيبراني. القسم يتتبّع المحاور لا تدفّق الأخبار، ويقيّد كل
+        تحول في مصفوفة تحليلية تُراجَع دورياً.
+      </p>
+      <div class="sec-stats">
+        <span><b class="num tnum" data-count="27">27</b> مادة منشورة</span>
+        <span><b class="num tnum" data-count="4">4</b> ملفات دائمة</span>
+        <span><b class="num tnum" data-count="3">3</b> باحثين متخصصين</span>
+        <span>آخر تحديث: <b>9 أغسطس 2026</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ مصفوفة محاور القوى — التوقيع ============ -->
+  <section class="section spy" aria-labelledby="gx-matrix-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="gx-matrix-title">مصفوفة محاور القوى</h2>
+        <span class="rl">تقدير مفتوح المصادر</span>
+        <a class="aux" href="archive.html?sec=global">كل مواد القسم ←</a>
+      </div>
+      <p class="section-intro">
+        قراءة أفقية لتركّز النشاط العسكري لكل محور قوة عبر أربعة مجالات. الكلمة
+        تصف الاتجاه، وعلامة الرصد تُرمّز الكثافة — كلما اكتملت العلامة ازدادت
+        وتيرة النشاط المرصود خلال الربع الأخير.
+      </p>
+
+      <div class="gx-plate aperture ap-hover rise">
+        <div class="gx-scroll">
+          <table class="gx-matrix">
+            <caption class="sr-only">مصفوفة محاور القوى: كثافة النشاط العسكري لأربعة محاور عبر المجالات البحري والجوي-الصاروخي والنووي والسيبراني</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="gx-corner">المحور / المجال</th>
+                <th scope="col">بحري</th>
+                <th scope="col">جوي-صاروخي</th>
+                <th scope="col">نووي</th>
+                <th scope="col">سيبراني</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">الولايات المتحدة</th>
+                <td><span class="gx-cell gx-l1"><i class="gx-dot" aria-hidden="true"></i>نشِط</span></td>
+                <td><span class="gx-cell gx-l1"><i class="gx-dot" aria-hidden="true"></i>نشِط</span></td>
+                <td><span class="gx-cell gx-l3"><i class="gx-dot" aria-hidden="true"></i>مستقر</span></td>
+                <td><span class="gx-cell gx-l2"><i class="gx-dot" aria-hidden="true"></i>متصاعد</span></td>
+              </tr>
+              <tr>
+                <th scope="row">الصين</th>
+                <td><span class="gx-cell gx-l2"><i class="gx-dot" aria-hidden="true"></i>متصاعد</span></td>
+                <td><span class="gx-cell gx-l2"><i class="gx-dot" aria-hidden="true"></i>متصاعد</span></td>
+                <td><span class="gx-cell gx-l2"><i class="gx-dot" aria-hidden="true"></i>متصاعد</span></td>
+                <td><span class="gx-cell gx-l1"><i class="gx-dot" aria-hidden="true"></i>نشِط</span></td>
+              </tr>
+              <tr>
+                <th scope="row">روسيا</th>
+                <td><span class="gx-cell gx-l3"><i class="gx-dot" aria-hidden="true"></i>مستقر</span></td>
+                <td><span class="gx-cell gx-l1"><i class="gx-dot" aria-hidden="true"></i>نشِط</span></td>
+                <td><span class="gx-cell gx-l3"><i class="gx-dot" aria-hidden="true"></i>مستقر</span></td>
+                <td><span class="gx-cell gx-l1"><i class="gx-dot" aria-hidden="true"></i>نشِط</span></td>
+              </tr>
+              <tr>
+                <th scope="row">أوروبا الأطلسية</th>
+                <td><span class="gx-cell gx-l3"><i class="gx-dot" aria-hidden="true"></i>مستقر</span></td>
+                <td><span class="gx-cell gx-l2"><i class="gx-dot" aria-hidden="true"></i>متصاعد</span></td>
+                <td><span class="gx-cell gx-l4"><i class="gx-dot" aria-hidden="true"></i>محدود</span></td>
+                <td><span class="gx-cell gx-l3"><i class="gx-dot" aria-hidden="true"></i>مستقر</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="gx-legend">
+          <span class="k">مفتاح الكثافة:</span>
+          <span class="gx-l1"><i class="gx-dot" aria-hidden="true"></i>نشِط</span>
+          <span class="gx-l2"><i class="gx-dot" aria-hidden="true"></i>متصاعد</span>
+          <span class="gx-l3"><i class="gx-dot" aria-hidden="true"></i>مستقر</span>
+          <span class="gx-l4"><i class="gx-dot" aria-hidden="true"></i>محدود</span>
+        </div>
+      </div>
+      <div class="fig-cap"><span>مصفوفة تحليلية — تقدير مفتوح المصادر، أغسطس 2026</span><span class="tnum">IWAD-DG-2026-07</span></div>
+    </div>
+  </section>
+
+  <!-- ============ ملفات القسم ============ -->
+  <section class="section spy" aria-labelledby="gx-files-title" style="padding-block-start: 0;">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="gx-files-title">ملفات القسم</h2>
+        <span class="rl">متابعة دائمة</span>
+      </div>
+
+      <div class="file-rows gx-files" data-stagger>
+        <a class="file-row" href="archive.html?sec=global">
+          <span class="nm">التوازن البحري في المحيط الهادئ</span>
+          <span class="ds">بنية الانتشار البحري للقوى الكبرى: خطوط الإمداد، ونقاط الارتكاز، وإيقاع المناورات المتقاطعة.</span>
+          <span class="meta"><b>8 مواد</b>آخر تحديث 7 أغسطس</span>
+        </a>
+        <a class="file-row" href="study.html">
+          <span class="nm">الناتو بعد التوسعة</span>
+          <span class="ds">بنية القيادة وتوزيع الأعباء داخل الحلف، وإعادة التموضع على الجناح الشرقي.</span>
+          <span class="meta"><b>7 مواد</b>آخر تحديث 24 يوليو</span>
+        </a>
+        <a class="file-row" href="article.html">
+          <span class="nm">الدرع الصاروخية الأوروبية</span>
+          <span class="ds">معمار الدفاع الصاروخي متعدد الطبقات: التغطية، ومواضع الثغرات، وحدود الاعتمادية.</span>
+          <span class="meta"><b>6 مواد</b>آخر تحديث 20 يونيو</span>
+        </a>
+        <a class="file-row" href="study.html">
+          <span class="nm">القواعد الأجنبية في القرن الأفريقي</span>
+          <span class="ds">خريطة الحضور المتزاحم على مداخل البحر الأحمر: وظائف القواعد وأنماط التموضع.</span>
+          <span class="meta"><b>5 مواد</b>آخر تحديث 20 نوفمبر 2025</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ إصدارات القسم ============ -->
+  <section class="section spy" aria-labelledby="gx-pubs-title" style="background: var(--surface); border-block: 1px solid var(--rule-2);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="gx-pubs-title">إصدارات القسم</h2>
+        <span class="rl">الإنتاج البحثي</span>
+        <a class="aux" href="archive.html?sec=global">أرشيف القسم ←</a>
+      </div>
+
+      <div class="pubs" data-stagger>
+        <div class="pub-ledgerline"><span>سجل القسم العالمي 2025–2026</span><span class="tnum">27 قيداً مفهرساً</span></div>
+        <div class="pub" data-sec="global"><span class="ref">IWAD-B-2026-113</span><div class="b"><span class="secline">تقدير موقف</span><h3><a href="brief.html">عقيدة الردع السيبراني عند القوى الكبرى: قراءة في الوثائق المفتوحة</a></h3><span class="who">د. طارق عبد الرحمن</span></div><div class="end"><time class="tnum" datetime="2026-08-09">9 أغسطس</time></div></div>
+        <div class="pub" data-sec="global"><span class="ref">IWAD-2026-034</span><div class="b"><span class="secline">بحث معمّق</span><h3><a href="article.html">التوازن البحري في المحيط الهادئ: بنية الانتشار الأمريكي أمام الصعود الصيني</a></h3><span class="who">د. سامر الحسن</span></div><div class="end"><time class="tnum" datetime="2026-08-07">7 أغسطس</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="global"><span class="ref">IWAD-2026-033</span><div class="b"><span class="secline">دراسة متوسطة</span><h3><a href="study.html">الناتو بعد التوسعة: بنية القيادة وتوزيع الأعباء داخل الحلف</a></h3><span class="who">د. هالة عثمان</span></div><div class="end"><time class="tnum" datetime="2026-07-24">24 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="global"><span class="ref">IWAD-2026-026</span><div class="b"><span class="secline">بحث معمّق</span><h3><a href="article.html">الدرع الصاروخية الأوروبية: العمارة والتغطية ومواضع الثغرات</a></h3><span class="who">د. هالة عثمان</span></div><div class="end"><time class="tnum" datetime="2026-06-20">20 يونيو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="global"><span class="ref">IWAD-2025-019</span><div class="b"><span class="secline">دراسة متوسطة</span><h3><a href="study.html">القواعد الأجنبية في القرن الأفريقي: خريطة الحضور المتزاحم</a></h3><span class="who">د. سامر الحسن</span></div><div class="end"><time class="tnum" datetime="2025-11-20">20 نوفمبر 2025</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ باحثو القسم ============ -->
+  <section class="section spy" aria-labelledby="gx-people-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="gx-people-title">باحثو القسم</h2>
+        <span class="rl">هيئة البحث</span>
+        <a class="aux" href="researchers.html">كل الباحثين ←</a>
+      </div>
+
+      <div class="sec-people" data-stagger>
+        <div class="p-cell"><span class="mini" aria-hidden="true">س</span><div><a class="nm" href="researcher.html">د. سامر الحسن</a><span class="sp">الأمن البحري وممرات الإمداد</span></div><span class="c tnum">12</span></div>
+        <div class="p-cell"><span class="mini" aria-hidden="true">هـ</span><div><a class="nm" href="researcher.html">د. هالة عثمان</a><span class="sp">الحلف الأطلسي وبنية التحالفات</span></div><span class="c tnum">9</span></div>
+        <div class="p-cell"><span class="mini" aria-hidden="true">ط</span><div><a class="nm" href="researcher.html">د. طارق عبد الرحمن</a><span class="sp">عقائد القوى الكبرى والردع</span></div><span class="c tnum">6</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="assets/js/main.js?v=441"></script>
+</body>
+</html>

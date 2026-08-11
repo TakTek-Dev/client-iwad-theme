@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الفعاليات — إيواد</title>
+  <meta name="description" content="برنامج لقاءات المعهد: ندوات نقاش مغلقة للمختصين وورش قراءة مفتوحة — فعاليتا أغسطس وسبتمبر القادمتان، وأرشيف جلسات الموسم بملخصاتها التحليلية.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="الفعاليات — ندوات وورش معهد إيواد">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=441">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css?v=441">
+  <link rel="stylesheet" href="assets/css/main.css?v=441">
+  <link rel="stylesheet" href="assets/css/home.css?v=441">
+  <link rel="stylesheet" href="assets/css/article.css?v=441">
+  <link rel="stylesheet" href="assets/css/section.css?v=441">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+        <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+        <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+        <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="about.html">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+      <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+      <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+      <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="about.html">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="archive.html" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="contact.html">طلبات الدعوة</a>
+      <a href="glossary.html">معجم المصطلحات</a>
+      <a href="archive.html">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="مسار الصفحة">
+  <div class="container">
+    <a href="index.html">الرئيسية</a>
+    <span class="sep">/</span>
+    <span class="here">الفعاليات</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ رأس الصفحة ============ -->
+  <header class="sec-hero">
+    <div class="container">
+      <div class="badges">
+        <span class="rl">برنامج اللقاءات العلمية</span>
+        <span class="layer">موسم 2026</span>
+      </div>
+      <h1><span class="mark" aria-hidden="true"></span> الفعاليات</h1>
+      <p class="desc">
+        لقاءات المعهد على مسارين: ندوات نقاش مغلقة تُعقد بدعوة للمختصين حول أحدث
+        الإصدارات، وورش قراءة مفتوحة بالتسجيل المسبق. تُنشر تسجيلات الجلسات
+        وملخصاتها التحليلية في الأرشيف خلال أسبوعين من الانعقاد.
+      </p>
+      <div class="sec-stats">
+        <span><b class="tnum">2</b> فعالية قادمة</span>
+        <span><b class="tnum">4</b> فعاليات منعقدة هذا الموسم</span>
+        <span>الإيقاع: <b>لقاء شهري</b></span>
+        <span>آخر تحديث: <b>10 أغسطس 2026</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ الفعاليات القادمة — لوح الجدول ============ -->
+  <section class="section spy" aria-labelledby="up-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="up-title">الفعاليات القادمة</h2>
+        <span class="rl">التسجيل مفتوح</span>
+        <a class="aux" href="contact.html">طلب دعوة ←</a>
+      </div>
+
+      <div class="ev-rows" data-stagger>
+        <article class="ev-row aperture ap-hover" data-sec="global">
+          <div class="ev-date">
+            <b class="tnum">21</b>
+            <span class="ev-mo">أغسطس 2026</span>
+            <span class="ev-day tnum">الخميس · 19:00</span>
+          </div>
+          <div class="ev-body">
+            <span class="rl">ندوة نقاش مغلقة</span>
+            <h3>قراءة في توازن المحيط الهادئ: المنهجية والخلاصات</h3>
+            <p class="ev-desc">
+              جلسة مغلقة مع فريق البحث حول البحث المعمّق «توازن الردع في المحيط الهادئ»:
+              كيف بُني الإطار التحليلي، وما الذي تغيّر في تقديرات الفريق بعد النشر،
+              وأين تتجه المؤشرات في الربع الأخير من 2026. يديرها د. سامر الحسن.
+            </p>
+            <a class="ev-refl" href="article.html">المادة المرجعية: البحث المعمّق ←</a>
+            <span class="ev-meta">أونلاين — بث مباشر · 90 دقيقة · بالعربية · الحضور بدعوة</span>
+          </div>
+          <div class="ev-actions">
+            <a class="btn btn-primary" href="contact.html">سجّل الاهتمام</a>
+            <a class="ev-more" href="#">تفاصيل ←</a>
+          </div>
+        </article>
+
+        <article class="ev-row" data-sec="education">
+          <div class="ev-date">
+            <b class="tnum">4</b>
+            <span class="ev-mo">سبتمبر 2026</span>
+            <span class="ev-day tnum">الخميس · 18:00</span>
+          </div>
+          <div class="ev-body">
+            <span class="rl">ورشة قراءة خرائط</span>
+            <h3>ورشة: كيف تقرأ الخريطة العملياتية؟</h3>
+            <p class="ev-desc">
+              ورشة تطبيقية مفتوحة بالتسجيل المسبق: طبقات الخريطة العملياتية، رموز
+              التمثيل، وقراءة عاملَي المسافة والزمن — على نماذج تجريدية بلا حدود
+              سياسية، وفق منهجية المعهد. تقدّمها د. نور خليل.
+            </p>
+            <a class="ev-refl" href="section-education.html">ضمن مسار القسم التعليمي ←</a>
+            <span class="ev-meta">أونلاين — تفاعلية · 120 دقيقة · بالعربية · المقاعد محدودة (40)</span>
+          </div>
+          <div class="ev-actions">
+            <a class="btn btn-primary" href="contact.html">سجّل الاهتمام</a>
+            <a class="ev-more" href="#">تفاصيل ←</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="fig-cap">
+        <span>لوح الجدول — لقاء شهري، الخميس مساءً · بث مباشر أونلاين</span>
+        <span class="tnum">6 لقاءات في موسم 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ فعاليات سابقة ============ -->
+  <section class="section spy" aria-labelledby="past-title" style="background: var(--surface); border-block: 1px solid var(--rule-2);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="past-title">فعاليات سابقة</h2>
+        <span class="rl">سجل الموسم</span>
+        <a class="aux" href="archive.html">التسجيلات في الأرشيف ←</a>
+      </div>
+
+      <div class="ev-past" data-stagger>
+        <div class="ev-prow" data-sec="doctrine">
+          <time class="tnum" datetime="2026-07-17">17 يوليو 2026</time>
+          <div class="ev-pb">
+            <span class="ev-ptype">ندوة نقاش</span>
+            <h3><a href="term.html">الردع الممتد: المفهوم وحدود صدقيته بين الحلفاء</a></h3>
+          </div>
+          <span class="ev-plinks">
+            <a class="sum" href="brief.html">الملخص التحليلي ←</a>
+            <a class="rec" href="#">التسجيل</a>
+          </span>
+        </div>
+
+        <div class="ev-prow" data-sec="education">
+          <time class="tnum" datetime="2026-06-19">19 يونيو 2026</time>
+          <div class="ev-pb">
+            <span class="ev-ptype">ورشة قراءة</span>
+            <h3><a href="study.html">المصادر الأولية في الدراسة العسكرية: من الوثيقة إلى الاستنتاج</a></h3>
+          </div>
+          <span class="ev-plinks">
+            <a class="sum" href="study.html">الملخص التحليلي ←</a>
+            <a class="rec" href="#">التسجيل</a>
+          </span>
+        </div>
+
+        <div class="ev-prow" data-sec="regional">
+          <time class="tnum" datetime="2026-05-22">22 مايو 2026</time>
+          <div class="ev-pb">
+            <span class="ev-ptype">ندوة نقاش</span>
+            <h3><a href="file-syria-israel.html">قواعد الاشتباك بين التقنين والتحول: حالة الجبهة السورية</a></h3>
+          </div>
+          <span class="ev-plinks">
+            <a class="sum" href="brief.html">الملخص التحليلي ←</a>
+            <a class="rec" href="#">التسجيل</a>
+          </span>
+        </div>
+
+        <div class="ev-prow" data-sec="doctrine">
+          <time class="tnum" datetime="2026-04-24">24 أبريل 2026</time>
+          <div class="ev-pb">
+            <span class="ev-ptype">جلسة إطلاق</span>
+            <h3><a href="glossary.html">إطلاق معجم المصطلحات العسكرية: المنهجية وخارطة التوسع</a></h3>
+          </div>
+          <span class="ev-plinks">
+            <a class="sum" href="study.html">الملخص التحليلي ←</a>
+            <a class="rec" href="#">التسجيل</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ملاحظة الحضور ============ -->
+  <section class="section spy" aria-label="ملاحظة الحضور" style="padding-block-end: 0;">
+    <div class="container">
+      <div class="ev-note rise">
+        <p>الحضور في الندوات المغلقة بدعوة للمختصين والباحثين — تُقدَّم طلبات الدعوة عبر صفحة التواصل وتُراجَع خلال ثلاثة أيام عمل.</p>
+        <a href="contact.html">صفحة التواصل ←</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="assets/js/main.js?v=441"></script>
+</body>
+</html>

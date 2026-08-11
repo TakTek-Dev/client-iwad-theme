@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>قسم الإرث العسكري — إيواد</title>
+  <meta name="description" content="سجل المعارك حالات دراسية: عين جالوت، حطّين، ملاذكرد، اليرموك، القادسية — ذاكرة تحليلية أرشيفية تقرأ الجغرافيا واللوجستيات وبنية القرار، لا سردية احتفالية.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="قسم الإرث العسكري — الذاكرة التحليلية">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=441">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css?v=441">
+  <link rel="stylesheet" href="assets/css/main.css?v=441">
+  <link rel="stylesheet" href="assets/css/home.css?v=441">
+  <link rel="stylesheet" href="assets/css/article.css?v=441">
+  <link rel="stylesheet" href="assets/css/section.css?v=441">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+        <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+        <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+        <li data-sec="heritage"><a href="section-heritage.html" aria-current="page">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="about.html">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+      <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+      <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+      <li data-sec="heritage"><a href="section-heritage.html" aria-current="page">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="about.html">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="archive.html" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="study.html">عين جالوت — قراءة عملياتية</a>
+      <a href="article.html">حطّين — الجغرافيا والماء</a>
+      <a href="archive.html">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="مسار الصفحة">
+  <div class="container">
+    <a href="index.html">الرئيسية</a>
+    <span class="sep">/</span>
+    <span class="here">إرث عسكري</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ رأس القسم — سيبيا أرشيفي ============ -->
+  <header class="sec-hero hx-hero" data-sec="heritage" style="--sec: var(--sec-heritage);">
+    <div class="container">
+      <div class="badges">
+        <span class="rl">قسم من خمسة</span>
+        <span class="layer">IWAD-RG · 2026</span>
+      </div>
+      <h1><span class="mark" aria-hidden="true"></span> إرث عسكري</h1>
+      <p class="desc">
+        ذاكرة تحليلية، لا سردية احتفالية. يقرأ القسم المعارك التاريخية بوصفها حالات
+        دراسية في الجغرافيا واللوجستيات وبنية القرار: ما الذي كان معلوماً لحظة الاختيار،
+        وما الذي كان متاحاً غيره، ولماذا رُجّح ما رُجّح. المصادر أولية محكّمة، والحكم
+        عملياتي بارد — بلا بطولات ولا خطابة.
+      </p>
+      <div class="sec-stats">
+        <span><b>17</b> مادة منشورة</span>
+        <span><b>5</b> حالات في السجل</span>
+        <span><b>6</b> حقب في التغطية</span>
+        <span>آخر تحديث: <b>10 يوليو 2026</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ التوقيع: سجل المعارك — حالات دراسية ============ -->
+  <section class="section spy hx-register" aria-labelledby="reg-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="reg-title">سجل المعارك — حالات دراسية</h2>
+        <span class="rl">ترتيب زمني تنازلي</span>
+        <a class="aux" href="archive.html?sec=heritage">أرشيف القسم ←</a>
+      </div>
+
+      <div class="vtl-layout">
+        <div class="vtl" data-stagger>
+          <div class="vtl-item key">
+            <time class="tnum" datetime="1260">1260م</time>
+            <h3><a href="study.html">عين جالوت 1260 — اختيار الأرض وقطع الإمداد</a></h3>
+            <p>حالة مرجعية في فرض أرض المعركة: تضييق ممرات الحركة على خصم يعتمد سرعة الخيالة، وقطع خط الإمداد قبل الاشتباك لا في أثنائه.</p>
+          </div>
+          <div class="vtl-item">
+            <time class="tnum" datetime="1187">1187م</time>
+            <h3><a href="article.html">حطّين 1187 — الجغرافيا والماء</a></h3>
+            <p>المورد بوصفه متغيراً حاسماً: السيطرة على مصادر الماء أخرجت قوة محترفة من حساب المعركة قبل أن تبدأ فعلياً.</p>
+          </div>
+          <div class="vtl-item">
+            <time class="tnum" datetime="1071">1071م</time>
+            <h3><a href="#">ملاذكرد 1071 — قراءة في قرار المناورة</a></h3>
+            <p>فحص لقرار المناورة تحت نقص المعلومات، وأثر التكوين غير المتجانس للقوة على تماسك الأجنحة لحظة الالتحام.</p>
+          </div>
+          <div class="vtl-item">
+            <time class="tnum" datetime="0636">636م</time>
+            <h3><a href="#">اليرموك 636 — الخطوط الداخلية</a></h3>
+            <p>الخطوط الداخلية عملياً: قوة أقل عدداً تعيد توزيع ثقلها بين محاور متقاربة أسرع مما يسمح به انتشار الخصم على جبهة أطول.</p>
+          </div>
+          <div class="vtl-item">
+            <time class="tnum" datetime="0636">636م</time>
+            <h3><a href="#">القادسية 636 — إدارة المعركة الممتدة</a></h3>
+            <p>معركة الأيام المتعاقبة: تناوب التشكيلات، واقتصاد الجهد، وتوقيت الدفع بالاحتياط عند نقطة الإنهاك المتبادل.</p>
+          </div>
+        </div>
+
+        <aside class="doccard aperture rise">
+          <span class="rl">منهج السجل</span>
+          <dl>
+            <dt>المصادر</dt>
+            <dd>أولية محكّمة</dd>
+            <dt>المنهج</dt>
+            <dd>تحليل عملياتي لا سردي</dd>
+            <dt>الاستبعاد</dt>
+            <dd>لا مرويات غير موثقة</dd>
+            <dt>التحديث</dt>
+            <dd>فصلي — آخر مراجعة <span class="tnum">1 يوليو 2026</span></dd>
+          </dl>
+          <a class="btn btn-primary" href="archive.html?sec=heritage">فهرس القسم الكامل</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ مبادئ الأرشفة ============ -->
+  <section class="section spy" aria-labelledby="pr-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="pr-title">مبادئ الأرشفة</h2>
+        <span class="rl">ضوابط المنهج</span>
+      </div>
+
+      <div class="matn">
+        <p class="lead">
+          لماذا نقرأ معارك مضى عليها قرون؟ لأن المعركة القديمة مختبر مغلق: عواملها
+          محدودة، ونتيجتها معلومة، ووثائقها استقرت. القيمة ليست في «دروس» جاهزة
+          تُستنسخ، بل في مشاهدة بنية القرار وهي تعمل تحت ضغط الجغرافيا والإمداد
+          والوقت — وهي ضغوط لم تتغير طبيعتها وإن تغيرت أدواتها.
+        </p>
+        <p>
+          للقياس التاريخي حدود يلتزمها السجل: تقنيات القتال تتقادم ولا تُسقَط على
+          الحاضر، أما الذي يصمد للمقارنة فهو القيود البنيوية — المسافة، والماء،
+          وكلفة الحركة، وسرعة المعلومة. القياس المشروع قياس على القيد لا على الأداة،
+          وأي إسقاط مباشر من القرن السابع على مسرح معاصر تجاوز منهجي تُرفض به الحالة.
+        </p>
+        <blockquote class="pull">
+          <p>نؤرشف القرار لا البطولة: ما الذي كان معلوماً لحظة الاختيار، وما الذي كان متاحاً غيره؟</p>
+        </blockquote>
+        <p>
+          وفي المصادر: تُقبل الرواية بإسنادها لا بذيوعها — نص أولي محقق، أو أثر مادي،
+          أو تقاطع مستقل بين مصدرين على الأقل. المرويات الشعبية وأرقام الجيوش المتضخمة
+          تُسجَّل في هامش النقد ولا تدخل متن الحالة، ويُراجَع السجل فصلياً كلما استجد
+          تحقيق نصي أو كشف أثري يعدّل المعطيات.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ إصدارات القسم ============ -->
+  <section class="section spy" aria-labelledby="hp-title" style="background: var(--surface); border-block: 1px solid var(--rule-2);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="hp-title">إصدارات القسم</h2>
+        <span class="rl">الإنتاج البحثي</span>
+        <a class="aux" href="archive.html?sec=heritage">أرشيف القسم ←</a>
+      </div>
+
+      <div class="pubs" data-stagger>
+        <div class="pub-ledgerline"><span>سجل الإرث 2025–2026</span><span class="tnum">4 قيود مفهرسة</span></div>
+        <div class="pub" data-sec="heritage"><span class="ref">IWAD-2026-029</span><div class="b"><span class="secline">دراسة متوسطة</span><h3><a href="study.html">عين جالوت: قراءة عملياتية في التموضع والتضاريس واختيار الأرض</a></h3><span class="who">د. نور خليل</span></div><div class="end"><time class="tnum" datetime="2026-07-10">10 يوليو 2026</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="heritage"><span class="ref">IWAD-2026-025</span><div class="b"><span class="secline">بحث معمّق</span><h3><a href="article.html">حطّين: الجغرافيا والماء وخطوط الإمداد في حسم المعركة</a></h3><span class="who">د. نور خليل</span></div><div class="end"><time class="tnum" datetime="2026-06-12">12 يونيو 2026</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="heritage"><span class="ref">IWAD-2025-021</span><div class="b"><span class="secline">دراسة متوسطة</span><h3><a href="study.html">برلين 1961: إدارة أزمة على حافة الحرب دون انزلاق</a></h3><span class="who">د. نور خليل</span></div><div class="end"><time class="tnum" datetime="2025-12-18">18 ديسمبر 2025</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="heritage"><span class="ref">IWAD-2025-018</span><div class="b"><span class="secline">بحث معمّق</span><h3><a href="article.html">فن الحصار في العصر الوسيط: منهجية قراءة المصادر الأولية</a></h3><span class="who">د. نور خليل</span></div><div class="end"><time class="tnum" datetime="2025-11-08">8 نوفمبر 2025</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ باحث القسم ============ -->
+  <section class="section spy" aria-labelledby="hr-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="hr-title">باحث القسم</h2>
+        <span class="rl">هيئة البحث</span>
+        <a class="aux" href="researchers.html">كل الباحثين ←</a>
+      </div>
+
+      <div class="sec-people" data-stagger>
+        <div class="p-cell"><span class="mini" aria-hidden="true">ن</span><div><a class="nm" href="researcher.html">د. نور خليل</a><span class="sp">التاريخ العسكري الوسيط — منهجية المصادر الأولية</span></div><span class="c tnum">17</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="assets/js/main.js?v=441"></script>
+</body>
+</html>

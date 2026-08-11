@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>القسم التعليمي — إيواد</title>
+  <meta name="description" content="القسم التعليمي في إيواد: مسارات تعلم متدرجة تبسّط النظريات والعقائد العسكرية لغير المتخصص — 14 مادة، 3 مسارات، مستويان تمهيدي ومتوسط.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="تعليمي — مداخل ومسارات تعلم متدرجة">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=441">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css?v=441">
+  <link rel="stylesheet" href="assets/css/main.css?v=441">
+  <link rel="stylesheet" href="assets/css/home.css?v=441">
+  <link rel="stylesheet" href="assets/css/article.css?v=441">
+  <link rel="stylesheet" href="assets/css/section.css?v=441">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+        <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+        <li data-sec="education"><a href="section-education.html" aria-current="page">تعليمي</a></li>
+        <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="about.html">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+      <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+      <li data-sec="education"><a href="section-education.html" aria-current="page">تعليمي</a></li>
+      <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="about.html">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="archive.html" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="glossary.html">معجم المصطلحات</a>
+      <a href="study.html">مدخل نظريات الردع</a>
+      <a href="archive.html">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="مسار الصفحة">
+  <div class="container">
+    <a href="index.html">الرئيسية</a>
+    <span class="sep">/</span>
+    <span class="here">تعليمي</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ رأس القسم ============ -->
+  <header class="sec-hero" data-sec="education" style="--sec: var(--sec-education);">
+    <div class="container">
+      <div class="badges">
+        <span class="rl">قسم من خمسة</span>
+        <span class="layer">محتوى معرفي مفتوح — المرحلة الأولى</span>
+      </div>
+      <h1><span class="mark" aria-hidden="true"></span> تعليمي — مداخل ومسارات</h1>
+      <p class="desc">
+        هنا تتحول المادة البحثية للمعهد إلى مسارات تعلم متدرجة لغير المتخصص:
+        مداخل مبسطة تشرح النظريات والمفاهيم من نقطة الصفر، ثم تصعد خطوة بخطوة —
+        من المصطلح إلى الدراسة إلى النص البحثي الكامل — بلا اختزال مخلّ ولا حواجز اصطلاحية.
+      </p>
+      <div class="sec-stats">
+        <span><b class="num tnum" data-count="14">14</b> مادة تعليمية</span>
+        <span><b class="num tnum" data-count="3">3</b> مسارات تعلم</span>
+        <span><b>مستويان:</b> تمهيدي ومتوسط</span>
+        <span>آخر تحديث: <b>9 أغسطس 2026</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ التوقيعة: مسارات التعلم ============ -->
+  <section class="section spy" aria-labelledby="paths-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="paths-title">مسارات التعلم</h2>
+        <span class="rl">السلّم التدريجي</span>
+        <a class="aux" href="glossary.html">معجم المصطلحات ←</a>
+      </div>
+      <p class="section-intro">
+        كل مسار سلسلة قراءة مرتبة: يبدأ بمدخل مبسط، يمر على المصطلحات المفتاحية،
+        وينتهي عند النص البحثي الكامل. اتبع الترقيم — الترتيب جزء من المنهج.
+      </p>
+
+      <div class="ex-paths" data-stagger>
+        <article class="ex-path aperture">
+          <header>
+            <div class="ex-top">
+              <span class="ex-mark" aria-hidden="true"></span>
+              <span class="ex-lvl">تمهيدي</span>
+            </div>
+            <h3>مدخل إلى الفكر الاستراتيجي</h3>
+            <p class="ex-meta tnum"><span>3 خطوات</span><span>≈ 45 دقيقة</span></p>
+          </header>
+          <ol class="ex-steps">
+            <li>
+              <div class="ex-st">
+                <a href="study.html">المفاهيم المؤسِّسة: ما الاستراتيجية وما التكتيك؟</a>
+                <p class="ex-sd">نقطة الصفر: لماذا تحتاج الدول نظريةً للقوة، وأين تنتهي السياسة ويبدأ الميدان.</p>
+                <span class="ex-sk">دراسة متوسطة</span>
+              </div>
+            </li>
+            <li>
+              <div class="ex-st">
+                <a href="term.html">مصطلح: العقيدة العسكرية</a>
+                <p class="ex-sd">التعريف المرجعي للمصطلح الذي ستقابله في كل نص لاحق — احفظه قبل المتابعة.</p>
+                <span class="ex-sk">صفحة مصطلح</span>
+              </div>
+            </li>
+            <li>
+              <div class="ex-st">
+                <a href="article.html">سلاسل الجزر: الجغرافيا في الاستراتيجيات الكبرى</a>
+                <p class="ex-sd">تطبيق كامل: كيف يشتغل الفكر الاستراتيجي على حالة بحرية واقعية.</p>
+                <span class="ex-sk">بحث معمّق</span>
+              </div>
+            </li>
+          </ol>
+          <a class="ex-go" href="study.html">ابدأ المسار ←</a>
+        </article>
+
+        <article class="ex-path">
+          <header>
+            <div class="ex-top">
+              <span class="ex-mark" aria-hidden="true"></span>
+              <span class="ex-lvl">تمهيدي</span>
+            </div>
+            <h3>نظريات الردع من الصفر</h3>
+            <p class="ex-meta tnum"><span>3 خطوات</span><span>≈ 50 دقيقة</span></p>
+          </header>
+          <ol class="ex-steps">
+            <li>
+              <div class="ex-st">
+                <a href="term.html">مصطلح: الردع</a>
+                <p class="ex-sd">نقطة البداية: تعريف الردع وأنواعه في سطور محكمة، مع شجرة المفاهيم المرتبطة.</p>
+                <span class="ex-sk">صفحة مصطلح</span>
+              </div>
+            </li>
+            <li>
+              <div class="ex-st">
+                <a href="glossary.html">عائلة مصطلحات الردع في المعجم</a>
+                <p class="ex-sd">الردع الممتد، الضربة الثانية، توازن الرعب — راجعها قبل النص الطويل.</p>
+                <span class="ex-sk">المعجم التخصصي</span>
+              </div>
+            </li>
+            <li>
+              <div class="ex-st">
+                <a href="study.html">مدخل إلى نظريات الردع النووي</a>
+                <p class="ex-sd">الدراسة التأسيسية: من توازن الرعب إلى الردع المركّب متعدد المجالات.</p>
+                <span class="ex-sk">دراسة متوسطة</span>
+              </div>
+            </li>
+          </ol>
+          <a class="ex-go" href="term.html">ابدأ المسار ←</a>
+        </article>
+
+        <article class="ex-path">
+          <header>
+            <div class="ex-top">
+              <span class="ex-mark" aria-hidden="true"></span>
+              <span class="ex-lvl ex-lvl-mid">متوسط</span>
+            </div>
+            <h3>كيف تقرأ خريطة عسكرية</h3>
+            <p class="ex-meta tnum"><span>3 خطوات</span><span>≈ 60 دقيقة</span></p>
+          </header>
+          <ol class="ex-steps">
+            <li>
+              <div class="ex-st">
+                <a href="study.html">لغة الخرائط التحليلية: الرموز والمقياس والإسقاط</a>
+                <p class="ex-sd">الأساس: ماذا تقول الخريطة وماذا تُخفي، وكيف تقرأ المفتاح قبل الشكل.</p>
+                <span class="ex-sk">دراسة متوسطة</span>
+              </div>
+            </li>
+            <li>
+              <div class="ex-st">
+                <a href="article.html">فن الحصار: قراءة تضاريس المدينة المحاصَرة</a>
+                <p class="ex-sd">تطبيق تاريخي-تحليلي على لوحات حصار مرسومة بلا حدود سياسية.</p>
+                <span class="ex-sk">بحث معمّق</span>
+              </div>
+            </li>
+            <li>
+              <div class="ex-st">
+                <a href="archive.html?sec=education">تمارين القراءة في أرشيف القسم</a>
+                <p class="ex-sd">طبّق ما تعلمته على اللوحات التحليلية المفهرسة في مواد القسم.</p>
+                <span class="ex-sk">أرشيف القسم</span>
+              </div>
+            </li>
+          </ol>
+          <a class="ex-go" href="study.html">ابدأ المسار ←</a>
+        </article>
+      </div>
+
+      <div class="fig-cap">
+        <span>المسار الموصى به للبدء — «مدخل إلى الفكر الاستراتيجي»</span>
+        <span class="tnum">IWAD-PL-2026-01</span>
+      </div>
+
+      <div class="method-note">
+        <b>ملاحظة منهجية:</b> المسارات محتوى معرفي مفتوح في مرحلة الإطلاق — تُبنى من مواد المعهد
+        المنشورة وتُراجع دورياً، والبنية قابلة للتوسع لاحقاً إلى وحدات تعليمية منظمة.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ابدأ من هنا ============ -->
+  <section class="section spy" aria-labelledby="start-title" style="background: var(--surface); border-block: 1px solid var(--rule-2);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="start-title">ابدأ من هنا</h2>
+        <span class="rl">ثلاث بوابات</span>
+      </div>
+
+      <div class="ex-start" data-stagger>
+        <article class="ex-qc">
+          <span class="rl">أشهر مدخل</span>
+          <h3><a href="study.html">مدخل إلى نظريات الردع النووي</a></h3>
+          <p>
+            الدراسة الأكثر قراءة لدى غير المتخصصين هذا العام: تشرح توازن الرعب
+            والضربة الثانية بلغة لا تفترض معرفة سابقة.
+          </p>
+          <div class="ex-qm tnum"><b>دراسة متوسطة</b><span>22 دقيقة قراءة</span></div>
+        </article>
+
+        <article class="ex-qc">
+          <span class="rl">مصطلح الأسبوع</span>
+          <h3><a href="term.html">الردع <span class="ex-en">Deterrence</span></a></h3>
+          <p>
+            منع الخصم من فعلٍ ما عبر التلويح بكلفة تفوق مكاسبه المتوقعة —
+            التعريف الكامل وشجرة المفاهيم في صفحة المصطلح.
+          </p>
+          <div class="ex-qm tnum"><b>معجم المصطلحات</b><span>تحديث أسبوعي</span></div>
+        </article>
+
+        <article class="ex-qc">
+          <span class="rl">اختبر فهمك</span>
+          <h3><a href="glossary.html">راجع 12 مصطلحاً</a></h3>
+          <p>
+            أنهيت مسار الردع؟ عُد إلى المعجم وراجع اثني عشر مصطلحاً مرتبطاً،
+            وتأكد أنك تستطيع تعريفها دون الرجوع إلى النص.
+          </p>
+          <div class="ex-qm tnum"><b>المعجم التخصصي</b><span>12 مصطلحاً</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ إصدارات القسم ============ -->
+  <section class="section spy" aria-labelledby="pubs-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="pubs-title">إصدارات القسم</h2>
+        <span class="rl">الإنتاج التعليمي</span>
+        <a class="aux" href="archive.html?sec=education">أرشيف القسم ←</a>
+      </div>
+
+      <div class="pubs" data-stagger>
+        <div class="pub-ledgerline"><span>سجل القسم التعليمي</span><span class="tnum">14 مادة · تأسس 2026</span></div>
+        <div class="pub" data-sec="education"><span class="ref">IWAD-2026-041</span><div class="b"><span class="secline">دراسة متوسطة</span><h3><a href="study.html">مدخل إلى نظريات الردع النووي: من توازن الرعب إلى الردع المركّب</a></h3><span class="who">د. نور خليل</span></div><div class="end"><time class="tnum" datetime="2026-08-09">9 أغسطس</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="education"><span class="ref">IWAD-2026-038</span><div class="b"><span class="secline">بحث معمّق</span><h3><a href="article.html">سلاسل الجزر: كيف تحكم الجغرافيا البحرية استراتيجيات القوى الكبرى</a></h3><span class="who">د. ليلى مراد</span></div><div class="end"><time class="tnum" datetime="2026-08-02">2 أغسطس</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+        <div class="pub" data-sec="education"><span class="ref">IWAD-2026-033</span><div class="b"><span class="secline">دراسة متوسطة</span><h3><a href="study.html">فن الحصار: المنطق العسكري لحصار المدن من العصور الوسطى إلى الحداثة</a></h3><span class="who">د. نور خليل</span></div><div class="end"><time class="tnum" datetime="2026-07-24">24 يوليو</time></div></div>
+        <div class="pub" data-sec="education"><span class="ref">IWAD-2026-029</span><div class="b"><span class="secline">دراسة متوسطة</span><h3><a href="study.html">مدخل إلى الفكر الاستراتيجي: المفاهيم المؤسِّسة من كلاوزفيتز إلى العصر النووي</a></h3><span class="who">د. ليلى مراد</span></div><div class="end"><time class="tnum" datetime="2026-07-15">15 يوليو</time><a class="pdf" href="#" aria-label="تحميل PDF"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ باحثو القسم ============ -->
+  <section class="section spy" aria-labelledby="rp-title" style="padding-block-start: 0;">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="rp-title">باحثو القسم</h2>
+        <span class="rl">هيئة البحث</span>
+        <a class="aux" href="researchers.html">كل الباحثين ←</a>
+      </div>
+
+      <div class="sec-people" data-stagger>
+        <div class="p-cell"><span class="mini" aria-hidden="true">ل</span><div><a class="nm" href="researcher.html">د. ليلى مراد</a><span class="sp">المداخل الاستراتيجية والجغرافيا التحليلية</span></div><span class="c tnum">6</span></div>
+        <div class="p-cell"><span class="mini" aria-hidden="true">ن</span><div><a class="nm" href="researcher.html">د. نور خليل</a><span class="sp">تبسيط نظريات الردع وهندسة المسارات التعليمية</span></div><span class="c tnum">8</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="assets/js/main.js?v=441"></script>
+</body>
+</html>

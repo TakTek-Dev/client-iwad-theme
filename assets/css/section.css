@@ -330,3 +330,669 @@
 
 /* عمود نتائج الأرشيف — حارس ضد تمدد المحتوى */
 .arch-main { min-width: 0; }
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/section-global.html ==== */
+/* ---------- gx: قسم عالمي — مصفوفة محاور القوى ---------- */
+.gx-plate { border: 1px solid var(--rule-2); background: var(--surface); }
+.gx-scroll {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--sec-global) 55%, transparent) transparent;
+}
+.gx-scroll::-webkit-scrollbar { height: 4px; }
+.gx-scroll::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--sec-global) 45%, transparent); }
+.gx-matrix {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.gx-matrix th,
+.gx-matrix td {
+  border: 1px solid var(--rule);
+  padding: var(--sp-3) var(--sp-4);
+  text-align: start;
+}
+.gx-matrix thead th {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--accent-text);
+  background: var(--bg);
+  border-block-end: 2px solid var(--iwad-ink);
+  white-space: nowrap;
+}
+.gx-matrix thead .gx-corner { color: var(--text-muted); font-weight: 600; }
+.gx-matrix tbody th {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--sec-global);
+  background: color-mix(in srgb, var(--sec-global) 4%, var(--surface));
+  white-space: nowrap;
+}
+.gx-matrix td { font-size: var(--fs-sm); }
+.gx-matrix tbody tr:hover td { background: color-mix(in srgb, var(--sec-global) 5%, transparent); }
+.gx-cell { display: inline-flex; align-items: center; gap: var(--sp-2); font-weight: 600; }
+.gx-dot {
+  display: inline-block;
+  width: 12px; height: 12px;
+  background: var(--sec-global);
+  clip-path: var(--notch);
+  flex-shrink: 0;
+}
+.gx-l1 .gx-dot { opacity: 1; }
+.gx-l2 .gx-dot { opacity: .7; }
+.gx-l3 .gx-dot { opacity: .45; }
+.gx-l4 .gx-dot { opacity: .25; }
+.gx-l3, .gx-l4 { color: var(--text-muted); }
+.gx-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-5);
+  padding: var(--sp-2) var(--sp-4);
+  border-block-start: 1px solid var(--rule);
+  font-size: var(--fs-xs);
+  color: var(--text);
+}
+.gx-legend .k { font-weight: 700; color: var(--accent-text); }
+.gx-legend span { display: inline-flex; align-items: center; gap: var(--sp-2); }
+/* ملفات القسم العالمي — تعمية لون القسم فوق افتراضي .file-row الإقليمي */
+.gx-files .file-row:hover { background: color-mix(in srgb, var(--sec-global) 5%, transparent); }
+.gx-files .file-row:hover .nm { color: var(--sec-global); }
+.gx-files .file-row .nm::before { background: var(--sec-global); }
+.gx-files .file-row .meta b { color: var(--sec-global); }
+@media (max-width: 640px) {
+  .gx-matrix th, .gx-matrix td { padding: var(--sp-2) var(--sp-3); }
+}
+
+/* ==== D:\MY work\TakTek\2026\client-iwad-theme\section-doctrine.html ==== */
+
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/section-education.html ==== */
+/* ============================================================
+   قسم تعليمي (ex-) — مسارات التعلم المتدرجة + بوابات البدء
+   ============================================================ */
+.ex-paths { display: grid; gap: var(--sp-5); align-items: start; }
+.ex-path {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--rule-2);
+  border-block-start: 3px solid var(--sec-education);
+}
+/* السلّم التربوي: كل مسار أنزل درجة من سابقه — التدرج جزء من التكوين */
+@media (min-width: 900px) {
+  .ex-paths { grid-template-columns: repeat(3, 1fr); }
+  .ex-paths .ex-path:nth-child(2) { margin-block-start: var(--sp-6); }
+  .ex-paths .ex-path:nth-child(3) { margin-block-start: var(--sp-8); }
+}
+.ex-path > header {
+  padding: var(--sp-5);
+  padding-block-end: var(--sp-4);
+  border-block-end: 1px solid var(--rule-2);
+}
+.ex-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  margin-block-end: var(--sp-3);
+}
+.ex-mark { width: 18px; height: 18px; background: var(--sec-education); clip-path: var(--notch); flex-shrink: 0; }
+.ex-lvl {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--accent-text);
+  border: 1px solid var(--accent);
+  padding: 2px var(--sp-2);
+  white-space: nowrap;
+}
+.ex-lvl-mid { background: var(--sec-education); border-color: var(--sec-education); color: var(--iwad-cream); }
+.ex-path h3 { font-size: var(--fs-lg); line-height: 1.4; color: var(--sec-education); margin-block-end: var(--sp-2); }
+.ex-meta { display: flex; justify-content: space-between; gap: var(--sp-3); font-size: var(--fs-xs); color: var(--text-muted); }
+.ex-steps { list-style: none; margin: 0; padding: 0 var(--sp-5); counter-reset: exs; flex: 1; }
+.ex-steps li {
+  counter-increment: exs;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: var(--sp-3);
+  padding-block: var(--sp-4);
+}
+.ex-steps li + li { border-block-start: 1px solid var(--rule); }
+.ex-steps li::before {
+  content: counter(exs, decimal-leading-zero);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-text);
+  line-height: 1.35;
+}
+.ex-st { min-width: 0; }
+.ex-st a {
+  font-size: var(--fs-base);
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.ex-st a:hover { color: var(--sec-education); }
+.ex-sd { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.7; margin-block-start: 2px; }
+.ex-sk { display: inline-block; font-size: var(--fs-xs); font-weight: 700; color: var(--accent-text); margin-block-start: var(--sp-1); }
+.ex-go {
+  display: block;
+  padding: var(--sp-3) var(--sp-5);
+  border-block-start: 1px solid var(--rule-2);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--sec-education);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.ex-go:hover { background: color-mix(in srgb, var(--sec-education) 6%, transparent); }
+
+/* ابدأ من هنا — ثلاث بوابات سريعة */
+.ex-start { display: grid; gap: var(--sp-5); }
+@media (min-width: 768px) { .ex-start { grid-template-columns: repeat(3, 1fr); } }
+.ex-qc {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-block-start: 3px solid var(--sec-education);
+  padding: var(--sp-5);
+}
+.ex-qc .rl { margin-block-end: var(--sp-3); }
+.ex-qc h3 { font-size: var(--fs-lg); line-height: 1.45; margin-block-end: var(--sp-2); }
+.ex-qc h3 a:hover { color: var(--sec-education); }
+.ex-en { font-size: var(--fs-sm); font-weight: 400; color: var(--text-muted); }
+.ex-qc p { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.75; flex: 1; margin-block-end: var(--sp-4); }
+.ex-qm {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: var(--sp-3);
+}
+.ex-qm b { color: var(--accent-text); font-weight: 700; }
+
+/* موبايل: عمود واحد افتراضياً (الجريد أعلاه lg فقط) — تضييق عمود الأرقام */
+@media (max-width: 640px) {
+  .ex-steps li { grid-template-columns: 32px 1fr; }
+}
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/section-heritage.html ==== */
+/* ===== section-heritage.html (hx-) — الجو السيبيا الأرشيفي ===== */
+.hx-hero { background: color-mix(in srgb, var(--sec-heritage) 8%, var(--bg)); }
+
+.hx-register {
+  background: color-mix(in srgb, var(--sec-heritage) 4%, var(--bg));
+  border-block-end: 1px solid var(--rule-2);
+}
+.hx-register .rl,
+.hx-register .kicker-line .aux { color: var(--sec-heritage); }
+.hx-register .rl::before { background: var(--sec-heritage); }
+.hx-register .kicker-line h2 { color: var(--sec-heritage); }
+.hx-register .vtl-item::before { background: var(--sec-heritage); }
+.hx-register .vtl-item.key::before { background: var(--iwad-gold); }
+.hx-register .vtl-item time { color: var(--sec-heritage); }
+.hx-register .vtl-item h3 a:hover { color: var(--sec-heritage); }
+.hx-register .aperture::after {
+  background-image:
+    linear-gradient(var(--sec-heritage), var(--sec-heritage)),
+    linear-gradient(var(--sec-heritage), var(--sec-heritage)),
+    linear-gradient(var(--sec-heritage), var(--sec-heritage)),
+    linear-gradient(var(--sec-heritage), var(--sec-heritage)),
+    linear-gradient(var(--sec-heritage), var(--sec-heritage)),
+    linear-gradient(var(--sec-heritage), var(--sec-heritage)),
+    linear-gradient(var(--sec-heritage), var(--sec-heritage)),
+    linear-gradient(var(--sec-heritage), var(--sec-heritage));
+}
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/researchers.html ==== */
+/* ============================================================
+   researchers.html — دليل الباحثين (rx-)
+   ============================================================ */
+.rx-ledger { padding: var(--sp-4) var(--sp-5); }
+.rx-row {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: var(--sp-2) var(--sp-5);
+  align-items: center;
+  padding-block: var(--sp-4);
+  border-block-end: 1px solid var(--rule);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.rx-rows .rx-row:last-child { border-block-end: none; }
+.rx-row:hover { background: color-mix(in srgb, var(--sec, var(--primary)) 5%, transparent); }
+.rx-glyph {
+  width: 64px; height: 64px;
+  display: grid;
+  place-content: center;
+  background: var(--sec, var(--primary));
+  color: var(--iwad-cream);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  clip-path: var(--notch);
+  opacity: .82;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.rx-row:hover .rx-glyph { opacity: 1; }
+.rx-b { min-width: 0; }
+.rx-row h3 { font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; }
+.rx-row h3 a { transition: color var(--dur-fast) var(--ease-out); }
+.rx-row:hover h3 a, .rx-row h3 a:hover { color: var(--sec, var(--primary)); }
+.rx-role { display: block; font-size: var(--fs-sm); font-weight: 600; color: var(--accent-text); margin-block: 2px var(--sp-2); }
+.rx-chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.rx-chips a {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid var(--rule-2);
+  padding: 2px var(--sp-2);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.rx-chips a:hover { border-color: var(--sec, var(--primary)); color: var(--sec, var(--primary)); }
+.rx-meta { text-align: start; font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
+.rx-meta b { display: block; font-size: var(--fs-xl); font-weight: 700; line-height: 1.15; color: var(--sec, var(--primary)); }
+.rx-meta span { display: block; }
+.rx-secs { font-weight: 700; margin-block-start: 2px; }
+@media (max-width: 640px) {
+  .rx-ledger { padding: var(--sp-3) var(--sp-4); }
+  .rx-row { grid-template-columns: 48px minmax(0, 1fr); }
+  .rx-glyph { width: 48px; height: 48px; font-size: var(--fs-lg); }
+  .rx-meta { grid-column: 2; white-space: normal; }
+  .rx-meta b { display: inline; font-size: var(--fs-md); margin-inline-end: var(--sp-1); }
+  .rx-meta span { display: inline; }
+  .rx-secs { display: block; margin-block-start: 2px; }
+}
+
+/* شريط انضم إلينا — rx-cta */
+.rx-cta {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4) var(--sp-6);
+  background: var(--iwad-maroon);
+  color: var(--iwad-cream);
+  padding: var(--sp-5) var(--sp-6);
+}
+.rx-cta::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
+  width: 12px; height: 12px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+}
+.rx-cta .rl { color: var(--iwad-gold); }
+.rx-cta-copy { min-width: 0; }
+.rx-cta-lead { font-size: var(--fs-md); font-weight: 600; line-height: 1.75; max-width: 56ch; margin-block-start: var(--sp-2); }
+.rx-cta .btn-primary { background: var(--iwad-gold); color: var(--iwad-ink); flex-shrink: 0; }
+.rx-cta .btn-primary:hover { background: #C9A468; }
+@media (max-width: 640px) {
+  .rx-cta { padding: var(--sp-5) var(--sp-4); }
+  .rx-cta .btn-primary { width: 100%; }
+}
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/researcher.html ==== */
+/* ---------- ملف الباحث (researcher.html) — rp- ---------- */
+.rp-hero { display: grid; gap: var(--sp-6); align-items: center; }
+@media (min-width: 900px) { .rp-hero { grid-template-columns: minmax(0, 1fr) auto; } }
+.rp-hero-copy { min-width: 0; }
+.rp-idcard {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  background: var(--surface);
+  border: 1px solid var(--rule-2);
+  padding: var(--sp-5);
+  min-width: 0;
+}
+.rp-idcard .idplate { flex-shrink: 0; }
+.rp-idmeta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rp-idk { font-size: var(--fs-xs); font-weight: 700; color: var(--accent-text); }
+.rp-idname { font-size: var(--fs-lg); font-weight: 700; line-height: 1.4; }
+.rp-idrole { font-size: var(--fs-sm); color: var(--text-muted); }
+.rp-idref {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  border-block-start: 1px solid var(--rule);
+  margin-block-start: var(--sp-2);
+  padding-block-start: var(--sp-2);
+}
+.rp-links a:hover { border-color: var(--sec-global); color: var(--sec-global); }
+@media (max-width: 480px) {
+  .rp-idcard { flex-direction: column; align-items: flex-start; gap: var(--sp-4); }
+}
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/about.html ==== */
+/* ============ عن المعهد (ab-) ============ */
+
+/* لوح البيان التأسيسي — وثيقة الميثاق، الإطار الوحيد بأقواس الرصد */
+.ab-deed { max-width: 920px; margin-inline: auto; background: var(--surface); padding: var(--sp-7) var(--sp-6); }
+.ab-deed .matn { margin-inline: auto; }
+.ab-deed .matn > p:last-child { margin-block-end: 0; }
+.ab-deed-cap { max-width: 920px; margin-inline: auto; }
+@media (max-width: 640px) { .ab-deed { padding: var(--sp-5) var(--sp-4); } }
+
+/* المعهد بالأرقام — شريط عدادات على شبكة المصفوفة */
+.ab-figures { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 700px) { .ab-figures { grid-template-columns: repeat(4, 1fr); } }
+.ab-fig { padding: var(--sp-5); min-width: 0; }
+.ab-fig b {
+  display: block;
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  color: var(--accent-text);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+.ab-fig span { display: block; font-size: var(--fs-sm); color: var(--text-muted); margin-block-start: var(--sp-1); }
+
+/* عمودا التحكيم والميثاق */
+.ab-twin { display: grid; grid-template-columns: 1fr; gap: var(--sp-7); align-items: start; }
+.ab-twin > * { min-width: 0; }
+@media (min-width: 960px) { .ab-twin { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-8); } }
+
+/* بنود الميثاق — رصاصات القصّة (notch) */
+.matn ul.ab-charter { list-style: none; padding-inline-start: 0; margin-block-end: 0; }
+.matn .ab-charter li {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: var(--sp-3);
+  padding-block: var(--sp-3);
+  margin-block-end: 0;
+  border-block-start: 1px solid var(--rule);
+  line-height: 1.85;
+}
+.matn .ab-charter li::before {
+  content: "";
+  width: 14px; height: 14px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+  margin-block-start: .45em;
+}
+.matn .ab-charter li b { color: var(--primary); }
+
+/* شريط التعاون والاستكتاب */
+.ab-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4) var(--sp-6);
+  background: var(--surface);
+  border: 1px solid var(--rule-2);
+  border-inline-start: 3px solid var(--iwad-gold);
+  padding: var(--sp-5) var(--sp-6);
+}
+.ab-cta-copy { min-width: 0; }
+.ab-cta-copy h2 { font-size: var(--fs-xl); color: var(--primary); margin-block-end: var(--sp-1); }
+.ab-cta-copy p { font-size: var(--fs-sm); color: var(--text-muted); max-width: 56ch; line-height: 1.75; }
+.ab-cta-acts { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3); }
+@media (max-width: 640px) { .ab-cta { padding: var(--sp-5) var(--sp-4); } }
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/events.html ==== */
+/* ============================================================
+   الفعاليات (events.html) — لوح جدول اللقاءات
+   ============================================================ */
+.ev-rows { display: grid; gap: var(--sp-5); }
+.ev-row {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr) auto;
+  gap: var(--sp-4) var(--sp-6);
+  align-items: center;
+  border: 1px solid var(--rule-2);
+  background: var(--surface);
+  padding: var(--sp-5);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.ev-row:hover { border-color: var(--sec, var(--primary)); }
+
+/* لوحة التاريخ — حد علوي بلون القسم يحمل علامة النوتش */
+.ev-date {
+  position: relative;
+  text-align: center;
+  border: 1px solid var(--rule-2);
+  border-block-start: 3px solid var(--sec, var(--primary));
+  background: var(--bg);
+  padding: var(--sp-4) var(--sp-2) var(--sp-3);
+  font-variant-numeric: tabular-nums;
+}
+.ev-date::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -8px;
+  inset-inline-start: -1px;
+  width: 14px; height: 14px;
+  background: var(--sec, var(--primary));
+  clip-path: var(--notch);
+}
+.ev-date b {
+  display: block;
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--sec, var(--primary));
+}
+.ev-date .ev-mo { display: block; font-size: var(--fs-sm); font-weight: 700; color: var(--text); margin-block-start: 2px; }
+.ev-date .ev-day { display: block; font-size: var(--fs-xs); color: var(--text-muted); margin-block-start: 2px; white-space: nowrap; }
+
+.ev-body { min-width: 0; }
+.ev-body h3 { font-size: var(--fs-lg); font-weight: 700; line-height: 1.45; margin-block: var(--sp-1) var(--sp-2); }
+.ev-desc { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.75; max-width: 66ch; margin-block-end: var(--sp-2); }
+.ev-refl { display: inline-block; font-size: var(--fs-xs); font-weight: 700; color: var(--accent-text); }
+.ev-refl:hover { text-decoration: underline; }
+.ev-meta {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+  border-block-start: 1px solid var(--rule);
+  padding-block-start: var(--sp-2);
+  margin-block-start: var(--sp-3);
+}
+
+.ev-actions { display: grid; gap: var(--sp-3); align-content: center; justify-items: stretch; text-align: center; }
+.ev-actions .btn { white-space: nowrap; font-size: var(--fs-sm); }
+.ev-more { font-size: var(--fs-sm); font-weight: 700; color: var(--accent-text); }
+.ev-more:hover { text-decoration: underline; }
+
+/* ---------- السجل الأخف — فعاليات سابقة ---------- */
+.ev-past { border-block-start: 1px solid var(--rule-2); }
+.ev-prow {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr) auto;
+  gap: var(--sp-1) var(--sp-5);
+  align-items: baseline;
+  padding: var(--sp-4) var(--sp-2);
+  border-block-end: 1px solid var(--rule);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.ev-prow:hover { background: color-mix(in srgb, var(--sec, var(--primary)) 4%, transparent); }
+.ev-prow > time { font-size: var(--fs-xs); font-weight: 700; color: var(--text-muted); white-space: nowrap; }
+.ev-pb { min-width: 0; }
+.ev-ptype {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--sec, var(--primary));
+  margin-inline-end: var(--sp-2);
+}
+.ev-ptype::before {
+  content: "";
+  width: 10px; height: 10px;
+  background: var(--sec, var(--primary));
+  clip-path: var(--notch);
+  opacity: .55;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+.ev-prow:hover .ev-ptype::before { opacity: 1; }
+.ev-pb h3 { display: inline; font-size: var(--fs-base); font-weight: 500; line-height: 1.65; }
+.ev-pb h3 a:hover { color: var(--sec, var(--primary)); }
+.ev-plinks { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-4); font-size: var(--fs-xs); }
+.ev-plinks a { white-space: nowrap; }
+.ev-plinks .sum { font-weight: 700; color: var(--accent-text); }
+.ev-plinks .sum:hover { text-decoration: underline; }
+.ev-plinks .rec { color: var(--text-muted); }
+.ev-plinks .rec:hover { color: var(--primary); }
+
+/* ---------- شريط ملاحظة الحضور ---------- */
+.ev-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-5);
+  border: 1px solid var(--rule-2);
+  border-inline-start: 3px solid var(--iwad-gold);
+  background: var(--surface);
+  padding: var(--sp-4) var(--sp-5);
+}
+.ev-note p { font-size: var(--fs-sm); color: var(--text-muted); max-width: 72ch; }
+.ev-note a { font-size: var(--fs-sm); font-weight: 700; color: var(--accent-text); white-space: nowrap; }
+.ev-note a:hover { text-decoration: underline; }
+
+/* ---------- موبايل ---------- */
+@media (max-width: 900px) {
+  .ev-row { grid-template-columns: 108px minmax(0, 1fr); gap: var(--sp-4) var(--sp-5); }
+  .ev-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-3) var(--sp-5);
+    text-align: start;
+  }
+}
+@media (max-width: 640px) {
+  .ev-row { grid-template-columns: 1fr; padding: var(--sp-4); }
+  .ev-date {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--sp-1) var(--sp-3);
+    width: fit-content;
+    padding: var(--sp-2) var(--sp-4);
+  }
+  .ev-date b { font-size: var(--fs-xl); }
+  .ev-date .ev-mo, .ev-date .ev-day { margin-block-start: 0; }
+  .ev-actions .btn { flex: 1 1 auto; }
+  .ev-prow { grid-template-columns: 1fr; }
+  .ev-plinks { padding-inline-start: calc(10px + var(--sp-2)); }
+}
+
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/contact.html ==== */
+/* ---------- ct- · اتصل بنا ---------- */
+.ct-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: var(--sp-7); align-items: start; }
+.ct-layout > * { min-width: 0; }
+@media (max-width: 900px) { .ct-layout { grid-template-columns: 1fr; gap: var(--sp-5); } }
+
+.ct-formplate { position: relative; border: 1px solid var(--rule-2); background: var(--surface); padding: var(--sp-6); }
+@media (max-width: 640px) { .ct-formplate { padding: var(--sp-4); } }
+
+.ct-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4) var(--sp-5); }
+.ct-field { min-width: 0; display: flex; flex-direction: column; gap: var(--sp-2); }
+.ct-field.ct-full { grid-column: 1 / -1; }
+@media (max-width: 640px) { .ct-fields { grid-template-columns: 1fr; } }
+
+.ct-field label { font-size: var(--fs-xs); font-weight: 700; color: var(--text); }
+.ct-field .ct-opt { font-weight: 400; color: var(--text-muted); }
+.ct-field input,
+.ct-field select,
+.ct-field textarea {
+  width: 100%;
+  border: 1.5px solid var(--rule-2);
+  border-radius: 0;
+  background: var(--surface);
+  padding: var(--sp-3) var(--sp-4);
+  font-size: var(--fs-base);
+  color: var(--text);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+.ct-field textarea { resize: vertical; line-height: 1.8; }
+.ct-field input:focus,
+.ct-field select:focus,
+.ct-field textarea:focus { outline: none; border-color: var(--primary); }
+.ct-field input::placeholder,
+.ct-field textarea::placeholder { color: color-mix(in srgb, var(--text-muted) 70%, transparent); }
+
+.ct-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3) var(--sp-4); margin-block-start: var(--sp-5); }
+.ct-hint { font-size: var(--fs-xs); color: var(--text-muted); max-width: 36ch; }
+
+.ct-aside { display: flex; flex-direction: column; gap: var(--sp-5); }
+@media (min-width: 1024px) { .ct-aside { position: sticky; inset-block-start: 96px; } }
+.ct-aside .doccard { border-block-start-color: var(--primary); }
+
+.doccard dl.ct-chan { grid-template-columns: 1fr; gap: 2px; }
+.ct-chan dt { margin-block-start: var(--sp-3); padding-block-start: var(--sp-3); border-block-start: 1px solid var(--rule); }
+.ct-chan dt:first-of-type { margin-block-start: 0; padding-block-start: 0; border-block-start: none; }
+.ct-chan dd a { unicode-bidi: isolate; }
+.ct-chan dd a:hover { color: var(--primary); text-decoration: underline; }
+
+.ct-preface { font-size: var(--fs-sm); color: var(--text-muted); margin-block-end: var(--sp-2); }
+.ct-links { display: flex; flex-direction: column; }
+.ct-links a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding-block: var(--sp-2);
+  border-block-end: 1px solid var(--rule);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.ct-links a:last-child { border-block-end: none; padding-block-end: 0; }
+.ct-links .ct-arr { color: var(--accent-text); transition: transform var(--dur-fast) var(--ease-out); }
+.ct-links a:hover { color: var(--primary); }
+.ct-links a:hover .ct-arr { transform: translateX(-3px); }
+
+.ct-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3) var(--sp-5);
+  border: 1px solid var(--rule-2);
+  border-inline-start: 3px solid var(--primary);
+  background: var(--surface);
+  padding: var(--sp-4) var(--sp-5);
+  margin-block-start: var(--sp-7);
+}
+.ct-strip p { font-size: var(--fs-md); line-height: 1.7; max-width: 62ch; }
+.ct-strip p b { color: var(--primary); }
+.ct-strip .aux { font-size: var(--fs-sm); font-weight: 700; color: var(--accent-text); white-space: nowrap; }
+.ct-strip .aux:hover { text-decoration: underline; }
+
+/* ==== D:/MY work/TakTek/2026/client-iwad-theme/privacy.html ==== */
+/* ---------- privacy.html — وثيقة سياسة الخصوصية ---------- */
+.pv-hero { padding-block: var(--sp-6); }
+.pv-hero .desc { margin-block-end: 0; }
+
+/* عناوين الوثيقة: kicker-line داخل المتن — خط واحد لا خطان */
+.pv-doc .kicker-line { margin-block: var(--sp-7) var(--sp-4); }
+.pv-doc .kicker-line:first-of-type { margin-block-start: var(--sp-6); }
+.pv-doc .kicker-line h2 { margin-block: 0; }
+.pv-doc .kicker-line h2::after { content: none; }
+
+/* قوائم بنقاط نوتش */
+.pv-doc .pv-list { list-style: none; padding-inline-start: 0; }
+.pv-doc .pv-list li { display: grid; grid-template-columns: 14px 1fr; gap: var(--sp-3); align-items: baseline; min-width: 0; }
+.pv-doc .pv-list li::before { content: ""; width: 11px; height: 11px; background: var(--iwad-gold); clip-path: var(--notch); align-self: center; }
+
+/* روابط المتن + البريد اللاتيني داخل النص العربي */
+.pv-doc > p a { color: var(--accent-text); font-weight: 600; }
+.pv-doc > p a:hover { text-decoration: underline; }
+.pv-mail { direction: ltr; unicode-bidi: isolate; font-weight: 700; }

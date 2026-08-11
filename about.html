@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>عن المعهد — إيواد</title>
+  <meta name="description" content="معهد إيواد — مؤسسة بحثية خاصة غير ربحية مستقلة، تأسست 2026. محتوى أكاديمي محكّم بالعربية في دراسات الحرب والدفاع: البيان التأسيسي، منهجية التحكيم، الميثاق، والأقسام الخمسة.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="عن معهد إيواد — مؤسسة بحثية مستقلة في دراسات الحرب والدفاع">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=441">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css?v=441">
+  <link rel="stylesheet" href="assets/css/main.css?v=441">
+  <link rel="stylesheet" href="assets/css/home.css?v=441">
+  <link rel="stylesheet" href="assets/css/article.css?v=441">
+  <link rel="stylesheet" href="assets/css/section.css?v=441">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+        <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+        <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+        <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="about.html" aria-current="page">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+      <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+      <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+      <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="about.html" aria-current="page">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="archive.html" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="researchers.html">هيئة الباحثين</a>
+      <a href="events.html">فعاليات المعهد</a>
+      <a href="archive.html">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="مسار الصفحة">
+  <div class="container">
+    <a href="index.html">الرئيسية</a>
+    <span class="sep">/</span>
+    <span class="here">عن المعهد</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ رأس الصفحة المؤسسية ============ -->
+  <header class="sec-hero" style="--sec: var(--primary);">
+    <div class="container">
+      <div class="badges">
+        <span class="rl">الوثيقة المؤسسية</span>
+        <span class="layer tnum">IWAD-DG-2026-01</span>
+      </div>
+      <h1><span class="mark" aria-hidden="true"></span> عن معهد إيواد</h1>
+      <p class="desc">
+        مؤسسة بحثية خاصة، غير ربحية، مستقلة التمويل والتحرير، تأسست عام 2026.
+        تُنتج محتوى أكاديمياً محكّماً باللغة العربية في دراسات الحرب والدفاع —
+        النظريات والعقائد والفكر والإرث العسكري — قراءةً تحليلية لا خبرية،
+        لجمهورٍ يمتد من الباحث المتخصص إلى القارئ الجاد.
+      </p>
+      <div class="sec-stats">
+        <span>تأسس <b class="tnum">2026</b></span>
+        <span><b>5</b> أقسام بحثية</span>
+        <span>تحكيم <b>مزدوج مغفّل</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ البيان التأسيسي ============ -->
+  <section class="section spy" aria-labelledby="deed-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="deed-title">البيان التأسيسي</h2>
+        <span class="rl">نص المؤسسة</span>
+      </div>
+
+      <div class="frame ab-deed aperture rise">
+        <div class="matn">
+          <p class="lead">
+            تحتل دراسات الحرب موقعاً راسخاً في الجامعات ومراكز البحث العالمية منذ منتصف
+            القرن العشرين: كراسٍ علمية، ودوريات محكّمة، ومعاهد متفرغة لتفكيك الظاهرة
+            الأعقد في الاجتماع البشري. أما في المكتبة العربية، فظل الموضوع موزعاً بين
+            الخبر العاجل الذي يلاحق الحدث، والتعليق السياسي الذي يستهلكه — وندر أن
+            وُجدت مؤسسة تتناول الحرب بوصفها حقلاً معرفياً يستحق الصبر المنهجي.
+          </p>
+          <p>
+            من هذه الفجوة وُلد معهد إيواد. لم يتأسس ليضيف صوتاً إلى ضجيج التعليق، بل
+            ليبني طبقة مرجعية غائبة: قيود بحثية دائمة بأرقام تسجيل قابلة للإحالة،
+            ومعجم مصطلحات يضبط اللغة قبل أن يضبط التحليل، وملفات تراكمية تتابع مسارح
+            القوة عبر سنوات لا عبر دورة أخبار. كل مادة تمر بتحكيم مزدوج مغفّل قبل
+            النشر، وتبقى بعده وثيقة مفتوحة للمراجعة والإحالة.
+          </p>
+          <div class="pull">
+            <p>ندرس الحرب لفهمها لا لتمجيدها</p>
+          </div>
+          <p>
+            هذا الفهم يفرض حدوداً صارمة: لا يقدّم المعهد محتوى دعائياً لأي جهة، ولا
+            يحتفي بسلاح ولا براية، ولا يخلط التحليل بالموقف. حين يوثّق قسم الإرث
+            معركة، فبعين الأرشيف لا بعين الخطابة؛ وحين يقرأ القسم الإقليمي تصعيداً،
+            فبمنطق قواعد الاشتباك لا بمنطق الاصطفاف. الاستقلالية هنا ليست شعاراً
+            مؤسسياً، بل شرطاً منهجياً لا يستقيم البحث بدونه.
+          </p>
+        </div>
+      </div>
+      <div class="fig-cap ab-deed-cap">
+        <span>البيان التأسيسي — النص المعتمد بقرار الهيئة التأسيسية، 15 فبراير 2026</span>
+        <span class="tnum">IWAD-DG-2026-01</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ المعهد بالأرقام ============ -->
+  <section class="section spy" aria-labelledby="figs-title" style="background: var(--surface); border-block: 1px solid var(--rule-2); padding-block: var(--sp-7);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="figs-title">المعهد بالأرقام</h2>
+        <span class="rl">حتى 10 أغسطس 2026</span>
+        <a class="aux" href="archive.html">الأرشيف الكامل ←</a>
+      </div>
+
+      <div class="matrix ab-figures" data-stagger aria-label="أرقام المعهد">
+        <div class="ab-fig"><b class="num tnum" data-count="84">84</b><span>قيداً بحثياً منشوراً</span></div>
+        <div class="ab-fig"><b class="num tnum" data-count="60">60</b><span>مصطلحاً في المعجم</span></div>
+        <div class="ab-fig"><b class="num tnum" data-count="12">12</b><span>ملفاً دائماً متراكماً</span></div>
+        <div class="ab-fig"><b class="num tnum" data-count="5">5</b><span>أقسام بحثية</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ الأقسام الخمسة ============ -->
+  <section class="section spy" aria-labelledby="secs-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="secs-title">الأقسام الخمسة</h2>
+        <span class="rl">بنية المنصة</span>
+      </div>
+
+      <div class="gw matrix" data-stagger>
+        <a class="gw-cell" href="section-global.html" data-sec="global">
+          <span class="mark" aria-hidden="true"></span>
+          <h3>عالمي</h3>
+          <p>التوازنات والمحاور الكبرى: قراءة العقائد والاستراتيجيات بين المسارح الدولية.</p>
+          <span class="count">افتح القسم ←</span>
+        </a>
+        <a class="gw-cell" href="section-regional.html" data-sec="regional">
+          <span class="mark" aria-hidden="true"></span>
+          <h3>إقليمي</h3>
+          <p>ملفات دائمة تتراكم موادها: علاقات القوة في الإقليم بلا تدفق أخبار.</p>
+          <span class="count">افتح القسم ←</span>
+        </a>
+        <a class="gw-cell" href="section-doctrine.html" data-sec="doctrine">
+          <span class="mark" aria-hidden="true"></span>
+          <h3>عقائد</h3>
+          <p>قلب المعهد الفكري: النظريات والمفاهيم العسكرية ومعجمها المرجعي.</p>
+          <span class="count">افتح القسم ←</span>
+        </a>
+        <a class="gw-cell" href="section-education.html" data-sec="education">
+          <span class="mark" aria-hidden="true"></span>
+          <h3>تعليمي</h3>
+          <p>مداخل منهجية وقوائم قراءة تفتح الحقل لغير المتخصصين.</p>
+          <span class="count">افتح القسم ←</span>
+        </a>
+        <a class="gw-cell" href="section-heritage.html" data-sec="heritage">
+          <span class="mark" aria-hidden="true"></span>
+          <h3>إرث عسكري</h3>
+          <p>أرشيف تحليلي محايد للمعارك والحقب — توثيق منهجي لا احتفاء.</p>
+          <span class="count">افتح القسم ←</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ منهجية التحكيم + الميثاق ============ -->
+  <section class="section spy" aria-label="منهجية التحكيم والميثاق" style="background: var(--surface); border-block: 1px solid var(--rule-2);">
+    <div class="container">
+      <div class="ab-twin">
+
+        <div>
+          <div class="kicker-line">
+            <h2 id="method-title">منهجية التحكيم</h2>
+            <span class="rl">مسار النشر</span>
+          </div>
+          <div class="matn">
+            <p>
+              لا تُنشر مادة على المنصة قبل أن تجتاز مساراً تحريرياً من أربع مراحل،
+              صُمم ليحمي القارئ من الانطباع ويحمي الباحث من العجلة:
+            </p>
+            <ol class="sig-list">
+              <li><b>استلام وفرز أولي.</b> تفحص هيئة التحرير المقترح خلال أسبوع من وروده: الملاءمة الموضوعية، وجدّة الإسهام، وسلامة الإسناد الأولي.</li>
+              <li><b>تحكيم مزدوج مغفّل.</b> يُحال النص إلى محكمَين لا يعرفان هوية الكاتب ولا يعرفهما — والاعتراض المنهجي لأحدهما يوقف النشر حتى يُستوفى.</li>
+              <li><b>جلسة مراجعة منهجية.</b> تناقش هيئة التحرير ملاحظات التحكيم مع الباحث، وتُراجع الخرائط والأشكال على قواعد الحياد الرمزي.</li>
+              <li><b>نشر بقيد دائم.</b> تصدر المادة برقم تسجيل ثابت قابل للإحالة الأكاديمية، ولا تُعدَّل بعده إلا بملحق موثق.</li>
+            </ol>
+            <div class="method-note">
+              <b>معدل الإجازة:</b> منذ الإطلاق وحتى <span class="tnum">10 أغسطس 2026</span> أُجيز
+              <span class="tnum">84</span> قيداً من أصل <span class="tnum">205</span> مقترحات واردة —
+              نحو <span class="tnum">41%</span> — ورُدّ الباقي بملاحظات منهجية مفصلة.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="kicker-line">
+            <h2 id="charter-title">الميثاق</h2>
+            <span class="rl">التزامات غير قابلة للتفاوض</span>
+          </div>
+          <div class="matn">
+            <p>
+              خمسة التزامات تحكم كل ما يصدر عن المعهد — وكل ما يمتنع عنه:
+            </p>
+            <ul class="ab-charter">
+              <li><b>الاستقلالية المالية والتحريرية.</b> تمويل خاص غير مشروط، ولا سلطة لجهة خارجية على أجندة البحث أو نتائجه.</li>
+              <li><b>لا محتوى دعائياً لأي جهة.</b> المنصة لا تروج لدولة أو تنظيم أو صناعة سلاح، ولا تستضيف مواد تسويقية بغلاف تحليلي.</li>
+              <li><b>الفصل بين التحليل والموقف.</b> يصف الباحث ويفسر ويقدّر — ولا يدعو ولا يصطف.</li>
+              <li><b>حياد رمزي كامل.</b> لا أعلام ولا شعارات فصائل ولا صور شخصيات رسمية؛ الخرائط بلا حدود سياسية، والأيقونات بلا سلاح.</li>
+              <li><b>أرشيف مفتوح دائم.</b> كل قيد منشور يبقى متاحاً بلا مقابل، برقمه الثابت، مهما تغيرت الظروف.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ التعاون والاستكتاب ============ -->
+  <section class="section spy" aria-labelledby="cta-title" style="padding-block: var(--sp-7);">
+    <div class="container">
+      <div class="ab-cta rise">
+        <div class="ab-cta-copy">
+          <h2 id="cta-title">للتعاون البحثي والاستكتاب</h2>
+          <p>
+            يرحب المعهد بمقترحات الدراسات من الباحثين المتخصصين وبطلبات التعاون من
+            المؤسسات الأكاديمية — وكل مقترح يمر بالمسار التحكيمي نفسه.
+          </p>
+        </div>
+        <div class="ab-cta-acts">
+          <a class="btn btn-primary" href="contact.html">راسل هيئة التحرير</a>
+          <a class="btn btn-ghost" href="researchers.html">الباحثون <i class="fa-solid fa-arrow-left" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="assets/js/main.js?v=441"></script>
+</body>
+</html>

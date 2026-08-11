@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>اتصل بنا — إيواد</title>
+  <meta name="description" content="قنوات التواصل مع معهد إيواد: المراسلات البحثية، الاستكتاب، الإعلام، والتصحيح العلمي — مؤسسة رقمية بحثية، الرد خلال 48 ساعة عمل بالعربية والإنجليزية.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="اتصل بالمعهد — قنوات مؤسسية منفصلة لكل نوع مراسلة">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=441">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css?v=441">
+  <link rel="stylesheet" href="assets/css/main.css?v=441">
+  <link rel="stylesheet" href="assets/css/home.css?v=441">
+  <link rel="stylesheet" href="assets/css/article.css?v=441">
+  <link rel="stylesheet" href="assets/css/section.css?v=441">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+        <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+        <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+        <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="about.html">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+      <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+      <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+      <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="about.html">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="archive.html" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="about.html">عن المعهد</a>
+      <a href="glossary.html">معجم المصطلحات</a>
+      <a href="archive.html">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="مسار الصفحة">
+  <div class="container">
+    <a href="index.html">الرئيسية</a>
+    <span class="sep">/</span>
+    <span class="here">اتصل بنا</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ رأس الصفحة ============ -->
+  <header class="sec-hero" style="--sec: var(--primary);">
+    <div class="container">
+      <div class="badges">
+        <span class="rl">تواصل مؤسسي</span>
+        <span class="layer tnum">سجل المراسلات — IWAD-DG-04</span>
+      </div>
+      <h1><span class="mark" aria-hidden="true"></span> اتصل بالمعهد</h1>
+      <p class="desc">
+        أربع قنوات منفصلة تضمن وصول رسالتك إلى الطرف المختص مباشرة: المراسلات
+        البحثية، طلبات الاستكتاب، الاستفسارات الإعلامية، والتصحيحات العلمية.
+        المعهد مؤسسة رقمية بحثية بلا مقر قطري — كل التواصل يمر عبر هذه الصفحة
+        ويُقيَّد في سجل المراسلات الموثق.
+      </p>
+      <div class="sec-stats">
+        <span><b>4</b> قنوات منفصلة</span>
+        <span>الرد خلال <b>48</b> ساعة عمل</span>
+        <span>المراسلة <b>بالعربية والإنجليزية</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ نموذج المراسلة + القنوات المباشرة ============ -->
+  <section class="section spy" aria-labelledby="ct-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="ct-title">راسل المعهد</h2>
+        <span class="rl">نموذج المراسلة</span>
+      </div>
+      <p class="section-intro">تُوجَّه الرسالة آلياً إلى قناتها المختصة بحسب نوعها — اختر النوع بدقة، واذكر مرجع المادة إن كانت رسالتك عن مادة منشورة.</p>
+
+      <div class="ct-layout">
+
+        <div class="ct-formplate aperture rise">
+          <form class="ct-form" action="#" method="post">
+            <div class="ct-fields" data-stagger>
+              <div class="ct-field">
+                <label for="ct-name">الاسم الكامل</label>
+                <input type="text" id="ct-name" name="name" required autocomplete="name" placeholder="الاسم الثلاثي أو الصفة البحثية">
+              </div>
+              <div class="ct-field">
+                <label for="ct-email">البريد الإلكتروني</label>
+                <input type="email" id="ct-email" name="email" required autocomplete="email" placeholder="name@university.edu" dir="ltr">
+              </div>
+              <div class="ct-field">
+                <label for="ct-org">الجهة <span class="ct-opt">(اختياري)</span></label>
+                <input type="text" id="ct-org" name="org" autocomplete="organization" placeholder="جامعة، مركز بحثي، وسيلة إعلام…">
+              </div>
+              <div class="ct-field">
+                <label for="ct-type">نوع الرسالة</label>
+                <select id="ct-type" name="type" required>
+                  <option value="research">تعاون بحثي</option>
+                  <option value="submission">استكتاب</option>
+                  <option value="press">إعلام</option>
+                  <option value="correction">تصحيح علمي</option>
+                  <option value="other">أخرى</option>
+                </select>
+              </div>
+              <div class="ct-field ct-full">
+                <label for="ct-msg">الرسالة</label>
+                <textarea id="ct-msg" name="message" rows="6" required placeholder="اذكر الموضوع بدقة، ومرجع المادة إن وُجد — مثال: IWAD-2026-035"></textarea>
+              </div>
+            </div>
+            <div class="ct-actions">
+              <button class="btn btn-primary" type="submit">إرسال</button>
+              <span class="ct-hint">تُراجع الرسائل بترتيب الورود، وتُحال المكررات إلى الرد الموحد.</span>
+            </div>
+            <p class="brief-note">نموذج تجريبي — الإرسال معطل في العرض الحالي.</p>
+          </form>
+        </div>
+
+        <aside class="ct-aside" data-stagger>
+          <div class="doccard">
+            <span class="rl">قنوات مباشرة</span>
+            <dl class="ct-chan">
+              <dt>البريد البحثي</dt>
+              <dd><a dir="ltr" href="mailto:research@iwad-demo.org">research@iwad-demo.org</a></dd>
+              <dt>الاستكتاب والنشر</dt>
+              <dd><a dir="ltr" href="mailto:submissions@iwad-demo.org">submissions@iwad-demo.org</a></dd>
+              <dt>الإعلام والصحافة</dt>
+              <dd><a dir="ltr" href="mailto:press@iwad-demo.org">press@iwad-demo.org</a></dd>
+              <dt>ساعات الرد</dt>
+              <dd class="tnum">48 ساعة عمل — الأحد إلى الخميس</dd>
+            </dl>
+          </div>
+
+          <div class="doccard">
+            <span class="rl">قبل أن تراسلنا</span>
+            <p class="ct-preface">قد تجد إجابتك أسرع في هذه الصفحات:</p>
+            <nav class="ct-links" aria-label="روابط ما قبل المراسلة">
+              <a href="about.html"><span>سياسة النشر ومعايير التحكيم</span><span class="ct-arr" aria-hidden="true">←</span></a>
+              <a href="glossary.html"><span>الأسئلة عن المصطلحات — المعجم</span><span class="ct-arr" aria-hidden="true">←</span></a>
+              <a href="archive.html"><span>طلبات الأرشيف والمواد السابقة</span><span class="ct-arr" aria-hidden="true">←</span></a>
+            </nav>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- شريط التعاون المؤسسي -->
+      <div class="ct-strip rise">
+        <p><b>للتعاون المؤسسي طويل الأمد</b> — شراكات بحثية، برامج مشتركة، أو تبادل أرشيفي — ابدأ من ميثاق المعهد ومعايير استقلاليته قبل المراسلة.</p>
+        <a class="aux" href="about.html">عن المعهد ←</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="assets/js/main.js?v=441"></script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>الباحثون — إيواد</title>
+  <meta name="description" content="دليل باحثي معهد إيواد: خمسة باحثين مقيمين متفرغين عبر خمسة أقسام بحثية، بسجل نشر محكّم وتحكيم مزدوج مغفل ولا تبعية مؤسسية خارجية.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="إيواد — IWAD">
+  <meta property="og:title" content="باحثو المعهد — هيئة بحث مقيمة مستقلة">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta property="og:locale" content="ar_AR">
+
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
+
+  <link rel="preload" href="assets/fonts/web/pfdin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/web/pfdin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=441">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <link rel="stylesheet" href="assets/css/tokens.css?v=441">
+  <link rel="stylesheet" href="assets/css/main.css?v=441">
+  <link rel="stylesheet" href="assets/css/home.css?v=441">
+  <link rel="stylesheet" href="assets/css/article.css?v=441">
+  <link rel="stylesheet" href="assets/css/section.css?v=441">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+<div class="masthead">
+  <div class="container">
+    <span class="tagline">منصة بحثية مستقلة في النظريات والعقائد والفكر والإرث العسكري</span>
+    <time id="today" datetime="2026-08-10">الأحد 10 أغسطس 2026</time>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a class="brand" href="index.html" aria-label="إيواد — الصفحة الرئيسية">
+      <img src="assets/img/logo/iwad-dual.svg" alt="إيواد IWAD" width="120" height="56">
+    </a>
+    <nav class="main-nav" aria-label="التنقل الرئيسي">
+      <ul role="list">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+        <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+        <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+        <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+        <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-search-toggle aria-label="بحث متقدم">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <a class="about-link" href="about.html">عن المعهد</a>
+      <button class="icon-btn burger" id="burger" aria-label="القائمة" aria-expanded="false" aria-controls="drawer">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-label="قائمة الجوال">
+  <div class="drawer-head">
+    <img src="assets/img/logo/iwad-dual.svg" alt="إيواد">
+    <button class="icon-btn" id="drawer-close" aria-label="إغلاق القائمة">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </div>
+  <nav aria-label="التنقل — جوال">
+    <ul role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li data-sec="global"><a href="section-global.html">عالمي</a></li>
+      <li data-sec="regional"><a href="section-regional.html">إقليمي</a></li>
+      <li data-sec="doctrine"><a href="section-doctrine.html">عقائد</a></li>
+      <li data-sec="education"><a href="section-education.html">تعليمي</a></li>
+      <li data-sec="heritage"><a href="section-heritage.html">إرث عسكري</a></li>
+    </ul>
+  </nav>
+  <a class="about-link" href="about.html">عن المعهد</a>
+</aside>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="البحث المتقدم">
+  <button class="icon-btn search-close" id="search-close" aria-label="إغلاق البحث">
+    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+  </button>
+  <div class="search-box">
+    <form action="archive.html" role="search">
+      <label class="sr-only" for="search-input">ابحث في المنصة</label>
+      <div class="field">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="search-input" name="q" placeholder="ابحث في الدراسات، المصطلحات، الملفات…">
+        <button class="btn btn-primary" type="submit">بحث</button>
+      </div>
+    </form>
+    <div class="search-hints">
+      <a href="archive.html?author=laila">مواد د. ليلى مراد</a>
+      <a href="about.html">عن المعهد</a>
+      <a href="archive.html">البحث المتقدم ←</a>
+    </div>
+  </div>
+</div>
+
+<nav class="crumbs" aria-label="مسار الصفحة">
+  <div class="container">
+    <a href="index.html">الرئيسية</a>
+    <span class="sep">/</span>
+    <span class="here">الباحثون</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============ رأس الدليل ============ -->
+  <header class="sec-hero">
+    <div class="container">
+      <div class="badges">
+        <span class="rl">هيئة البحث</span>
+        <span class="layer">دليل دائم — يُحدَّث</span>
+      </div>
+      <h1><span class="mark" aria-hidden="true"></span> باحثو المعهد</h1>
+      <p class="desc">
+        فريق مقيم متفرغ — لا شبكة مساهمين عابرين. يعمل كل باحث على ملفات دائمة
+        تتراكم موادها، وتمر كل مادة بتحكيم مزدوج مغفل الهوية قبل النشر.
+        الاستقلالية شرط تعاقدي: لا تبعية مؤسسية خارجية، ولا تكليفات من جهات
+        تمس موضوعات البحث.
+      </p>
+      <div class="sec-stats">
+        <span><b class="tnum"><span class="num" data-count="5">5</span></b> باحثين مقيمين</span>
+        <span><b class="tnum"><span class="num" data-count="5">5</span></b> أقسام بحثية</span>
+        <span><b class="tnum"><span class="num" data-count="84">84</span></b> قيداً في سجل النشر</span>
+        <span>آخر تحديث: <b>10 أغسطس 2026</b></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ سجل الباحثين — التكوين الموقّع ============ -->
+  <section class="section spy" aria-labelledby="reg-title">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="reg-title">سجل الباحثين</h2>
+        <span class="rl">خمسة مقيمون</span>
+        <a class="aux" href="archive.html">أرشيف المواد ←</a>
+      </div>
+
+      <div class="rx-ledger frame aperture ap-hover rise">
+        <div class="pub-ledgerline">
+          <span>الباحث — اللقب العلمي — حقول التخصص</span>
+          <span class="tnum">القيود والأقسام</span>
+        </div>
+
+        <div class="rx-rows" data-stagger>
+          <article class="rx-row" data-sec="global">
+            <span class="rx-glyph" aria-hidden="true">س</span>
+            <div class="rx-b">
+              <h3><a href="researcher.html">د. سامر الحسن</a></h3>
+              <span class="rx-role">باحث أول — وحدة الدراسات البحرية</span>
+              <div class="rx-chips">
+                <a href="archive.html?author=samer">الأمن البحري</a>
+                <a href="archive.html?author=samer">الممرات الاستراتيجية</a>
+                <a href="archive.html?author=samer">الشرق الأوسط</a>
+              </div>
+            </div>
+            <div class="rx-meta tnum">
+              <b>12</b>
+              <span>مادة في السجل</span>
+              <span class="rx-secs">عالمي · إقليمي</span>
+            </div>
+          </article>
+
+          <article class="rx-row" data-sec="global">
+            <span class="rx-glyph" aria-hidden="true">هـ</span>
+            <div class="rx-b">
+              <h3><a href="researcher.html">د. هالة عثمان</a></h3>
+              <span class="rx-role">باحثة أولى — بنية التحالفات الدفاعية</span>
+              <div class="rx-chips">
+                <a href="archive.html?author=hala">الحلف الأطلسي</a>
+                <a href="archive.html?author=hala">الدفاع الصاروخي</a>
+                <a href="archive.html?author=hala">أمن أوروبا</a>
+              </div>
+            </div>
+            <div class="rx-meta tnum">
+              <b>9</b>
+              <span>مواد في السجل</span>
+              <span class="rx-secs">عالمي</span>
+            </div>
+          </article>
+
+          <article class="rx-row" data-sec="regional">
+            <span class="rx-glyph" aria-hidden="true">ل</span>
+            <div class="rx-b">
+              <h3><a href="researcher.html">د. ليلى مراد</a></h3>
+              <span class="rx-role">باحثة أولى — رئيسة ملفات المشرق</span>
+              <div class="rx-chips">
+                <a href="archive.html?author=laila">المشرق</a>
+                <a href="archive.html?author=laila">قواعد الاشتباك</a>
+                <a href="archive.html?author=laila">هندسة التصعيد</a>
+              </div>
+            </div>
+            <div class="rx-meta tnum">
+              <b>11</b>
+              <span>مادة في السجل</span>
+              <span class="rx-secs">إقليمي</span>
+            </div>
+          </article>
+
+          <article class="rx-row" data-sec="doctrine">
+            <span class="rx-glyph" aria-hidden="true">ط</span>
+            <div class="rx-b">
+              <h3><a href="researcher.html">د. طارق عبد الرحمن</a></h3>
+              <span class="rx-role">باحث أول — النظرية والعقيدة</span>
+              <div class="rx-chips">
+                <a href="archive.html?author=tarek">نظريات الردع</a>
+                <a href="archive.html?author=tarek">العقائد العسكرية</a>
+                <a href="archive.html?author=tarek">الردع الموسع</a>
+              </div>
+            </div>
+            <div class="rx-meta tnum">
+              <b>10</b>
+              <span>مواد في السجل</span>
+              <span class="rx-secs">عقائد</span>
+            </div>
+          </article>
+
+          <article class="rx-row" data-sec="heritage">
+            <span class="rx-glyph" aria-hidden="true">ن</span>
+            <div class="rx-b">
+              <h3><a href="researcher.html">د. نور خليل</a></h3>
+              <span class="rx-role">باحثة — التاريخ العسكري الوسيط</span>
+              <div class="rx-chips">
+                <a href="archive.html?author=nour">التاريخ الوسيط</a>
+                <a href="archive.html?author=nour">الأرشيف والمخطوطات</a>
+                <a href="archive.html?author=nour">المحتوى التعليمي</a>
+              </div>
+            </div>
+            <div class="rx-meta tnum">
+              <b>8</b>
+              <span>مواد في السجل</span>
+              <span class="rx-secs">إرث عسكري · تعليمي</span>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="fig-cap">
+        <span>سجل هيئة البحث — القيود تشمل المواد المنشورة والتحكيمات والمشاركات الموثقة</span>
+        <span class="tnum">IWAD-DG-2026-04</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ مبدأ التحرير ============ -->
+  <section class="section spy" aria-labelledby="ed-title" style="background: var(--surface); border-block: 1px solid var(--rule-2);">
+    <div class="container">
+      <div class="kicker-line">
+        <h2 id="ed-title">مبدأ التحرير</h2>
+        <span class="rl">ميثاق منهجي</span>
+        <a class="aux" href="about.html">عن المعهد ←</a>
+      </div>
+
+      <div class="matn rise">
+        <p class="lead">
+          لا يقبل المعهد تمويلاً مشروطاً، ولا يرتبط باحثوه بأي تبعية مؤسسية
+          خارجية تمس موضوعات بحثهم. الاستقلالية عندنا التزام تعاقدي لا شعار:
+          يوقّع كل باحث عند انضمامه إقراراً سنوياً بمصادر دخله البحثي
+          وارتباطاته المهنية، ويُحدَّث الإقرار كلما طرأ تغيير.
+        </p>
+        <p>
+          تُدار حالات تضارب المصالح بالإفصاح المسبق والتنحي: لا يحكّم باحث مادة
+          شارك فيها أو تمس جهة تربطه بها صلة، ويُثبَّت التنحي في سجل التحرير.
+          وتمر كل مادة — من تقدير الموقف إلى البحث المعمّق — بتحكيم مزدوج مغفل
+          الهوية، ويحمل كل قيد محكّم رقماً مرجعياً دائماً
+          (نمط <span class="tnum" dir="ltr">IWAD-2026-0NN</span>) يتيح تتبع
+          مسار المادة من المسودة إلى النشر.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ انضم إلينا ============ -->
+  <section class="section spy" aria-label="انضم إلينا">
+    <div class="container">
+      <div class="rx-cta rise">
+        <div class="rx-cta-copy">
+          <span class="rl">انضم إلينا</span>
+          <p class="rx-cta-lead">
+            نفتح تعاوناً بحثياً بمعايير النشر المحكّم — موجز بحثي من صفحة واحدة
+            وسيرة مختصرة يكفيان لبدء التقييم.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="contact.html">راسل المعهد</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-charter">
+      <div class="brand-side">
+        <img src="assets/img/logo/iwad-full-cream.svg" alt="إيواد — معهد دراسات الحرب والدفاع">
+        <p class="charter-text">
+          <b>تأسس 2026</b> — مؤسسة بحثية خاصة، غير ربحية، مستقلة.
+          محتوى أكاديمي محكّم في دراسات الحرب والدفاع.
+        </p>
+      </div>
+      <div class="social-row">
+        <a href="#" aria-label="إكس"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" aria-label="لينكدإن"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" aria-label="يوتيوب"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="تيليجرام"><i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year" class="tnum">2026</span> إيواد — معهد دراسات الحرب والدفاع. جميع الحقوق محفوظة.</p>
+      <div class="legal">
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="assets/js/main.js?v=441"></script>
+</body>
+</html>
