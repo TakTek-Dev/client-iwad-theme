@@ -355,6 +355,11 @@
   color: var(--accent-text);
   line-height: 1.4;
 }
+/* أبناء البند (b/span/a) يندمجون في عمود النص — وإلا انفصلوا كعناصر شبكة
+   ووقع النص في عمود الرقم فتكدست الكلمات عمودياً */
+.matn ol.sig-list li > b,
+.matn ol.sig-list li > span,
+.matn ol.sig-list li > a { display: contents; }
 
 /* ما الذي نراقبه تالياً */
 .watchnext {

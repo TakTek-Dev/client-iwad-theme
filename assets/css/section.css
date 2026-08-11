@@ -996,3 +996,10 @@
 .pv-doc > p a { color: var(--accent-text); font-weight: 600; }
 .pv-doc > p a:hover { text-decoration: underline; }
 .pv-mail { direction: ltr; unicode-bidi: isolate; font-weight: 700; }
+
+/* بنود الميثاق وقوائم الخصوصية: أبناء البند يندمجون في عمود النص
+   (نفس علاج sig-list — عناصر b/span كانت تنفصل كأعمدة شبكة) */
+.matn .ab-charter li > b,
+.matn .ab-charter li > span,
+.pv-doc .pv-list li > b,
+.pv-doc .pv-list li > span { display: contents; }
