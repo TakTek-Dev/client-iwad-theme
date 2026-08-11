@@ -1095,3 +1095,47 @@ html.js .nl-plate.armed .cb-br { transition-delay: .24s; }
 }
 .ffollow .social-row a { border-color: var(--rule-2); color: var(--text); }
 .ffollow .social-row a:hover { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+
+/* ============ النشرة — شريط مضغوط (بديل اللوح الكبير) ============ */
+.nl-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4) var(--sp-6);
+  border: 1px solid var(--rule-2);
+  border-inline-start: 3px solid var(--primary);
+  background: var(--surface);
+  padding: var(--sp-4) var(--sp-5);
+}
+.nl-strip .nl-copy { min-width: 0; max-width: 60ch; }
+.nl-strip h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-lg);
+  color: var(--primary);
+  margin-block-end: 2px;
+}
+.nl-strip h2::before {
+  content: "";
+  width: 12px; height: 12px;
+  background: var(--iwad-gold);
+  clip-path: var(--notch);
+  flex-shrink: 0;
+}
+.nl-strip .nl-copy p { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.7; }
+.nl-strip .nl-form { display: flex; flex-wrap: wrap; gap: var(--sp-2); flex: 0 1 420px; min-width: 0; margin: 0; }
+.nl-strip .nl-form input {
+  flex: 1 1 200px; width: 0; min-width: 0;
+  border: 1.5px solid var(--rule-2);
+  background: var(--bg);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-sm);
+}
+.nl-strip .nl-form input:focus { outline: none; border-color: var(--primary); }
+.nl-strip .nl-form .btn { padding-block: var(--sp-2); font-size: var(--fs-sm); white-space: nowrap; }
+@media (max-width: 640px) {
+  .nl-strip { padding: var(--sp-4); }
+  .nl-strip .nl-form { flex-basis: 100%; }
+}
