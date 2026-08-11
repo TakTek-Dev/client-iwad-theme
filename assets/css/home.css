@@ -172,7 +172,6 @@ svg text { font-family: var(--font-main); }
   .ah-plate .aperture::after { display: none; }
 
   /* لوح النشرة: حشوة موبايل معقولة */
-  .nl-plate { padding: var(--sp-7) var(--sp-4); }
 
   /* رقائق الترشيح: هدف لمس كامل */
   .pf-chip { min-height: 44px; padding-inline: var(--sp-4); }
@@ -984,89 +983,8 @@ html.js .inst.armed .mission { clip-path: inset(0 0 -6% 0); }
 .inst .fig > span { display: block; font-size: var(--fs-sm); color: rgb(243 238 234 / 70%); margin-block-start: var(--sp-1); }
 
 /* ============================================================
-   12 · النشرة — الإحاطة الأسبوعية (لوح بأقواس تسجيل)
+   12 · النشرة — استُبدل اللوح الكبير بشريط .nl-strip (آخر الملف)
    ============================================================ */
-.nl-plate {
-  position: relative;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  padding: var(--sp-9) var(--sp-6);
-  text-align: center;
-}
-@media (min-width: 768px) { .nl-plate { padding: var(--sp-9) var(--sp-8); } }
-
-/* أقواس الزوايا الذهبية — تُرسم عند وصول اللوح */
-.cb {
-  position: absolute;
-  width: 20px; height: 20px;
-  border-color: var(--iwad-gold);
-  border-style: solid;
-  border-width: 0;
-}
-html.js .nl-plate .cb {
-  opacity: 0;
-  transform: scale(.4);
-  transition: opacity .4s var(--ease-out), transform .4s var(--ease-out);
-}
-html.js .nl-plate.armed .cb { opacity: 1; transform: none; }
-html.js .nl-plate.armed .cb-tr { transition-delay: .08s; }
-html.js .nl-plate.armed .cb-bl { transition-delay: .16s; }
-html.js .nl-plate.armed .cb-br { transition-delay: .24s; }
-@media (prefers-reduced-motion: reduce) {
-  html.js .nl-plate .cb { opacity: 1; transform: none; transition: none; }
-}
-.cb-tl { inset-block-start: -8px; inset-inline-start: -8px; border-block-start-width: 2px; border-inline-start-width: 2px; }
-.cb-tr { inset-block-start: -8px; inset-inline-end: -8px;   border-block-start-width: 2px; border-inline-end-width: 2px; }
-.cb-bl { inset-block-end: -8px;  inset-inline-start: -8px;  border-block-end-width: 2px;  border-inline-start-width: 2px; }
-.cb-br { inset-block-end: -8px;  inset-inline-end: -8px;    border-block-end-width: 2px;  border-inline-end-width: 2px; }
-
-.nl-kicker {
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  color: var(--primary);
-  margin-block-end: var(--sp-3);
-}
-.nl-plate h2 {
-  font-size: clamp(var(--fs-2xl), 3.4vw, var(--fs-3xl));
-  color: var(--primary);
-  margin-block-end: var(--sp-4);
-}
-.nl-sub {
-  font-size: var(--fs-md);
-  line-height: 1.8;
-  color: var(--text-muted);
-  max-width: 52ch;
-  margin-inline: auto;
-  margin-block-end: var(--sp-6);
-}
-
-.nl-form {
-  display: flex;
-  gap: var(--sp-3);
-  max-width: 620px;
-  margin-inline: auto;
-}
-.nl-form input {
-  flex: 1; width: 0; min-width: 0;
-  background: var(--surface);
-  border: 1.5px solid var(--rule-2);
-  padding: var(--sp-4);
-  font-size: var(--fs-base);
-  transition: border-color var(--dur-fast) var(--ease-out);
-}
-.nl-form input:focus { outline: none; border-color: var(--primary); }
-.nl-form .btn { min-height: 56px; padding-inline: var(--sp-6); font-weight: 600; }
-
-.nl-note {
-  font-size: var(--fs-sm);
-  color: var(--accent-text);
-  margin-block-start: var(--sp-4);
-}
-
-@media (max-width: 520px) {
-  .nl-form { flex-direction: column; }
-  .nl-form input { width: auto; }
-}
 
 /* ============================================================
    13 · من حساباتنا — تغذية التواصل
