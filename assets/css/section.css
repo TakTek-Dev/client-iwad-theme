@@ -133,6 +133,18 @@
 .vtl-item p { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.7; margin-block-start: 2px; }
 .vtl-item h3 a:hover { color: var(--sec-regional); }
 
+/* الخط الزمني + بطاقة قراءة جانبية — يملأ عرض الحاوية */
+.vtl-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: var(--sp-7);
+  align-items: start;
+}
+.vtl-layout .vtl { max-width: none; }
+@media (max-width: 900px) {
+  .vtl-layout { grid-template-columns: 1fr; gap: var(--sp-5); }
+}
+
 /* ---------- المعجم: بحث حي + صفوف المصطلحات ---------- */
 .glo-search {
   display: flex;
@@ -226,6 +238,95 @@
 }
 .term-links a:hover { border-color: var(--sec-doctrine); color: var(--sec-doctrine); }
 
-/* ---------- شبكة باحثي القسم/الملف ---------- */
-.sec-people { display: grid; gap: 0 var(--sp-6); border-block-start: 1px solid var(--rule-2); max-width: 900px; }
+/* ---------- شبكة باحثي القسم/الملف — تملأ عرض الحاوية ---------- */
+.sec-people { display: grid; gap: 0 var(--sp-6); border-block-start: 1px solid var(--rule-2); }
 @media (min-width: 640px) { .sec-people { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .sec-people { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); } }
+
+/* ---------- الأرشيف: تخطيط المرشحات والنتائج ---------- */
+.arch-layout {
+  display: grid;
+  grid-template-columns: 268px minmax(0, 1fr);
+  gap: var(--sp-7);
+  align-items: start;
+}
+.arch-rail {
+  position: sticky;
+  top: 84px;
+  display: grid;
+  gap: var(--sp-5);
+  border: 1px solid var(--rule-2);
+  background: var(--surface);
+  padding: var(--sp-4);
+}
+.arch-search { max-width: none; margin-block-end: 0; }
+.f-group > .k {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: .04em;
+  margin-block-end: var(--sp-2);
+}
+.f-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.af-chip {
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid var(--rule-2);
+  background: none;
+  padding: 4px var(--sp-2);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.af-chip:hover { border-color: var(--sec, var(--iwad-ink)); color: var(--sec, var(--iwad-ink)); }
+.af-chip.on { background: var(--sec, var(--iwad-ink)); border-color: var(--sec, var(--iwad-ink)); color: var(--iwad-cream); }
+.arch-reset {
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--text-muted);
+  border: 1px solid var(--rule-2);
+  background: none;
+  padding: var(--sp-2);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.arch-reset:hover { border-color: var(--primary); color: var(--primary); }
+.arch-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2) var(--sp-4);
+  padding-block-end: var(--sp-3);
+}
+.arch-sort { display: flex; align-items: center; gap: var(--sp-1); }
+.arch-sort .k { font-size: var(--fs-xs); font-weight: 700; color: var(--text-muted); }
+.as-btn {
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  border: none;
+  background: none;
+  padding: 2px var(--sp-2);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.as-btn.on { color: var(--primary); font-weight: 700; box-shadow: inset 0 -2px 0 var(--iwad-gold); }
+.arch-empty {
+  border: 1px dashed var(--rule-2);
+  padding: var(--sp-7) var(--sp-4);
+  text-align: center;
+  margin-block-start: var(--sp-5);
+}
+.arch-empty p { color: var(--text-muted); margin-block-end: var(--sp-4); }
+@media (max-width: 900px) {
+  .arch-layout { grid-template-columns: 1fr; gap: var(--sp-5); }
+  .arch-rail { position: static; }
+}
+
+/* عمود نتائج الأرشيف — حارس ضد تمدد المحتوى */
+.arch-main { min-width: 0; }

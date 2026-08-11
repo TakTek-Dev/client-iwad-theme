@@ -482,6 +482,20 @@
   /* ============ النشرة: تسليح فقط — الأقواس CSS ============ */
   sect('.nl-plate', function () {});
 
+  /* ============ شبكة أمان عامة — الصفحات الداخلية ============
+     أي حاوية data-stagger لم تلتقطها جملة قسم مخصصة تُسلَّح بدخولها،
+     وكذلك أي سكشن (مسطرة الرأس). التسجيلات تتركّب فلا ضرر من الازدواج. */
+  gsap.utils.toArray('[data-stagger]').forEach(function (el) {
+    onEnter(el, function () {
+      el.classList.add('armed');
+      var host = el.closest('section');
+      if (host) host.classList.add('armed');
+    });
+  });
+  gsap.utils.toArray('main section, main .sec-hero, .era-band').forEach(function (el) {
+    onEnter(el, function () { el.classList.add('armed'); });
+  });
+
   /* ============ العدادات — عامة: كل رقم يُسجَّل عند وصوله ============ */
   gsap.utils.toArray('.num[data-count]').forEach(function (el) {
     onEnter(el, function () {
@@ -515,4 +529,104 @@
     if (shown) shown.textContent = n;
   }
   inp.addEventListener('input', apply);
+})();
+
+/* ============================================================
+   الأرشيف — مرشحات خماسية + بحث نصي + ترتيب + معاملات الرابط
+   ============================================================ */
+(function () {
+  var wrap = document.getElementById('arch-rows');
+  if (!wrap) return;
+  var rows = Array.prototype.slice.call(wrap.querySelectorAll('.pub'));
+  var shown = document.getElementById('arch-shown');
+  var empty = document.getElementById('arch-empty');
+  var inp = document.getElementById('arch-search');
+  var state = { q: '', sec: 'all', type: 'all', region: 'all', era: 'all', author: 'all' };
+
+  function apply() {
+    var n = 0;
+    rows.forEach(function (r) {
+      var d = r.dataset;
+      var hit =
+        (state.sec === 'all' || d.sec === state.sec) &&
+        (state.type === 'all' || d.type === state.type) &&
+        (state.region === 'all' || d.region === state.region) &&
+        (state.era === 'all' || d.era === state.era) &&
+        (state.author === 'all' || d.author === state.author) &&
+        (!state.q || (d.k || '').toLowerCase().indexOf(state.q) !== -1);
+      r.classList.toggle('hide', !hit);
+      if (hit) n++;
+    });
+    if (shown) shown.textContent = n;
+    if (empty) empty.hidden = n !== 0;
+  }
+
+  document.querySelectorAll('.f-group').forEach(function (g) {
+    var key = g.getAttribute('data-g');
+    g.querySelectorAll('.af-chip').forEach(function (b) {
+      b.addEventListener('click', function () {
+        g.querySelectorAll('.af-chip').forEach(function (x) { x.classList.remove('on'); });
+        b.classList.add('on');
+        state[key] = b.getAttribute('data-v');
+        apply();
+      });
+    });
+  });
+
+  if (inp) inp.addEventListener('input', function () {
+    state.q = inp.value.trim().toLowerCase();
+    apply();
+  });
+
+  function reset() {
+    state = { q: '', sec: 'all', type: 'all', region: 'all', era: 'all', author: 'all' };
+    if (inp) inp.value = '';
+    document.querySelectorAll('.f-group .af-chip').forEach(function (x) {
+      x.classList.toggle('on', x.getAttribute('data-v') === 'all');
+    });
+    apply();
+  }
+  var r1 = document.getElementById('arch-reset');
+  var r2 = document.getElementById('arch-empty-reset');
+  if (r1) r1.addEventListener('click', reset);
+  if (r2) r2.addEventListener('click', reset);
+
+  /* الترتيب الزمني — إعادة رصّ الصفوف بالتاريخ */
+  document.querySelectorAll('.as-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.as-btn').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+      var dir = b.getAttribute('data-sort') === 'old' ? 1 : -1;
+      rows.slice().sort(function (a, c) {
+        var da = a.getAttribute('data-date'), dc = c.getAttribute('data-date');
+        return da < dc ? -1 * dir : da > dc ? dir : 0;
+      }).forEach(function (r) { wrap.appendChild(r); });
+    });
+  });
+
+  /* معاملات الرابط: archive.html?q=... أو ?sec=doctrine إلخ */
+  var p = new URLSearchParams(location.search);
+  var any = false;
+  ['q', 'sec', 'type', 'region', 'era', 'author'].forEach(function (k) {
+    var v = p.get(k);
+    if (!v) return;
+    if (k === 'q') {
+      state.q = v.trim().toLowerCase();
+      if (inp) inp.value = v;
+      any = true;
+      return;
+    }
+    var g = document.querySelector('.f-group[data-g="' + k + '"]');
+    var matched = false;
+    if (g) g.querySelectorAll('.af-chip').forEach(function (x) {
+      var on = x.getAttribute('data-v') === v;
+      x.classList.toggle('on', on);
+      if (on) matched = true;
+    });
+    if (matched) { state[k] = v; any = true; }
+    else if (g) g.querySelectorAll('.af-chip').forEach(function (x) {
+      x.classList.toggle('on', x.getAttribute('data-v') === 'all');
+    });
+  });
+  if (any) apply();
 })();
