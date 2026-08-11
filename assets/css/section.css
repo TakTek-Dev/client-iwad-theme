@@ -1003,3 +1003,9 @@
 .matn .ab-charter li > span,
 .pv-doc .pv-list li > b,
 .pv-doc .pv-list li > span { display: contents; }
+
+/* رقائق مرشحات الأرشيف: هدف لمس كامل على الموبايل */
+@media (max-width: 767px) {
+  .af-chip { min-height: 42px; padding-inline: var(--sp-3); }
+  .arch-reset { min-height: 44px; }
+}
