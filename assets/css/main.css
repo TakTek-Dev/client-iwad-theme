@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    IWAD — Base + Components
    RTL-first · Logical properties only · Flat design
    ============================================================ */
@@ -745,7 +745,7 @@ p { text-wrap: pretty; }
 .site-footer h3 {
   font-size: var(--fs-base);
   font-weight: 600;
-  color: var(--iwad-gold);
+  color: var(--gold-on-dark);
   margin-block-end: var(--sp-4);
 }
 
@@ -755,7 +755,7 @@ p { text-wrap: pretty; }
   color: rgb(243 238 234 / 85%);
   transition: color var(--dur-fast) var(--ease-out);
 }
-.footer-links a:hover { color: var(--iwad-gold); }
+.footer-links a:hover { color: var(--gold-on-dark); }
 
 .footer-links .dot {
   display: inline-block;
@@ -813,7 +813,7 @@ p { text-wrap: pretty; }
   font-size: var(--fs-xs);
   color: rgb(243 238 234 / 60%);
 }
-.footer-bottom a:hover { color: var(--iwad-gold); }
+.footer-bottom a:hover { color: var(--gold-on-dark); }
 .footer-bottom .legal { display: flex; gap: var(--sp-4); flex-wrap: wrap; }
 
 /* ============================================================
@@ -846,4 +846,24 @@ html.js .reveal.in { opacity: 1; translate: 0 0; }
   color: var(--text-muted);
   border: 1px solid var(--rule-2);
   padding: 2px var(--sp-2);
+}
+
+/* ============================================================
+   إتاحة: أهداف لمس لا تقل عن 24px على الشاشات اللمسية
+   (WCAG 2.2 — 2.5.8 Target Size Minimum). روابط النص داخل الفقرات
+   معفاة بالمعيار، فالقاعدة مقصورة على الروابط المستقلة في القوائم.
+   ============================================================ */
+@media (pointer: coarse) {
+  .footer-links a,
+  .legal a,
+  .search-hints a,
+  .kicker-line .aux,
+  .th-more,
+  .sec-people .nm,
+  .hot-terms a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+  }
+  .footer-links li { margin-block-end: var(--sp-3); }
 }

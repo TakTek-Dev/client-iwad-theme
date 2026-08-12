@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    IWAD — صفحات الأقسام (Hub) والملفات الدائمة
    ============================================================ */
 
@@ -630,7 +630,7 @@
   background: var(--iwad-gold);
   clip-path: var(--notch);
 }
-.rx-cta .rl { color: var(--iwad-gold); }
+.rx-cta .rl { color: var(--gold-on-dark); }
 .rx-cta-copy { min-width: 0; }
 .rx-cta-lead { font-size: var(--fs-md); font-weight: 600; line-height: 1.75; max-width: 56ch; margin-block-start: var(--sp-2); }
 .rx-cta .btn-primary { background: var(--iwad-gold); color: var(--iwad-ink); flex-shrink: 0; }

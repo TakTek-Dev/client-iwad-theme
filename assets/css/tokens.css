@@ -22,7 +22,8 @@
   --primary:     var(--iwad-maroon);
   --on-primary:  var(--iwad-cream);
   --accent:      var(--iwad-gold);   /* ديكور/بوردر/عناوين كبيرة فقط */
-  --accent-text: #7E5F31;            /* الذهبي المقروء — نص ولينكات */
+  --accent-text: #7E5F31;            /* الذهبي المقروء — نص ولينكات على الفاتح */
+  --gold-on-dark: #AD8850;           /* الذهبي للنص الصغير فوق النبيتي — 4.78:1 (AA) */
   --border:      #D8D0C4;
   --rule:        #DDD5C9;   /* مسطرة داخلية خفيفة */
   --rule-2:      #C7BEB0;   /* مسطرة إطارات أثقل */

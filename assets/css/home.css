@@ -215,8 +215,8 @@ svg text { font-family: var(--font-main); }
 .hero-copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-4); }
 
 .hero-copy .badges { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
-.hero-copy .rl { color: var(--iwad-gold); }
-.hero-copy .layer { border-color: var(--iwad-gold); color: var(--iwad-gold); }
+.hero-copy .rl { color: var(--gold-on-dark); }
+.hero-copy .layer { border-color: var(--iwad-gold); color: var(--gold-on-dark); }
 
 .hero-copy h1 {
   font-size: clamp(2rem, 4vw, 3.3rem);
@@ -259,7 +259,7 @@ svg text { font-family: var(--font-main); }
 .hero-map svg { display: block; width: 100%; height: auto; cursor: crosshair; }
 .hero-map [data-read] { transition: opacity var(--dur-fast) var(--ease-out); }
 .hero-map [data-read]:hover { opacity: .85; }
-#hero-read { color: var(--iwad-gold); transition: color var(--dur-fast) var(--ease-out); }
+#hero-read { color: var(--gold-on-dark); transition: color var(--dur-fast) var(--ease-out); }
 
 /* نبضتا اكتشاف على نقطة الرصد ثم سكون */
 @keyframes watch-ping {
@@ -304,8 +304,8 @@ html.js .hm-watch {
   transition: background var(--dur-fast) var(--ease-out);
 }
 .hero-sub a:hover { background: #4A1E28; }
-.hero-sub .k { font-size: var(--fs-xs); font-weight: 700; color: var(--iwad-gold); }
-.hero-sub h3 { font-size: var(--fs-sm); font-weight: 600; line-height: 1.55; color: var(--iwad-cream); }
+.hero-sub .k { font-size: var(--fs-xs); font-weight: 700; color: var(--gold-on-dark); }
+.hero-sub .t { display: block; font-size: var(--fs-sm); font-weight: 600; line-height: 1.55; color: var(--iwad-cream); }
 
 /* ============================================================
    السلك
@@ -610,7 +610,17 @@ html.js .hm-watch {
 .pub h3 a:hover { color: var(--sec, var(--primary)); }
 .pub .who { display: block; font-size: var(--fs-xs); color: var(--text-muted); margin-block-start: 2px; }
 .pub .end { display: flex; align-items: center; gap: var(--sp-4); font-size: var(--fs-xs); color: var(--text-muted); font-variant-numeric: tabular-nums; }
-.pub .end .pdf { color: var(--accent-text); font-size: 14px; }
+/* مساحة لمس كاملة للأيقونة دون تكبير شكلها أو زيادة ارتفاع الصف */
+.pub .end .pdf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  margin-block: -10px;
+  color: var(--accent-text);
+  font-size: 14px;
+}
 .pub .end .pdf:hover { color: var(--primary); }
 /* سطر الدفتر — رأس السجل التحريري */
 .pub-ledgerline {
@@ -943,7 +953,7 @@ html.js .hm-watch {
 .inst .inner { position: relative; display: grid; gap: var(--sp-6); padding-block: var(--sp-8); }
 @media (min-width: 1024px) { .inst .inner { grid-template-columns: 1.25fr .75fr; align-items: center; } }
 
-.inst .rl { color: var(--iwad-gold); }
+.inst .rl { color: var(--gold-on-dark); }
 /* البيان المؤسسي الكبير — ذروة الختام: يُكشف بمسحة واحدة */
 .inst .mission {
   font-size: clamp(var(--fs-xl), 3vw, var(--fs-3xl));
@@ -953,7 +963,7 @@ html.js .hm-watch {
   max-width: 26ch;
   margin-block: var(--sp-4) var(--sp-5);
 }
-.inst .mission b { color: var(--iwad-gold); font-weight: 600; }
+.inst .mission b { color: var(--gold-on-dark); font-weight: 600; }
 html.js .inst .mission {
   clip-path: inset(0 0 100% 0);
   transition: clip-path 950ms var(--ease-out) 120ms;
