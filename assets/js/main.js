@@ -382,18 +382,17 @@
       stagger: { each: 0.012, from: 'center' }, ease: 'power1.out'
     }, '-=0.45');
   }
-  gsap.utils.toArray('.sea-route').forEach(function (p, i) {
-    var len = p.getTotalLength();
-    heroTl.fromTo(p,
-      { strokeDasharray: len + ' ' + len, strokeDashoffset: len },
-      { strokeDashoffset: 0, duration: 0.8, ease: 'power2.inOut',
-        onComplete: function () { p.style.strokeDasharray = ''; p.style.strokeDashoffset = ''; } },
-      i === 0 ? '-=0.2' : '<0.15');
-  });
-  heroTl.from('.hm-cross-h', { scaleX: 0, transformOrigin: '100% 50%', duration: 0.5, ease: M.easeDraw }, '-=0.3')
-    .from('.hm-cross-v', { scaleY: 0, transformOrigin: '50% 0%', duration: 0.45, ease: M.easeDraw }, '<0.08')
-    .from('.hm-watch', { opacity: 0, scale: 0.4, transformOrigin: 'center', duration: M.pop, ease: M.easePop }, '-=0.15')
-    .from('.hero-sub a', { opacity: 0, y: 10, duration: 0.4, stagger: 0.07 }, '-=0.2');
+  /* حد العلامة يُرسم، ثم خلايا الأقسام تُرصَد، ثم التسميات */
+  var hsOutline = document.getElementById('hs-outline');
+  if (hsOutline) drawPath(heroTl, hsOutline, 0.9, '-=0.25');
+  var hsCells = gsap.utils.toArray('.hs-cell rect');
+  if (hsCells.length) {
+    heroTl.from(hsCells, {
+      opacity: 0, scale: 0.4, transformOrigin: 'center',
+      duration: M.pop, ease: M.easePop, stagger: 0.07
+    }, '-=0.35');
+  }
+  heroTl.from('.hs-labels text, .hs-cart', { opacity: 0, duration: 0.35, stagger: 0.04 }, '-=0.15');
   }
 
   /* ============ بوابة الأقسام: الخلايا تُسجَّل والعلامات تُرصَد ============ */

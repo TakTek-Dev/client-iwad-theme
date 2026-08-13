@@ -1127,3 +1127,14 @@ html.js .inst.armed .mission { clip-path: inset(0 0 -6% 0); }
   text-align: justify;
   text-justify: inter-word;
 }
+
+/* مخطط المنصة — خلايا الأقسام في لوحة الهيرو */
+.hs-cell { cursor: pointer; }
+.hs-cell rect {
+  transition: filter var(--dur-fast) var(--ease-out), stroke-width var(--dur-fast) var(--ease-out);
+  stroke: #F3EEEA;
+  stroke-width: 0;
+}
+.hs-cell:hover rect,
+.hs-cell:focus-visible rect { stroke-width: 2; filter: brightness(1.18); }
+.hs-cell:focus-visible { outline: none; }
