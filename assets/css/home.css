@@ -1067,3 +1067,63 @@ html.js .inst.armed .mission { clip-path: inset(0 0 -6% 0); }
   .nl-strip { padding: var(--sp-4); }
   .nl-strip .nl-form { flex-basis: 100%; }
 }
+
+/* ============ تعديلات ملاحظات العميل — أغسطس 2026 ============ */
+
+/* مسار المادة في الهيرو: نص بسيط بدل الشارات */
+.hero-path {
+  font-size: var(--fs-sm);
+  color: rgb(243 238 234 / 72%);
+  margin-block-end: var(--sp-3);
+}
+.hero-path strong { color: var(--gold-on-dark); font-weight: 700; }
+.hero-path span { color: rgb(243 238 234 / 38%); margin-inline: 2px; }
+
+/* باترن الشبكة في الهيرو أخف — كان مشوشاً على العناصر */
+.hero .grid-overlay {
+  background-image:
+    linear-gradient(rgb(243 238 234 / 3%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(243 238 234 / 3%) 1px, transparent 1px);
+}
+
+/* أيقونات الأقسام في البوابة */
+.gw-icon {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: var(--sec, var(--primary));
+  stroke-width: 1.5;
+  margin-block-end: var(--sp-3);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.gw-cell:hover .gw-icon { transform: translateY(-2px); }
+
+/* الإصدارات: لوحة واحدة + مادتان نصيتان */
+.feat-text {
+  border: 1px solid var(--rule-2);
+  background: var(--surface);
+  padding: var(--sp-5);
+}
+.feat-text .secline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--sec, var(--primary));
+  margin-block-end: var(--sp-2);
+}
+.feat-text .secline::before {
+  content: "";
+  width: 10px; height: 10px;
+  background: var(--sec, var(--primary));
+  clip-path: var(--notch);
+}
+.feat-text .exc { font-size: var(--fs-sm); color: var(--text-muted); line-height: 1.75; }
+
+/* نص قاعة المعهد: أصغر ومضبوط بالتسوية */
+.inst .mission {
+  font-size: clamp(var(--fs-lg), 2.4vw, var(--fs-xl));
+  text-align: justify;
+  text-justify: inter-word;
+}
