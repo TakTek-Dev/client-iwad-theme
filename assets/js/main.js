@@ -629,3 +629,51 @@
   });
   if (any) apply();
 })();
+
+/* ============================================================
+   لودر الانتقال بين الصفحات — علامة إيواد
+   الستارة تنزل قبل المغادرة، وتنقشع بعد وصول الصفحة الجديدة
+   ============================================================ */
+(function () {
+  var loader = document.getElementById('page-loader');
+  if (!loader) return;
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* الدخول: الستارة ظاهرة أثناء الرسم الأول ثم تنقشع */
+  loader.classList.add('entering');
+  function reveal() {
+    loader.classList.remove('entering');
+    loader.classList.add('done');
+    /* تفريغ الحالة بعد انتهاء الانتقال حتى لا تعترض النقر */
+    setTimeout(function () { loader.className = ''; }, 420);
+  }
+  if (document.readyState === 'complete') { requestAnimationFrame(reveal); }
+  else { window.addEventListener('load', function () { setTimeout(reveal, 60); }); }
+
+  /* الخروج: أي رابط داخلي عادي يمرّ بالستارة */
+  document.addEventListener('click', function (e) {
+    if (reduce) return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+
+    var href = a.getAttribute('href');
+    if (!href || href.charAt(0) === '#' || a.target === '_blank' || a.hasAttribute('download')) return;
+    if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
+
+    var url;
+    try { url = new URL(a.href, location.href); } catch (err) { return; }
+    if (url.origin !== location.origin) return;
+    /* نفس الصفحة بأنكور فقط — لا ستارة */
+    if (url.pathname === location.pathname && url.search === location.search && url.hash) return;
+
+    e.preventDefault();
+    loader.className = 'leaving';
+    setTimeout(function () { location.href = a.href; }, 230);
+  });
+
+  /* الرجوع من كاش المتصفح: لا تترك الستارة عالقة */
+  window.addEventListener('pageshow', function (ev) { if (ev.persisted) loader.className = ''; });
+})();

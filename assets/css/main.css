@@ -867,3 +867,61 @@ html.js .reveal.in { opacity: 1; translate: 0 0; }
   }
   .footer-links li { margin-block-end: var(--sp-3); }
 }
+
+/* ============================================================
+   لودر الانتقال — علامة إيواد تمتلئ ذهباً
+   ============================================================ */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: var(--iwad-maroon);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 260ms var(--ease-out), visibility 0s linear 260ms;
+}
+/* الخروج: الستارة تنزل قبل مغادرة الصفحة */
+#page-loader.leaving {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 220ms var(--ease-out), visibility 0s;
+}
+/* الدخول: تنقشع بعد تحميل الصفحة الجديدة */
+#page-loader.entering {
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+}
+#page-loader.done { opacity: 0; visibility: hidden; transition: opacity 380ms var(--ease-out), visibility 0s linear 380ms; }
+
+.pl-mark { display: block; width: 74px; height: 74px; overflow: visible; }
+/* المسار الشبح: هيئة العلامة كاملة */
+.pl-mark .pl-track { fill: var(--iwad-cream); opacity: .18; }
+/* الامتلاء الذهبي يصعد داخل نفس الهيئة */
+.pl-mark .pl-fill { fill: var(--iwad-gold); clip-path: inset(100% 0 0 0); }
+#page-loader.entering .pl-mark .pl-fill,
+#page-loader.leaving  .pl-mark .pl-fill { animation: pl-rise 1.35s var(--ease-out) infinite; }
+@keyframes pl-rise {
+  0%        { clip-path: inset(100% 0 0 0); }
+  55%, 72%  { clip-path: inset(0 0 0 0); }
+  100%      { clip-path: inset(0 0 100% 0); }
+}
+/* خط القياس تحت العلامة — لغة اللوحات نفسها */
+.pl-rule { width: 74px; height: 1px; background: rgb(243 238 234 / 18%); margin-block-start: var(--sp-4); overflow: hidden; }
+.pl-rule::after {
+  content: "";
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: var(--iwad-gold);
+  animation: pl-sweep 1.35s var(--ease-out) infinite;
+}
+@keyframes pl-sweep { 0% { transform: translateX(100%); } 100% { transform: translateX(-250%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pl-mark .pl-fill { animation: none !important; clip-path: none; opacity: .85; }
+  .pl-rule::after { animation: none; width: 100%; }
+  #page-loader { transition: none; }
+}
