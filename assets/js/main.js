@@ -677,3 +677,70 @@
   /* الرجوع من كاش المتصفح: لا تترك الستارة عالقة */
   window.addEventListener('pageshow', function (ev) { if (ev.persisted) loader.className = ''; });
 })();
+
+/* ============================================================
+   لوحة المنصة: موجة تتبع المؤشر
+   المربعات ترتفع وتضيء بقدر قربها من الماوس — تهدأ عند المغادرة
+   ============================================================ */
+(function () {
+  var plate = document.querySelector('.hero-map svg');
+  if (!plate) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var cells = Array.prototype.slice.call(plate.querySelectorAll('.hm-c'));
+  if (!cells.length) return;
+
+  var RADIUS = 118;   /* نطاق تأثير الموجة بوحدات viewBox */
+  var LIFT   = 9;     /* أقصى ارتفاع */
+
+  /* مركز كل مربع مرة واحدة — لا قياس أثناء الحركة */
+  var pts = cells.map(function (c) {
+    return {
+      el: c,
+      cx: parseFloat(c.getAttribute('x')) + 13,
+      cy: parseFloat(c.getAttribute('y')) + 13,
+      on: false
+    };
+  });
+
+  var vb = plate.viewBox.baseVal;
+  var mx = -9999, my = -9999, raf = null, settling = false;
+
+  function paint() {
+    raf = null;
+    var alive = false;
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      var dx = p.cx - mx, dy = p.cy - my;
+      var d = Math.sqrt(dx * dx + dy * dy);
+      if (d < RADIUS) {
+        var t = 1 - d / RADIUS;          /* 0..1 */
+        var e = t * t;                    /* منحنى ألطف عند الحافة */
+        p.el.style.transform = 'translateY(' + (-LIFT * e).toFixed(2) + 'px)';
+        p.el.style.opacity = (0.82 + 0.18 * e).toFixed(3);
+        p.on = true;
+        alive = true;
+      } else if (p.on) {
+        p.el.style.transform = '';
+        p.el.style.opacity = '';
+        p.on = false;
+      }
+    }
+    if (settling && !alive) settling = false;
+  }
+  function queue() { if (!raf) raf = requestAnimationFrame(paint); }
+
+  plate.addEventListener('pointermove', function (e) {
+    var r = plate.getBoundingClientRect();
+    /* من بكسل الشاشة إلى إحداثيات viewBox */
+    mx = (e.clientX - r.left) / r.width * vb.width;
+    my = (e.clientY - r.top) / r.height * vb.height;
+    queue();
+  }, { passive: true });
+
+  plate.addEventListener('pointerleave', function () {
+    mx = -9999; my = -9999;
+    settling = true;
+    queue();
+  });
+})();

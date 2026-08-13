@@ -1138,3 +1138,12 @@ html.js .inst.armed .mission { clip-path: inset(0 0 -6% 0); }
 .hs-cell:hover rect,
 .hs-cell:focus-visible rect { stroke-width: 2; filter: brightness(1.18); }
 .hs-cell:focus-visible { outline: none; }
+
+/* موجة اللوحة: المربعات ترتفع مع المؤشر */
+.hero-map .hm-c {
+  transition: transform 420ms var(--ease-out), opacity 420ms var(--ease-out);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-map .hm-c { transition: none; transform: none !important; }
+}
