@@ -743,4 +743,11 @@
     settling = true;
     queue();
   });
+  /* اللمس: الموجة تهدأ بعد رفع الإصبع حتى لا تبقى مربعات مرفوعة */
+  plate.addEventListener('pointerup', function () {
+    setTimeout(function () { mx = -9999; my = -9999; settling = true; queue(); }, 400);
+  }, { passive: true });
+  plate.addEventListener('pointercancel', function () {
+    mx = -9999; my = -9999; settling = true; queue();
+  }, { passive: true });
 })();
